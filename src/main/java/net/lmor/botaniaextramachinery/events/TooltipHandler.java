@@ -43,6 +43,11 @@ public class TooltipHandler {
         tooltipManaAllBlocks.add(ultimateAlfheimMarket.asItem());
         tooltipManaAllBlocks.add(ultimateAlfheimMarket.asItem());
 
+        tooltipManaAllBlocks.add(baseOrechid.asItem());
+        tooltipManaAllBlocks.add(ultimateOrechid.asItem());
+        tooltipManaAllBlocks.add(ultimateOrechid.asItem());
+        tooltipManaAllBlocks.add(ultimateOrechid.asItem());
+
 
         tooltipWaterAllBlocks.add(baseApothecary.asItem());
         tooltipWaterAllBlocks.add(upgradedApothecary.asItem());
