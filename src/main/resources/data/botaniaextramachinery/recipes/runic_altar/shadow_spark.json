@@ -1,0 +1,36 @@
+{
+  "type": "botania:runic_altar",
+  "ingredients": [
+    {
+      "item": "botania:rune_envy"
+    },
+    {
+      "item": "botania:rune_greed"
+    },
+    {
+      "item": "botania:rune_sloth"
+    },
+    {
+      "item": "botania:rune_gluttony"
+    },
+    {
+      "item": "botania:rune_mana"
+    },
+    {
+      "item": "botaniaextramachinery:saffron_spark"
+    },
+    {
+      "item": "botaniaextramachinery:shadow_ingot_block"
+    },
+    {
+      "item": "botaniaextramachinery:shadow_ingot"
+    },
+    {
+      "item": "botaniaextramachinery:shadow_dragonstone_block"
+    }
+  ],
+  "mana": 500000,
+  "output": {
+    "item": "botaniaextramachinery:shadow_spark"
+  }
+}

@@ -43,6 +43,10 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
         this.countCraftPerRecipe = countCraft;
     }
 
+    public int getCountCraft() {
+        return countCraftPerRecipe;
+    }
+
     protected void updateRecipeIfNeeded() {
         this.updateRecipeIfNeeded(() -> {
         }, (stack, slot) -> {

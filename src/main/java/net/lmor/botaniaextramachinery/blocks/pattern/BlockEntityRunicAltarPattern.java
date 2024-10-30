@@ -211,7 +211,8 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         ItemStack livingrock = new ItemStack(BotaniaBlocks.livingrock.asItem());
         livingrock.setCount(64);
 
-        if (LIVINGROCK_SLOT_1 == LIVINGROCK_SLOT_2 && LIVINGROCK_SLOT_2 == LIVINGROCK_SLOT_3){
+        if (LIVINGROCK_SLOT_1 == LIVINGROCK_SLOT_2 && LIVINGROCK_SLOT_2 == LIVINGROCK_SLOT_3
+                && inventory.getStackInSlot(LIVINGROCK_SLOT_1).isEmpty()){
             inventory.setStackInSlot(LIVINGROCK_SLOT_1, livingrock);
         } else{
             if (inventory.getStackInSlot(LIVINGROCK_SLOT_1).isEmpty()) inventory.setStackInSlot(LIVINGROCK_SLOT_1, livingrock);

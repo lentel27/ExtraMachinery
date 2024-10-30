@@ -66,7 +66,7 @@ public abstract class WorkingTile<T extends Recipe<Container>> extends RecipeTil
 
     protected int getAndApplyProgressThisTick() {
         int manaToTransfer = Math.min(Math.min(this.getCurrentMana(), this.getMaxManaPerTick()), this.getMaxProgress(this.recipe) - this.progress);
-        this.receiveMana(-manaToTransfer);
+        this.receiveMana(-manaToTransfer * this.getCountCraft());
         return manaToTransfer;
     }
 

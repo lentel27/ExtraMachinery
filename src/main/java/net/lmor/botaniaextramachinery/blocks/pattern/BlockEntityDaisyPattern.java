@@ -34,6 +34,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
@@ -197,7 +198,11 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
     @Nonnull
     public <X> LazyOptional<X> getCapability(@Nonnull Capability<X> cap, @Nullable Direction side) {
-        return (LazyOptional<X>) (side == null ? this.lazyInventory : this.hopperInventory);
+        if (!this.remove && cap == ForgeCapabilities.ITEM_HANDLER) {
+            return (LazyOptional<X>) (side == null ? this.lazyInventory : this.hopperInventory);
+        }
+        return super.getCapability(cap, side);
+
     }
 
     public void saveAdditional(@Nonnull CompoundTag nbt) {
