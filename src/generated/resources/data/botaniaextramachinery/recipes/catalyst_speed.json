@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botaniaextramachinery:saffron_dragonstone_block"
+    },
+    "b": {
+      "item": "botaniaextramachinery:shadow_dragonstone_block"
+    },
+    "c": {
+      "item": "botaniaextramachinery:crimson_dragonstone_block"
+    },
+    "d": {
+      "item": "botaniaextramachinery:upgraded_industrial_agglomeration_factory"
+    }
+  },
+  "pattern": [
+    "abc",
+    "bdb",
+    "cba"
+  ],
+  "result": {
+    "item": "botaniaextramachinery:catalyst_speed"
+  }
+}

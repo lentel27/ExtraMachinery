@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botaniaextramachinery:block/ultimate_industrial_agglomeration_factory",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botaniaextramachinery:block/ultimate_industrial_agglomeration_factory"
+    },
+    "facing=south": {
+      "model": "botaniaextramachinery:block/ultimate_industrial_agglomeration_factory",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botaniaextramachinery:block/ultimate_industrial_agglomeration_factory",
+      "y": 270
+    }
+  }
+}

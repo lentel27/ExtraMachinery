@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botaniaextramachinery:saffron_dragonstone_block"
+    },
+    "b": {
+      "item": "botaniaextramachinery:shadow_dragonstone_block"
+    },
+    "c": {
+      "item": "botaniaextramachinery:crimson_dragonstone_block"
+    },
+    "d": {
+      "item": "botaniaextramachinery:ultimate_apothecary"
+    }
+  },
+  "pattern": [
+    "abc",
+    "bdb",
+    "cba"
+  ],
+  "result": {
+    "item": "botaniaextramachinery:catalyst_seed_infinity"
+  }
+}

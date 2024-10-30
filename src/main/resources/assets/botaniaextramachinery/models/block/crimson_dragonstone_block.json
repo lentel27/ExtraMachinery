@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "botaniaextramachinery:block/crimson_dragonstone_block"
+  }
+}

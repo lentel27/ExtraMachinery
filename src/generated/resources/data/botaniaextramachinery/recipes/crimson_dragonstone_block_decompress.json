@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "botaniaextramachinery:crimson_dragonstone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "botaniaextramachinery:crimson_dragonstone"
+  }
+}

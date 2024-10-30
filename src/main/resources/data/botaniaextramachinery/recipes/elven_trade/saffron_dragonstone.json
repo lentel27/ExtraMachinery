@@ -1,0 +1,16 @@
+{
+  "type": "botania:elven_trade",
+  "ingredients": [
+    {
+      "item": "botaniaextramachinery:saffron_ingot"
+    },
+    {
+      "item": "botaniaextramachinery:malachite_dragonstone"
+    }
+  ],
+  "output": [
+    {
+      "item": "botaniaextramachinery:saffron_dragonstone"
+    }
+  ]
+}

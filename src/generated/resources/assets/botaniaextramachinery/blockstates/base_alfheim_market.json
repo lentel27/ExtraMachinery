@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botaniaextramachinery:block/base_alfheim_market",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botaniaextramachinery:block/base_alfheim_market"
+    },
+    "facing=south": {
+      "model": "botaniaextramachinery:block/base_alfheim_market",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botaniaextramachinery:block/base_alfheim_market",
+      "y": 270
+    }
+  }
+}

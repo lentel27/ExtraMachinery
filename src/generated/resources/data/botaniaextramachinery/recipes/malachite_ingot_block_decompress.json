@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "botaniaextramachinery:malachite_ingot_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "botaniaextramachinery:malachite_ingot"
+  }
+}

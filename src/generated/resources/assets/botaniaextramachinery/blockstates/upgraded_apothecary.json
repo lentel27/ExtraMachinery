@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botaniaextramachinery:block/upgraded_apothecary",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botaniaextramachinery:block/upgraded_apothecary"
+    },
+    "facing=south": {
+      "model": "botaniaextramachinery:block/upgraded_apothecary",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botaniaextramachinery:block/upgraded_apothecary",
+      "y": 270
+    }
+  }
+}

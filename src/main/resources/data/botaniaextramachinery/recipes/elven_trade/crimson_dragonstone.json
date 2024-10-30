@@ -1,0 +1,16 @@
+{
+  "type": "botania:elven_trade",
+  "ingredients": [
+    {
+      "item": "botaniaextramachinery:crimson_ingot"
+    },
+    {
+      "item": "botaniaextramachinery:shadow_dragonstone"
+    }
+  ],
+  "output": [
+    {
+      "item": "botaniaextramachinery:crimson_dragonstone"
+    }
+  ]
+}

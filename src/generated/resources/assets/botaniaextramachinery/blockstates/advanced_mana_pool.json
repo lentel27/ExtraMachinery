@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botaniaextramachinery:block/advanced_mana_pool",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botaniaextramachinery:block/advanced_mana_pool"
+    },
+    "facing=south": {
+      "model": "botaniaextramachinery:block/advanced_mana_pool",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botaniaextramachinery:block/advanced_mana_pool",
+      "y": 270
+    }
+  }
+}
