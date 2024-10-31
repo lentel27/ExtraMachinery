@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botania:mana_ring_greater"
+    },
+    "b": {
+      "item": "botanicalextramachinery:malachite_ingot"
+    },
+    "c": {
+      "item": "botania:orechid"
+    },
+    "d": {
+      "item": "botanicalextramachinery:malachite_dragonstone_block"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:base_orechid"
+  }
+}

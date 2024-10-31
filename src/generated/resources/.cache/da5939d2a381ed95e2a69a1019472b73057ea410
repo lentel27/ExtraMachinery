@@ -1,4 +1,0 @@
-// 1.19.2	2024-10-30T12:40:27.7054505	botaniaextramachinery common block tags
-fb0b776c271ced308ed1ba644276115cf17d1b55 data/minecraft/tags/blocks/mineable/pickaxe.json
-86220f2cd3a93d57afe052ef30c4b0581b153dd3 data/minecraft/tags/blocks/needs_diamond_tool.json
-b3c91e5ee5e49ccb1178b028aaed29267fc9c014 data/minecraft/tags/blocks/needs_iron_tool.json

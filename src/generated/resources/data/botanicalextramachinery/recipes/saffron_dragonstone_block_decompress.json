@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "botanicalextramachinery:saffron_dragonstone_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "botanicalextramachinery:saffron_dragonstone"
+  }
+}

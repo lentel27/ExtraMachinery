@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botanicalextramachinery:block/base_runic_altar",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botanicalextramachinery:block/base_runic_altar"
+    },
+    "facing=south": {
+      "model": "botanicalextramachinery:block/base_runic_altar",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botanicalextramachinery:block/base_runic_altar",
+      "y": 270
+    }
+  }
+}

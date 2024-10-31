@@ -1,8 +1,8 @@
 {
   "values": [
-    "botaniaextramachinery:shadow_dragonstone_block",
-    "botaniaextramachinery:crimson_dragonstone_block",
-    "botaniaextramachinery:shadow_ingot_block",
-    "botaniaextramachinery:crimson_ingot_block"
+    "botanicalextramachinery:shadow_dragonstone_block",
+    "botanicalextramachinery:crimson_dragonstone_block",
+    "botanicalextramachinery:shadow_ingot_block",
+    "botanicalextramachinery:crimson_ingot_block"
   ]
 }

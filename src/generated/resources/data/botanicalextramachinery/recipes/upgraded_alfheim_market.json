@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botania:terrasteel_block"
+    },
+    "b": {
+      "item": "botanicalextramachinery:saffron_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:base_alfheim_market"
+    },
+    "d": {
+      "item": "botanicalextramachinery:saffron_dragonstone_block"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgraded_alfheim_market"
+  }
+}

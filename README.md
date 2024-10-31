@@ -1,5 +1,5 @@
 <div align="center" width="400" height="400">
-<img src="https://github.com/lentel27/ExtraMachinery/blob/master/src/main/resources/logo.png" alt="drawing" width="200"/>
+<img src="https://github.com/lentel27/ExtraMachinery/blob/master/src/main/resources/logo.png" alt="logo" width="200"/>
 
 ## Botanical Machinery Extra
 

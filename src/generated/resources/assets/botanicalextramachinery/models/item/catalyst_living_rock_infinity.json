@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "botanicalextramachinery:item/catalyst_living_rock_infinity"
+  }
+}

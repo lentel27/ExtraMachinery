@@ -1,0 +1,93 @@
+{
+  "itemGroup.botanicalextramachinery": "Extra Botania Machinery",
+
+  "block.botanicalextramachinery.base_mana_pool": "Base Mana Pool",
+  "block.botanicalextramachinery.upgraded_mana_pool": "Upgraded Mana Pool",
+  "block.botanicalextramachinery.advanced_mana_pool": "Advanced Mana Pool",
+  "block.botanicalextramachinery.ultimate_mana_pool": "Ultimate Mana Pool",
+
+  "block.botanicalextramachinery.base_runic_altar": "Base Runic Altar",
+  "block.botanicalextramachinery.upgraded_runic_altar": "Upgraded Runic Altar",
+  "block.botanicalextramachinery.advanced_runic_altar": "Advanced Runic Altar",
+  "block.botanicalextramachinery.ultimate_runic_altar": "Ultimate Runic Altar",
+
+  "block.botanicalextramachinery.base_daisy": "Basic Pure Daisy",
+  "block.botanicalextramachinery.upgraded_daisy": "Upgraded Pure Daisy",
+  "block.botanicalextramachinery.advanced_daisy": "Advanced Pure Daisy",
+  "block.botanicalextramachinery.ultimate_daisy": "Ultimate Pure Daisy",
+
+  "block.botanicalextramachinery.base_apothecary": "Basic Apothecary",
+  "block.botanicalextramachinery.upgraded_apothecary": "Upgraded Apothecary",
+  "block.botanicalextramachinery.advanced_apothecary": "Advanced Apothecary",
+  "block.botanicalextramachinery.ultimate_apothecary": "Ultimate Apothecary",
+
+  "block.botanicalextramachinery.base_industrial_agglomeration_factory": "Basic Industrial Agglomeration Factory",
+  "text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_1": "Basic Industrial",
+  "text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
+  "block.botanicalextramachinery.upgraded_industrial_agglomeration_factory": "Upgraded Industrial Agglomeration Factory",
+  "text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_1": "Upgraded Industrial",
+  "text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
+  "block.botanicalextramachinery.advanced_industrial_agglomeration_factory": "Advanced Industrial Agglomeration Factory",
+  "text.botanicalextramachinery.advanced_industrial_agglomeration_factory_label_text_1": "Advanced Industrial",
+  "text.botanicalextramachinery.advanced_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
+  "block.botanicalextramachinery.ultimate_industrial_agglomeration_factory": "Ultimate Industrial Agglomeration Factory",
+  "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "Ultimate Industrial",
+  "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
+  "block.botanicalextramachinery.base_alfheim_market": "Basic Alfheim Market",
+  "block.botanicalextramachinery.upgraded_alfheim_market": "Upgraded Alfheim Market",
+  "block.botanicalextramachinery.advanced_alfheim_market": "Advanced Alfheim Market",
+  "block.botanicalextramachinery.ultimate_alfheim_market": "Ultimate Alfheim Market",
+
+  "block.botanicalextramachinery.base_orechid": "Basic Orechid",
+  "block.botanicalextramachinery.upgraded_orechid": "Upgraded Orechid",
+  "block.botanicalextramachinery.advanced_orechid": "Advanced Orechid",
+  "block.botanicalextramachinery.ultimate_orechid": "Ultimate Orechid",
+
+  "block.botanicalextramachinery.malachite_dragonstone_block": "Malachite Dragonstone Block",
+  "block.botanicalextramachinery.saffron_dragonstone_block": "Saffron Dragonstone Block",
+  "block.botanicalextramachinery.shadow_dragonstone_block": "Shadow Dragonstone Block",
+  "block.botanicalextramachinery.crimson_dragonstone_block": "Crimson Dragonstone Block",
+
+  "block.botanicalextramachinery.malachite_ingot_block": "Malachite Block",
+  "block.botanicalextramachinery.saffron_ingot_block": "Saffron Block",
+  "block.botanicalextramachinery.shadow_ingot_block": "Shadow Block",
+  "block.botanicalextramachinery.crimson_ingot_block": "Crimson Block",
+
+  "item.botanicalextramachinery.malachite_spark": "Malachite Spark",
+  "item.botanicalextramachinery.saffron_spark": "Saffron Spark",
+  "item.botanicalextramachinery.shadow_spark": "Shadow Spark",
+  "item.botanicalextramachinery.crimson_spark": "Crimson Spark",
+
+  "item.botanicalextramachinery.malachite_dragonstone": "Malachite Dragonstone",
+  "item.botanicalextramachinery.saffron_dragonstone": "Saffron Dragonstone",
+  "item.botanicalextramachinery.shadow_dragonstone": "Shadow Dragonstone",
+  "item.botanicalextramachinery.crimson_dragonstone": "Crimson Dragonstone",
+
+  "item.botanicalextramachinery.malachite_ingot": "Malachite ingot",
+  "item.botanicalextramachinery.saffron_ingot": "Saffron ingot",
+  "item.botanicalextramachinery.shadow_ingot": "Shadow ingot",
+  "item.botanicalextramachinery.crimson_ingot": "Crimson ingot",
+
+  "item.botanicalextramachinery.catalyst_mana_infinity": "Infinity Mana Catalyst",
+  "item.botanicalextramachinery.catalyst_living_rock_infinity": "Infinity LivingRock Catalyst",
+  "item.botanicalextramachinery.catalyst_water_infinity": "Infinity Water Catalyst",
+  "item.botanicalextramachinery.catalyst_seed_infinity": "Infinity Seed Catalyst",
+  "item.botanicalextramachinery.catalyst_speed": "Speed Catalyst",
+  "item.botanicalextramachinery.catalyst_stone_infinity": "Infinity Stone Catalyst",
+
+  "botanicalextramachinery.tooltip.screen": "%1$s / %2$s Mana",
+  "botanicalextramachinery.tooltip.screen.catalyst_slot": "Slot for catalysts",
+  "botanicalextramachinery.tooltip.screen.upgrade_slot": "Slot for upgrades",
+  "botanicalextramachinery.tooltip.screen.livingrock_slot": "Slot for livingrocks",
+  "botanicalextramachinery.tooltip.screen.seed_slot": "Slot for seeds",
+  "botanicalextramachinery.tooltip.screen.ore_slot": "Slot for ores (Filter)",
+
+  "botanicalextramachinery.tooltip.item.mana": "§bCurrent Mana:§r §6 %1$s",
+  "botanicalextramachinery.tooltip.item.water": "§bCurrent Water:§r §6 %1$s",
+  "botanicalextramachinery.tooltip.item.upgrade_speed_1": "§6Speeds up crafting by §d4 times",
+  "botanicalextramachinery.tooltip.item.upgrade_speed_2": "§6Only for §cindustrial agglomeration factory"
+}

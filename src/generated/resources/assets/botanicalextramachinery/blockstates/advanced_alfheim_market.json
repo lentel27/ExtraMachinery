@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botanicalextramachinery:block/advanced_alfheim_market",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botanicalextramachinery:block/advanced_alfheim_market"
+    },
+    "facing=south": {
+      "model": "botanicalextramachinery:block/advanced_alfheim_market",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botanicalextramachinery:block/advanced_alfheim_market",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:saffron_ingot_block"
+    },
+    "b": {
+      "item": "botanicalextramachinery:crimson_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:advanced_daisy"
+    },
+    "d": {
+      "item": "botanicalextramachinery:crimson_dragonstone_block"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:ultimate_daisy"
+  }
+}

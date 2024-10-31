@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "botaniaextramachinery:block/shadow_dragonstone_block"
-  }
-}

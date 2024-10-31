@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:malachite_ingot_block"
+    },
+    "b": {
+      "item": "botanicalextramachinery:shadow_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:upgraded_orechid"
+    },
+    "d": {
+      "item": "botanicalextramachinery:shadow_dragonstone_block"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:advanced_orechid"
+  }
+}
