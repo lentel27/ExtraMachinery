@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a problem to Botanical Machinery Extra
-title: [BUG]
+title: "[BUG]"
 labels: [ bug ]
 body:
   - type: dropdown
@@ -10,12 +10,12 @@ body:
       options:
         - 1.19.2
   - type: dropdown
-    id: mc-version
+    id: problem-machinery-mod-version
     attributes:
       label: This problem exists in the Botanical Machinery mod.
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
   - type: input
     id: mod-version
     attributes:
