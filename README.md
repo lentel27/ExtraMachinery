@@ -14,3 +14,6 @@ mod and is developed using their technologies. Some files have been adjusted to 
 #### The only thing that is strictly prohibited and subject to copyright is the textures of the graphical interfaces for each mechanism. The rest can be used in the public domain.
 
 ----
+
+[![Curseforge](http://cf.way2muchnoise.eu/versions/1131545.svg)](https://www.curseforge.com/minecraft/mc-mods/botanical-machinery-extra)
+[![CurseForge](http://cf.way2muchnoise.eu/botanical-machinery-extra.svg)](https://www.curseforge.com/minecraft/mc-mods/botanical-machinery-extra)
