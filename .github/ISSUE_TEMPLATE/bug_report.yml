@@ -1,5 +1,6 @@
 name: Bug Report
 description: Report a problem to Botanical Machinery Extra
+title: [BUG]
 labels: [ bug ]
 body:
   - type: dropdown
