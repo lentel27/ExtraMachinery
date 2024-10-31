@@ -1,5 +1,5 @@
 name: Bug Report
-description: Сообщить о проблеме в Botanical Machinery Extra
+description: Report a problem to Botanical Machinery Extra
 labels: [ bug ]
 body:
   - type: dropdown
