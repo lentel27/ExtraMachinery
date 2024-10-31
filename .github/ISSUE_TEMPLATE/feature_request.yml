@@ -9,4 +9,4 @@ body:
       label: Describe your idea
       placeholder: A clear and reasoned description of your idea. Preferably in great detail
     validations:
-      required: "true"
+      required: true
