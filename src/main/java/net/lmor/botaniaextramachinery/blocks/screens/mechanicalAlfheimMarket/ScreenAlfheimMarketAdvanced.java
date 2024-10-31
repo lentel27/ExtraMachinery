@@ -24,16 +24,16 @@ public class ScreenAlfheimMarketAdvanced extends ExtraScreenBase<ContainerAlfhei
     BlockEntityAlfheimMarketAdvanced blockEntity;
 
     public ScreenAlfheimMarketAdvanced(ContainerAlfheimMarketAdvanced menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 27, 113);
+        super(menu, inventory, title, 27, 110);
 
         this.imageWidth = 184;
-        this.imageHeight = 209;
+        this.imageHeight = 206;
 
         this.inventoryLabelY = -999;
         this.titleLabelY = -999;
 
         Map<Integer, int[]> upgrades = new HashMap<>();
-        upgrades.put(0, new int[] {84, 87});
+        upgrades.put(0, new int[] {84, 84});
 
         this.agglomerationSlotInfo.setCoord(upgrades);
 
@@ -42,20 +42,40 @@ public class ScreenAlfheimMarketAdvanced extends ExtraScreenBase<ContainerAlfhei
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
         this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.ADVANCED_ALFHEIM_MARKET_GUI);
+        this.drawLabelText(poseStack);
 
         if (blockEntity.getInventory().getStackInSlot(0).isEmpty() && this.minecraft != null){
             List<ItemStack> items = new ArrayList<>();
             items.add(new ItemStack(ModItems.catalystManaInfinity));
 
-            GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 84 , this.topPos + 87);
+            GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 84 , this.topPos + 84);
         }
 
         if (blockEntity.getProgress() > 0) {
             float pct = Math.min((float)blockEntity.getProgress() / (float)blockEntity.getMaxProgress(), 1.0F);
             RenderSystem.setShaderTexture(0, LibResources.ADVANCED_ALFHEIM_MARKET_GUI);
-            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 84, this.topPos + 45, this.imageWidth, 0, Math.round(16.0F * pct), 16);
+            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 84, this.topPos + 42, this.imageWidth, 0, Math.round(16.0F * pct), 16);
         }
 
         this.agglomerationSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory());
+    }
+
+    private void drawLabelText(PoseStack poseStack){
+        Component titleText = Component.translatable("block.botaniaextramachinery.advanced_alfheim_market");
+        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 10) /scale, 0x00);
+        poseStack.popPose();
+    }
+
+    private float calculateOptimalScale(Component text, int maxWidth) {
+        int textWidth = this.font.width(text);
+        if (textWidth <= maxWidth) {
+            return 1.0f;
+        }
+        return (float) maxWidth / textWidth;
     }
 }

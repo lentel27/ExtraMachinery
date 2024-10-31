@@ -17,12 +17,12 @@ public class ContainerOrechidBase extends BlockEntityMenu<BlockEntityOrechidBase
         super(type, windowId, level, pos, playerContainer, player, 8, 13);
 
         IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
-        int index = this.addSlotBox(inventory, 0, 66, 22, 3, 18, 1, 18);
+        int index = this.addSlotBox(inventory, 0, 66, 19, 3, 18, 1, 18);
 
-        int index_2 = this.addSlotBox(inventory, index, 48, 46, 5, 18, 1, 18);
-        this.addSlotBox(inventory, index_2, 48, 86, 5, 18, 1, 18, UnrestrictedOutputSlot::new);
+        int index_2 = this.addSlotBox(inventory, index, 48, 43, 5, 18, 1, 18);
+        this.addSlotBox(inventory, index_2, 48, 83, 5, 18, 1, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 127);
+        this.layoutPlayerInventorySlots(12, 124);
     }
 
     @Override

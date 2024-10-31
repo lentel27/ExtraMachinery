@@ -17,11 +17,11 @@ public class ContainerApothecaryUpgraded extends BlockEntityMenu<BlockEntityApot
         super(type, windowId, level, pos, playerContainer, player, 13, 24);
         IItemHandlerModifiable inventory = ((BlockEntityApothecaryUpgraded)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 92));
+        this.addSlot(new SlotItemHandler(inventory, 0, 84, 89));
 
-        int index = this.addSlotBox(inventory, 1, 24, 17, 3, 18, 4, 18);
-        this.addSlotBox(inventory, index, 109, 17, 3, 18, 4, 18, UnrestrictedOutputSlot::new);
-        this.layoutPlayerInventorySlots(12, 127);
+        int index = this.addSlotBox(inventory, 1, 24, 14, 3, 18, 4, 18);
+        this.addSlotBox(inventory, index, 109, 14, 3, 18, 4, 18, UnrestrictedOutputSlot::new);
+        this.layoutPlayerInventorySlots(12, 124);
     }
 
     @Override

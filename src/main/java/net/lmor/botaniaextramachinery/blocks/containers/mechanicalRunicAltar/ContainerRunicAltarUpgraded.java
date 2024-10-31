@@ -18,14 +18,14 @@ public class ContainerRunicAltarUpgraded extends BlockEntityMenu<BlockEntityRuni
         super(type, windowId, level, pos, playerContainer, player, 19, 35);
         IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 66, 97));
-        this.addSlot(new SlotItemHandler(inventory, 1, 84, 97));
-        this.addSlot(new SlotItemHandler(inventory, 2, 102, 97));
+        this.addSlot(new SlotItemHandler(inventory, 0, 66, 93));
+        this.addSlot(new SlotItemHandler(inventory, 1, 84, 93));
+        this.addSlot(new SlotItemHandler(inventory, 2, 102, 93));
 
-        int index = this.addSlotBox(inventory, 3, 11, 18, 4, 18, 4, 18);
-        this.addSlotBox(inventory, index, 103, 18, 4, 18, 4, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 3, 11, 14, 4, 18, 4, 18);
+        this.addSlotBox(inventory, index, 103, 14, 4, 18, 4, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 138);
+        this.layoutPlayerInventorySlots(12, 134);
     }
 
     @Override

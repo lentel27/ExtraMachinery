@@ -17,10 +17,10 @@ public class ScreenAlfheimMarketUpgraded extends ExtraScreenBase<ContainerAlfhei
     BlockEntityAlfheimMarketUpgraded blockEntity;
 
     public ScreenAlfheimMarketUpgraded(ContainerAlfheimMarketUpgraded menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 27, 84);
+        super(menu, inventory, title, 27, 81);
 
         this.imageWidth = 184;
-        this.imageHeight = 209;
+        this.imageHeight = 177;
 
         this.inventoryLabelY = -999;
         this.titleLabelY = -999;
@@ -30,12 +30,32 @@ public class ScreenAlfheimMarketUpgraded extends ExtraScreenBase<ContainerAlfhei
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
         this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.UPGRADED_ALFHEIM_MARKET_GUI);
+        this.drawLabelText(poseStack);
 
         if (blockEntity.getProgress() > 0) {
             float pct = Math.min((float)blockEntity.getProgress() / (float)blockEntity.getMaxProgress(), 1.0F);
             RenderSystem.setShaderTexture(0, LibResources.UPGRADED_ALFHEIM_MARKET_GUI);
-            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 84, this.topPos + 39, this.imageWidth, 0, Math.round(16.0F * pct), 16);
+            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 84, this.topPos + 36, this.imageWidth, 0, Math.round(16.0F * pct), 16);
         }
-
     }
+
+    private void drawLabelText(PoseStack poseStack){
+        Component titleText = Component.translatable("block.botaniaextramachinery.upgraded_alfheim_market");
+        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 7) /scale, 0x00);
+        poseStack.popPose();
+    }
+
+    private float calculateOptimalScale(Component text, int maxWidth) {
+        int textWidth = this.font.width(text);
+        if (textWidth <= maxWidth) {
+            return 1.0f;
+        }
+        return (float) maxWidth / textWidth;
+    }
+
 }

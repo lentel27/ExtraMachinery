@@ -17,13 +17,13 @@ public class ContainerIndustrialAgglomerationFactoryAdvanced extends BlockEntity
         super(type, windowId, level, pos, playerContainer, player, 9, 15);
         IItemHandlerModifiable inventory = ((BlockEntityIndustrialAgglomerationFactoryAdvanced)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 9, 67));
-        this.addSlot(new SlotItemHandler(inventory, 1, 158, 67));
+        this.addSlot(new SlotItemHandler(inventory, 0, 9, 58));
+        this.addSlot(new SlotItemHandler(inventory, 1, 158, 58));
 
-        int index = this.addSlotBox(inventory, 2, 30, 31, 7, 18, 1, 18);
-        this.addSlotBox(inventory, index, 39, 67, 6, 18, 1, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 2, 30, 22, 7, 18, 1, 18);
+        this.addSlotBox(inventory, index, 39, 58, 6, 18, 1, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 110);
+        this.layoutPlayerInventorySlots(12, 101);
     }
 
     @Override

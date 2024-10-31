@@ -17,10 +17,10 @@ public class ContainerIndustrialAgglomerationFactoryBase extends BlockEntityMenu
         IItemHandlerModifiable inventory = ((BlockEntityIndustrialAgglomerationFactoryBase)this.blockEntity).getInventory();
 
 
-        int index = this.addSlotBox(inventory, 0, 66, 31, 3, 18, 1, 18);
-        this.addSlotBox(inventory, index, 57, 67, 4, 18, 1, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 0, 66, 22, 3, 18, 1, 18);
+        this.addSlotBox(inventory, index, 57, 58, 4, 18, 1, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 110);
+        this.layoutPlayerInventorySlots(12, 101);
     }
 
     @Override

@@ -24,9 +24,9 @@ public class ScreenApothecaryAdvanced extends ExtraScreenBase<ContainerApothecar
     private final BlockEntityApothecaryAdvanced tile;
 
     public ScreenApothecaryAdvanced(ContainerApothecaryAdvanced screenMenu, Inventory inventory, Component title) {
-        super(screenMenu, inventory, title, 27, 123);
+        super(screenMenu, inventory, title, 27, 120);
         this.imageWidth = 184;
-        this.imageHeight = 220;
+        this.imageHeight = 217;
 
         this.titleLabelY = -99999;
         this.inventoryLabelY = -99999;
@@ -34,8 +34,8 @@ public class ScreenApothecaryAdvanced extends ExtraScreenBase<ContainerApothecar
         Map<Integer, int[]> seed = new HashMap<>();
         Map<Integer, int[]> upgrades = new HashMap<>();
 
-        seed.put(0, new int[] {84, 97});
-        upgrades.put(1, new int[] {47, 97});
+        seed.put(0, new int[] {84, 94});
+        upgrades.put(1, new int[] {47, 94});
 
         this.apothecarySlotInfo.setCoord(seed, upgrades);
 
@@ -44,14 +44,15 @@ public class ScreenApothecaryAdvanced extends ExtraScreenBase<ContainerApothecar
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
         this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.ADVANCED_MECHANICAL_APOTHECARY_GUI);
+        this.drawLabelText(poseStack);
 
         if (this.tile.getInventory().getStackInSlot(0).isEmpty()) {
             List<ItemStack> items = TagAccess.ROOT.get(Tags.Items.SEEDS).stream().map(Holder::value).map(ItemStack::new).toList();
-            GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 84, this.topPos + 97);
+            GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 84, this.topPos + 94);
         }
 
         if (this.tile.getInventory().getStackInSlot(1).isEmpty() && this.minecraft != null) {
-            GhostItemRenderer.renderGhostItem(this.tile.getUpgrades(), poseStack, this.leftPos + 47, this.topPos + 97);
+            GhostItemRenderer.renderGhostItem(this.tile.getUpgrades(), poseStack, this.leftPos + 47, this.topPos + 94);
         }
 
         this.apothecarySlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, this.tile.getInventory(), new boolean[]{true, true});
@@ -60,7 +61,27 @@ public class ScreenApothecaryAdvanced extends ExtraScreenBase<ContainerApothecar
         if (this.tile.getProgress() > 0) {
             float pctProgress = Math.min((float)this.tile.getProgress() / (float)this.tile.getMaxProgress(), 1.0F);
             RenderSystem.setShaderTexture(0, LibResources.ADVANCED_MECHANICAL_APOTHECARY_GUI);
-            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 87, this.topPos + 34, this.imageWidth, 0, Math.round(11.0F * pctProgress), 37);
+            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 87, this.topPos + 31, this.imageWidth, 0, Math.round(11.0F * pctProgress), 37);
         }
     }
+
+    private void drawLabelText(PoseStack poseStack){
+        Component titleText = Component.translatable("block.botaniaextramachinery.advanced_apothecary");
+        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 4) /scale, 0x00);
+        poseStack.popPose();
+    }
+
+    private float calculateOptimalScale(Component text, int maxWidth) {
+        int textWidth = this.font.width(text);
+        if (textWidth <= maxWidth) {
+            return 1.0f;
+        }
+        return (float) maxWidth / textWidth;
+    }
+
 }

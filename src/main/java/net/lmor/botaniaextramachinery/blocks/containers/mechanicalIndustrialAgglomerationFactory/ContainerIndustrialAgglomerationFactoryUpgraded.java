@@ -17,10 +17,10 @@ public class ContainerIndustrialAgglomerationFactoryUpgraded extends BlockEntity
         IItemHandlerModifiable inventory = ((BlockEntityIndustrialAgglomerationFactoryUpgraded)this.blockEntity).getInventory();
 
 
-        int index = this.addSlotBox(inventory, 0, 48, 31, 5, 18, 1, 18);
-        this.addSlotBox(inventory, index, 39, 67, 6, 18, 1, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 0, 48, 22, 5, 18, 1, 18);
+        this.addSlotBox(inventory, index, 39, 58, 6, 18, 1, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 110);
+        this.layoutPlayerInventorySlots(12, 101);
     }
 
     @Override

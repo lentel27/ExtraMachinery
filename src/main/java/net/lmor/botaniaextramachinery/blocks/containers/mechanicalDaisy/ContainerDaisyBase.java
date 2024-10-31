@@ -23,17 +23,17 @@ public class ContainerDaisyBase extends BlockEntityMenu<BlockEntityDaisyBase> {
 
         IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 38));
-        this.addSlot(new SlotItemHandler(inventory, 1, 106, 44));
-        this.addSlot(new SlotItemHandler(inventory, 2, 112, 66));
-        this.addSlot(new SlotItemHandler(inventory, 3, 106, 88));
-        this.addSlot(new SlotItemHandler(inventory, 4, 84, 94));
-        this.addSlot(new SlotItemHandler(inventory, 5, 62, 88));
-        this.addSlot(new SlotItemHandler(inventory, 6, 56, 66));
-        this.addSlot(new SlotItemHandler(inventory, 7, 62, 44));
+        this.addSlot(new SlotItemHandler(inventory, 0, 84, 35));
+        this.addSlot(new SlotItemHandler(inventory, 1, 106, 41));
+        this.addSlot(new SlotItemHandler(inventory, 2, 112, 63));
+        this.addSlot(new SlotItemHandler(inventory, 3, 106, 85));
+        this.addSlot(new SlotItemHandler(inventory, 4, 84, 91));
+        this.addSlot(new SlotItemHandler(inventory, 5, 62, 85));
+        this.addSlot(new SlotItemHandler(inventory, 6, 56, 63));
+        this.addSlot(new SlotItemHandler(inventory, 7, 62, 41));
 
 
-        this.layoutPlayerInventorySlots(12, 138);
+        this.layoutPlayerInventorySlots(12, 135);
     }
 
     @Nonnull

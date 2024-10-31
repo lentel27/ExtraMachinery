@@ -22,9 +22,20 @@
   "block.botaniaextramachinery.ultimate_apothecary": "Совершенный аптекарь",
 
   "block.botaniaextramachinery.base_industrial_agglomeration_factory": "Базовый завод промышленной агломерации",
+  "text.botaniaextramachinery.base_industrial_agglomeration_factory_label_text_1": "Базовый завод",
+  "text.botaniaextramachinery.base_industrial_agglomeration_factory_label_text_2": "промышленной агломерации",
+
   "block.botaniaextramachinery.upgraded_industrial_agglomeration_factory": "Улучшенный завод промышленной агломерации",
+  "text.botaniaextramachinery.upgraded_industrial_agglomeration_factory_label_text_1": "Улучшенный завод",
+  "text.botaniaextramachinery.upgraded_industrial_agglomeration_factory_label_text_2": "промышленной агломерации",
+
   "block.botaniaextramachinery.advanced_industrial_agglomeration_factory": "Продвинутый завод промышленной агломерации",
+  "text.botaniaextramachinery.advanced_industrial_agglomeration_factory_label_text_1": "Продвинутый завод",
+  "text.botaniaextramachinery.advanced_industrial_agglomeration_factory_label_text_2": "промышленной агломерации",
+
   "block.botaniaextramachinery.ultimate_industrial_agglomeration_factory": "Совершенный завод промышленной агломерации",
+  "text.botaniaextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "Совершенный завод",
+  "text.botaniaextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "промышленной агломерации",
 
   "block.botaniaextramachinery.base_alfheim_market": "Базовый обменник альфхейма",
   "block.botaniaextramachinery.upgraded_alfheim_market": "Улучшенный обменник альфхейма",

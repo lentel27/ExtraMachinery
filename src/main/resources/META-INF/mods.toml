@@ -44,3 +44,10 @@ description='''${mod_description}'''
     versionRange="[1.19.2-2.0.5,)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="ae2"
+    mandatory=true
+    versionRange="[12.9.9,)"
+    ordering="NONE"
+    side="BOTH"

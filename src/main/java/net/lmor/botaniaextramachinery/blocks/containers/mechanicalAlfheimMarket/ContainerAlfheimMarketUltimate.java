@@ -17,12 +17,12 @@ public class ContainerAlfheimMarketUltimate extends BlockEntityMenu<BlockEntityA
         super(type, windowId, level, pos, playerContainer, player, 13, 25);
         IItemHandlerModifiable inventory = ((BlockEntityAlfheimMarketUltimate)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 88));
+        this.addSlot(new SlotItemHandler(inventory, 0, 84, 84));
 
-        int index = this.addSlotBox(inventory, 1, 23, 19, 3, 18, 4, 18);
-        this.addSlotBox(inventory, index, 109, 19, 3, 18, 4, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 1, 23, 15, 3, 18, 4, 18);
+        this.addSlotBox(inventory, index, 109, 15, 3, 18, 4, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 127);
+        this.layoutPlayerInventorySlots(12, 123);
     }
 
     @Override

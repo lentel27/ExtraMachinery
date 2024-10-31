@@ -21,18 +21,18 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
 
     BlockEntityRunicAltarAdvanced blockEntity;
     public ScreenRunicAltarAdvanced(ContainerRunicAltarAdvanced menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 27, 123);
+        super(menu, inventory, title, 27, 120);
 
         this.imageWidth = 184;
-        this.imageHeight = 220;
+        this.imageHeight = 216;
 
         Map<Integer, int[]> livingrock = new HashMap<>();
         Map<Integer, int[]> upgrades = new HashMap<>();
 
-        livingrock.put(0, new int[] {66, 97});
-        livingrock.put(1, new int[] {84, 97});
-        livingrock.put(2, new int[] {102, 97});
-        upgrades.put(3, new int[] {27, 97});
+        livingrock.put(0, new int[] {66, 94});
+        livingrock.put(1, new int[] {84, 94});
+        livingrock.put(2, new int[] {102, 94});
+        upgrades.put(3, new int[] {27, 94});
 
         this.runicAltarSlotInfo.setCoord(livingrock, upgrades);
 
@@ -41,15 +41,16 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
         this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.ADVANCED_MECHANICAL_RUNIC_ALTAR_GUI);
+        this.drawLabelText(poseStack);
 
         for (int i = 0; i < 3; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null) {
-                GhostItemRenderer.renderGhostItem(new ItemStack(BotaniaBlocks.livingrock), poseStack, this.leftPos + 66 + i * 18, this.topPos + 97);
+                GhostItemRenderer.renderGhostItem(new ItemStack(BotaniaBlocks.livingrock), poseStack, this.leftPos + 66 + i * 18, this.topPos + 94);
             }
         }
 
         if (blockEntity.getInventory().getStackInSlot(3).isEmpty() && this.minecraft != null) {
-            GhostItemRenderer.renderGhostItem(blockEntity.getUpgrades(), poseStack, this.leftPos + 27, this.topPos + 97);
+            GhostItemRenderer.renderGhostItem(blockEntity.getUpgrades(), poseStack, this.leftPos + 27, this.topPos + 94);
         }
 
         this.runicAltarSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, true});
@@ -59,7 +60,26 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, LibResources.ADVANCED_MECHANICAL_RUNIC_ALTAR_GUI);
-            this.blit(poseStack, this.leftPos + 87, this.topPos + 34, this.imageWidth, 0, Math.round(11.0F * pct), 37);
+            this.blit(poseStack, this.leftPos + 87, this.topPos + 30, this.imageWidth, 0, Math.round(11.0F * pct), 37);
         }
+    }
+
+    private void drawLabelText(PoseStack poseStack){
+        Component titleText = Component.translatable("block.botaniaextramachinery.advanced_runic_altar");
+        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 5) /scale, 0x00);
+        poseStack.popPose();
+    }
+
+    private float calculateOptimalScale(Component text, int maxWidth) {
+        int textWidth = this.font.width(text);
+        if (textWidth <= maxWidth) {
+            return 1.0f;
+        }
+        return (float) maxWidth / textWidth;
     }
 }

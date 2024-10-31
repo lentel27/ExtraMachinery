@@ -18,13 +18,13 @@ public class ContainerManaPoolAdvanced extends BlockEntityMenu<BlockEntityManaPo
         super(type, windowId, level, pos, playerContainer, player, 11, 17);
         IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 89, 60));
-        this.addSlot(new SlotItemHandler(inventory, 1, 89, 16));
+        this.addSlot(new SlotItemHandler(inventory, 0, 89, 57));
+        this.addSlot(new SlotItemHandler(inventory, 1, 89, 13));
 
-        int index = this.addSlotBox(inventory, 2, 23, 20, 3, 18, 3, 18);
-        this.addSlotBox(inventory, index, 118, 20, 2, 18, 3, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 2, 23, 17, 3, 18, 3, 18);
+        this.addSlotBox(inventory, index, 118, 17, 2, 18, 3, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(8, 100);
+        this.layoutPlayerInventorySlots(8, 97);
     }
 
     @Override

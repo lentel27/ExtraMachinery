@@ -22,9 +22,20 @@
   "block.botaniaextramachinery.ultimate_apothecary": "Ultimate Apothecary",
 
   "block.botaniaextramachinery.base_industrial_agglomeration_factory": "Basic Industrial Agglomeration Factory",
+  "text.botaniaextramachinery.base_industrial_agglomeration_factory_label_text_1": "Basic Industrial",
+  "text.botaniaextramachinery.base_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
   "block.botaniaextramachinery.upgraded_industrial_agglomeration_factory": "Upgraded Industrial Agglomeration Factory",
+  "text.botaniaextramachinery.upgraded_industrial_agglomeration_factory_label_text_1": "Upgraded Industrial",
+  "text.botaniaextramachinery.upgraded_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
   "block.botaniaextramachinery.advanced_industrial_agglomeration_factory": "Advanced Industrial Agglomeration Factory",
+  "text.botaniaextramachinery.advanced_industrial_agglomeration_factory_label_text_1": "Advanced Industrial",
+  "text.botaniaextramachinery.advanced_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
+
   "block.botaniaextramachinery.ultimate_industrial_agglomeration_factory": "Ultimate Industrial Agglomeration Factory",
+  "text.botaniaextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "Ultimate Industrial",
+  "text.botaniaextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
 
   "block.botaniaextramachinery.base_alfheim_market": "Basic Alfheim Market",
   "block.botaniaextramachinery.upgraded_alfheim_market": "Upgraded Alfheim Market",

@@ -24,13 +24,13 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
     BlockEntityIndustrialAgglomerationFactoryUltimate blockEntity;
 
     public ScreenIndustrialAgglomerationFactoryUltimate(ContainerIndustrialAgglomerationFactoryUltimate menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 27, 128);
+        super(menu, inventory, title, 27, 119);
         this.imageWidth = 184;
-        this.imageHeight = 224;
+        this.imageHeight = 215;
 
         Map<Integer, int[]> upgrades = new HashMap<>();
-        upgrades.put(0, new int[] {9, 93});
-        upgrades.put(1, new int[] {158, 93});
+        upgrades.put(0, new int[] {9, 84});
+        upgrades.put(1, new int[] {158, 84});
 
         this.agglomerationSlotInfo.setCoord(upgrades);
 
@@ -40,6 +40,7 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
         this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.ULTIMATE_INDUSTRIAL_AGGLOMERATION_FACTORY_GUI);
+        this.drawLabelText(poseStack);
 
         for (int i = 0; i < 2; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null){
@@ -47,9 +48,11 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
                 items.add(new ItemStack(ModItems.catalystManaInfinity));
                 items.add(new ItemStack(ModItems.catalystSpeed));
 
-                GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 9 + (149 * i), this.topPos + 93);
+                GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 9 + (149 * i), this.topPos + 84);
             }
         }
+
+        this.agglomerationSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory());
 
         if (blockEntity.getProgress() > 0) {
             RenderSystem.setShaderTexture(0, LibResources.ULTIMATE_INDUSTRIAL_AGGLOMERATION_FACTORY_GUI);
@@ -57,10 +60,35 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
             float pct = Math.min((float)blockEntity.getProgress() / (float)blockEntity.getMaxProgress(), 1.0F);
             int height = Math.round(16.0F * pct);
 
-            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 72, this.topPos + 67, this.imageWidth, 0, 40, height);
+            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 72, this.topPos + 58, this.imageWidth, 0, 40, height);
         }
+    }
 
-        this.agglomerationSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory());
+    private void drawLabelText(PoseStack poseStack){
+        Component titleText = Component.translatable("text.botaniaextramachinery.ultimate_industrial_agglomeration_factory_label_text_1");
+        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 4) /scale, 0x00);
+        poseStack.popPose();
 
+        titleText = Component.translatable("text.botaniaextramachinery.ultimate_industrial_agglomeration_factory_label_text_2");
+        scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 12) /scale, 0x00);
+        poseStack.popPose();
+    }
+
+    private float calculateOptimalScale(Component text, int maxWidth) {
+        int textWidth = this.font.width(text);
+        if (textWidth <= maxWidth) {
+            return 1.0f;
+        }
+        return (float) maxWidth / textWidth;
     }
 }

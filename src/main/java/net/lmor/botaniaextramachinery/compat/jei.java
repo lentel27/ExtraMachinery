@@ -54,40 +54,40 @@ public class jei implements IModPlugin {
 
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 
-        registration.addRecipeClickArea(ScreenManaPoolBase.class, 79, 41, 35, 11, ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenManaPoolUpgraded.class, 79, 41, 35, 11, ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenManaPoolAdvanced.class, 79, 41, 35, 11, ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenManaPoolUltimate.class, 70, 45, 35, 11, ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenManaPoolBase.class, 79, 38, 35, 11, ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenManaPoolUpgraded.class, 79, 38, 35, 11, ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenManaPoolAdvanced.class, 79, 38, 35, 11, ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenManaPoolUltimate.class, 70, 42, 35, 11, ManaPoolRecipeCategory.TYPE);
 
-        registration.addRecipeClickArea(ScreenRunicAltarBase.class, 87, 34, 11, 37, RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenRunicAltarUpgraded.class, 87, 34, 11, 37, RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenRunicAltarAdvanced.class, 87, 34, 11, 37, RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenRunicAltarUltimate.class, 87, 34, 11, 37, RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenRunicAltarBase.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenRunicAltarUpgraded.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenRunicAltarAdvanced.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenRunicAltarUltimate.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
 
-        registration.addRecipeClickArea(ScreenDaisyBase.class, 84, 66, 16, 16, PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenDaisyUpgraded.class, 84, 66, 16, 16, PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenDaisyAdvanced.class, 84, 66, 16, 16, PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenDaisyUltimate.class, 84, 66, 16, 16, PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenDaisyBase.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenDaisyUpgraded.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenDaisyAdvanced.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenDaisyUltimate.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
 
-        registration.addRecipeClickArea(ScreenApothecaryBase.class, 87, 34, 11, 37, PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenApothecaryUpgraded.class, 87, 34, 11, 37, PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenApothecaryAdvanced.class, 87, 34, 11, 37, PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenApothecaryUltimate.class, 87, 34, 11, 37, PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenApothecaryBase.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenApothecaryUpgraded.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenApothecaryAdvanced.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenApothecaryUltimate.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
 
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryBase.class, 72, 49, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUpgraded.class, 72, 49, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryAdvanced.class, 72, 49, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUltimate.class, 72, 67, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryBase.class, 72, 40, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUpgraded.class, 72, 40, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryAdvanced.class, 72, 40, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUltimate.class, 72, 58, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
 
-        registration.addRecipeClickArea(ScreenAlfheimMarketBase.class, 84, 39, 16, 16, ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenAlfheimMarketUpgraded.class, 84, 39, 16, 16, ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenAlfheimMarketAdvanced.class, 84, 45, 16, 16, ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenAlfheimMarketUltimate.class, 84, 46, 16, 16, ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenAlfheimMarketBase.class, 84, 36, 16, 16, ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenAlfheimMarketUpgraded.class, 84, 36, 16, 16, ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenAlfheimMarketAdvanced.class, 84, 42, 16, 16, ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenAlfheimMarketUltimate.class, 84, 42, 16, 16, ElvenTradeRecipeCategory.TYPE);
 
-        registration.addRecipeClickArea(ScreenOrechidBase.class, 65, 66, 54, 16, OrechidRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenOrechidUpgraded.class, 65, 66, 54, 16, OrechidRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenOrechidAdvanced.class, 65, 83, 54, 16, OrechidRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenOrechidUltimate.class, 65, 83, 54, 16, OrechidRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenOrechidBase.class, 65, 63, 54, 16, OrechidRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenOrechidUpgraded.class, 65, 63, 54, 16, OrechidRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenOrechidAdvanced.class, 65, 80, 54, 16, OrechidRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenOrechidUltimate.class, 65, 80, 54, 16, OrechidRecipeCategory.TYPE);
 
     }
 

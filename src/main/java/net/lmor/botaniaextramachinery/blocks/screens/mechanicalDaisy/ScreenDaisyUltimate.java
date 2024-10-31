@@ -17,7 +17,7 @@ public class ScreenDaisyUltimate extends ExtraScreenBase<ContainerDaisyUltimate>
         super(menu, inventory, title, -999, -999);
 
         this.imageWidth = 184;
-        this.imageHeight = 220;
+        this.imageHeight = 217;
 
         this.inventoryLabelY = -9999;
         this.titleLabelY = -9999;
@@ -31,5 +31,26 @@ public class ScreenDaisyUltimate extends ExtraScreenBase<ContainerDaisyUltimate>
         int relX = (this.width - this.imageWidth) / 2;
         int relY = (this.height - this.imageHeight) / 2;
         this.blit(poseStack, relX, relY, 0, 0, this.imageWidth, this.imageHeight);
+
+        this.drawLabelText(poseStack);
+    }
+
+    private void drawLabelText(PoseStack poseStack){
+        Component titleText = Component.translatable("block.botaniaextramachinery.ultimate_daisy");
+        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
+        poseStack.pushPose();
+        poseStack.scale(scale, scale, scale);
+        this.font.draw(poseStack, titleText,
+                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
+                (topPos + 5) /scale, 0x00);
+        poseStack.popPose();
+    }
+
+    private float calculateOptimalScale(Component text, int maxWidth) {
+        int textWidth = this.font.width(text);
+        if (textWidth <= maxWidth) {
+            return 1.0f;
+        }
+        return (float) maxWidth / textWidth;
     }
 }
