@@ -1,7 +1,7 @@
 name: Feature request
 description: Suggest an idea
-title: [FEATURE]
-labels: [ featuer ]body:
+labels: [ enhancement ]
+body:
   - type: textarea
     id: description
     attributes:
