@@ -12,5 +12,3 @@ mod and is developed using their technologies. Some files have been adjusted to 
 
 
 #### The only thing that is strictly prohibited and subject to copyright is the textures of the graphical interfaces for each mechanism. The rest can be used in the public domain.
-
-----
