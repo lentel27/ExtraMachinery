@@ -60,7 +60,7 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, LibResources.ADVANCED_MECHANICAL_RUNIC_ALTAR_GUI);
-            this.blit(poseStack, this.leftPos + 87, this.topPos + 30, this.imageWidth, 0, Math.round(11.0F * pct), 37);
+            this.blit(poseStack, this.leftPos + 87, this.topPos + 31, this.imageWidth, 0, Math.round(11.0F * pct), 37);
         }
     }
 

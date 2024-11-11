@@ -1,5 +1,6 @@
 package net.lmor.botanicalextramachinery.blocks.base;
 
+import com.google.common.collect.Streams;
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -14,11 +15,14 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.moddingx.libx.crafting.recipe.RecipeHelper;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
+import vazkii.botania.common.crafting.BotaniaRecipeTypes;
+import vazkii.botania.common.lib.BotaniaTags;
 
 import javax.annotation.Nonnull;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalTile {
     private final RecipeType<T> recipeType;
@@ -124,12 +128,45 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
                     }
 
                     if (remainingItemsToPlace < countCraftPerRecipe * recipe.getResultItem().getCount()) {
-                        // Рассчитываем, сколько полных рецептов удалось поместить
                         this.countCraftPerRecipe -= remainingItemsToPlace / recipe.getResultItem().getCount();
 
                     } else if (remainingItemsToPlace >= countCraftPerRecipe * recipe.getResultItem().getCount()) {
-                        this.recipe = null; // Ничего не помещается, отменяем рецепт
+                        this.recipe = null;
                         return;
+                    }
+                }
+
+                if (recipe.getType() == BotaniaRecipeTypes.RUNE_TYPE){
+                    List<ItemStack> inputItemRes = new ArrayList<>();
+                    iteratorRecipe = recipe.getIngredients().iterator();
+                    while (iteratorRecipe.hasNext()){
+                        Ingredient ingredient = (Ingredient)iteratorRecipe.next();
+
+                        for (ItemStack itemStack: Arrays.stream(ingredient.getItems()).toList()){
+                            inputItemRes.add(itemStack);
+                        }
+                    }
+
+                    List res = Streams.concat(new Stream[]
+                        {
+                            inputItemRes.stream()
+                                .filter((s) -> {return s.is(BotaniaTags.Items.RUNES);})
+                                .map(ItemStack::copy)
+                        }).toList();
+
+                    if (res.size() != 0){
+                        int emptySlot = 0;
+
+                        for (int slot = this.firstOutputSlot; slot < inventory.getSlots(); ++slot) {
+                            ItemStack slotItem = inventory.getStackInSlot(slot);
+                            if (slotItem.isEmpty()){
+                                emptySlot++;
+                            }
+                        }
+                        if (emptySlot == 0 || emptySlot < res.size() + 1){
+                            this.recipe = null;
+                            return;
+                        }
                     }
                 }
 

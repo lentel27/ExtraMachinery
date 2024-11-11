@@ -255,13 +255,17 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
 
     protected List<ItemStack> resultItems(RunicAltarRecipe recipe, @NotNull List<ItemStack> stacks) {
         List res = Streams.concat(new Stream[]
-                {
-                        stacks.stream()
-                                .filter((s) -> {return s.is(BotaniaTags.Items.RUNES);})
-                                .map(ItemStack::copy),
-                        super.resultItems(recipe, stacks)
-                                .stream()
-                }).toList();
+            {
+                stacks.stream()
+                    .filter((s) -> {return s.is(BotaniaTags.Items.RUNES);})
+                    .map(s -> {
+                        ItemStack copy = s.copy();
+                        copy.setCount(1);
+                        return copy;
+                }),
+                super.resultItems(recipe, stacks)
+                        .stream()
+            }).toList();
         return res;
     }
 
