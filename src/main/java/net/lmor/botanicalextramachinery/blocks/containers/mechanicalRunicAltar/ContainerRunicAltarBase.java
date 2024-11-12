@@ -18,7 +18,7 @@ public class ContainerRunicAltarBase extends BlockEntityMenu<BlockEntityRunicAlt
         super(type, windowId, level, pos, playerContainer, player, 17, 33);
         IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 93));
+        this.addSlot(new SlotItemHandler(inventory, 0, 84, 94));
 
         int index = this.addSlotBox(inventory, 1, 11, 14, 4, 18, 4, 18);
         this.addSlotBox(inventory, index, 103, 14, 4, 18, 4, 18, UnrestrictedOutputSlot::new);

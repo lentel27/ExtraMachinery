@@ -405,11 +405,6 @@ public class BlockEntityOrechidPattern extends BotanicalTile
     }
 
     @Override
-    public void securityBreak() {
-        this.level.destroyBlock(this.worldPosition, true);
-    }
-
-    @Override
     public void saveChanges() {
         if (level != null) {
             if (level.isClientSide) {

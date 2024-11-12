@@ -5,8 +5,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.lmor.botanicalextramachinery.util.NumberFormatter;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 public class WaterBar {
     private final Screen parent;
@@ -43,21 +45,22 @@ public class WaterBar {
         return false;
     }
 
-    public void draw(PoseStack poseStack, float fluid) {
-        RenderSystem.setShaderTexture(0, LibResources.WATER_BAR_CURRENT);
+    public void draw(GuiGraphics guiGraphics, float fluid) {
+        ResourceLocation waterBar = LibResources.WATER_BAR_CURRENT;
+        RenderSystem.setShaderTexture(0, waterBar);
 
         float pctFluid = Math.min(fluid / this.capacity, 1.0F);
         int relWidth = (int)((float)(129) * pctFluid);
 
-        Screen.blit(poseStack,  this.guiLeft + x, this.guiTop + y, 0.0F, 0.0F, relWidth, 5, 129, 5);
+        guiGraphics.blit(waterBar,this.guiLeft + x, this.guiTop + y, 0.0F, 0.0F, relWidth, 5, 129, 5);
     }
 
-    public void renderHoveredToolTip(PoseStack ms, int mouseX, int mouseY, int countFluid) {
+    public void renderHoveredToolTip(GuiGraphics guiGraphics, int mouseX, int mouseY, int countFluid) {
         if (this.isMouseOver(mouseX, mouseY) && LibXClientConfig.numericalFluid) {
 
             Component fluid = Component.literal(countFluid + " / " + NumberFormatter.formatIntegerWater(this.capacity));
 
-            this.parent.renderTooltip(ms, fluid, mouseX, mouseY);
+            guiGraphics.renderTooltip(this.parent.getMinecraft().font, fluid, mouseX, mouseY);
         }
 
     }

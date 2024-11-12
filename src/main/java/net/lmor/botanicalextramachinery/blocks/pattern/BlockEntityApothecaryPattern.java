@@ -46,7 +46,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.moddingx.libx.base.tile.TickingBlock;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
+import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.CustomApothecaryColor;
@@ -166,7 +166,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         if (this.level != null && !this.level.isClientSide) {
             this.runRecipeTick();
             if (this.recipe != null) {
-                this.currentOutput = ((PetalApothecaryRecipe)this.recipe).getResultItem().copy();
+                this.currentOutput = this.recipe.getResultItem(this.level.registryAccess()).copy();
                 this.setChanged();
                 this.setDispatchable();
             } else if (!this.currentOutput.isEmpty()) {
@@ -213,7 +213,6 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
                 }
             }
         }
-
     }
 
     private boolean checkOutputSlots(){
@@ -228,8 +227,13 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
     public List<ItemStack> getUpgrades(){
         List<ItemStack> res = new ArrayList<>();
 
-        res.add(new ItemStack(ModItems.catalystWaterInfinity));
-        res.add(new ItemStack(ModItems.catalystSeedInfinity));
+        if (UPGRADE_SLOT_1 != -1){
+            res.add(new ItemStack(ModItems.catalystWaterInfinity));
+        }
+
+        if (UPGRADE_SLOT_2 != -1){
+            res.add(new ItemStack(ModItems.catalystSeedInfinity));
+        }
 
         return res;
     }
@@ -446,7 +450,6 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         return null;
     }
 
-
     @Nullable
     @Override
     public IGridNode getGridNode(Direction direction) {
@@ -456,11 +459,6 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
     @Override
     public IManagedGridNode getMainNode() {
         return this.mainNode;
-    }
-
-    @Override
-    public void securityBreak() {
-        this.level.destroyBlock(this.worldPosition, true);
     }
 
     @Override

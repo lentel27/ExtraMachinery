@@ -34,7 +34,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
+import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.TerrestrialAgglomerationRecipe;
@@ -237,11 +237,6 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
     @Override
     public IManagedGridNode getMainNode() {
         return this.mainNode;
-    }
-
-    @Override
-    public void securityBreak() {
-        this.level.destroyBlock(this.worldPosition, true);
     }
 
     @Override

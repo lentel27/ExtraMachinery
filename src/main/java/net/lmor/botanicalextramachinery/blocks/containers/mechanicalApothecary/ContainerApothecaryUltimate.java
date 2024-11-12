@@ -15,7 +15,7 @@ import org.moddingx.libx.menu.BlockEntityMenu;
 public class ContainerApothecaryUltimate extends BlockEntityMenu<BlockEntityApothecaryUltimate> {
     public ContainerApothecaryUltimate(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 19, 35);
-        IItemHandlerModifiable inventory = ((BlockEntityApothecaryUltimate)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = (this.blockEntity).getInventory();
 
         this.addSlot(new SlotItemHandler(inventory, 0, 84, 94));
         this.addSlot(new SlotItemHandler(inventory, 1, 47, 94));

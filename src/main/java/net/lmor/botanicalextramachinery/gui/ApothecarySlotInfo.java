@@ -2,6 +2,7 @@ package net.lmor.botanicalextramachinery.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
@@ -47,18 +48,17 @@ public class ApothecarySlotInfo {
     }
 
 
-    public void renderHoveredToolTip(PoseStack poseStack, int mouseX, int mouseY, BaseItemStackHandler inventory, boolean[] setInfo) {
+    public void renderHoveredToolTip(GuiGraphics guiGraphics, int mouseX, int mouseY, BaseItemStackHandler inventory, boolean[] setInfo) {
         if (setInfo[0] && LibXClientConfig.slotInfo && seeds_slots.size() >= 1) {
             for (Integer key: seeds_slots.keySet()){
                 int[] x_y = seeds_slots.get(key);
                 if (inventory.getStackInSlot(key).isEmpty()){
                     if (isMouseOver(mouseX, mouseY, x_y[0], x_y[1])){
                         Component text = Component.translatable("botanicalextramachinery.tooltip.screen.seed_slot");
-                        this.parent.renderTooltip(poseStack, text, mouseX, mouseY);
+                        guiGraphics.renderTooltip(this.parent.getMinecraft().font, text, mouseX, mouseY);
                     }
                 }
             }
-
         }
 
         if (setInfo[1] && LibXClientConfig.slotInfo && upgrade_slots.size() >= 1) {
@@ -67,7 +67,7 @@ public class ApothecarySlotInfo {
                 if (isMouseOver(mouseX, mouseY, x_y[0], x_y[1])){
                     if (inventory.getStackInSlot(key).isEmpty()){
                         Component text = Component.translatable("botanicalextramachinery.tooltip.screen.upgrade_slot");
-                        this.parent.renderTooltip(poseStack, text, mouseX, mouseY);
+                        guiGraphics.renderTooltip(this.parent.getMinecraft().font, text, mouseX, mouseY);
                     }
                 }
             }

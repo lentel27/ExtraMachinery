@@ -12,9 +12,9 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -37,7 +37,7 @@ public class BlockOrechidUltimate extends MenuBlockBE<BlockEntityOrechidUltimate
     public static final VoxelShape SHAPE;
 
     public BlockOrechidUltimate(ModX mod, Class<BlockEntityOrechidUltimate> teClass, MenuType<ContainerOrechidUltimate> menu) {
-        super(mod, teClass, menu, Properties.of(Material.STONE).strength(2.0F, 10.0F).dynamicShape(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)

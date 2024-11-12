@@ -18,7 +18,7 @@ public class RenderDaisyAdvanced implements BlockEntityRenderer<BlockEntityDaisy
                              @Nonnull MultiBufferSource buffer, int light, int overlay) {
         if (state != null) {
             poseStack.pushPose();
-            poseStack.translate((double)translateX, 0.0, (double)translateZ);
+            poseStack.translate(translateX, 0.0, translateZ);
             Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, poseStack, buffer, light, overlay);
             poseStack.popPose();
         }

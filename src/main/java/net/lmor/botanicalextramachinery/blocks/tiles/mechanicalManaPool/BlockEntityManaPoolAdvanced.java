@@ -8,7 +8,6 @@ import net.lmor.botanicalextramachinery.util.SettingPattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
 public class BlockEntityManaPoolAdvanced extends BlockEntityManaPoolPattern {
 
@@ -22,7 +21,7 @@ public class BlockEntityManaPoolAdvanced extends BlockEntityManaPoolPattern {
 
 
     public BlockEntityManaPoolAdvanced(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, BotaniaRecipeTypes.MANA_INFUSION_TYPE, pos, state, advancedManaPool.manaStorage,
+        super(type, pos, state, advancedManaPool.manaStorage,
                 new int[] {
                         CATALYSTS_SLOT, FIRST_INPUT_SLOT, LAST_INPUT_SLOT,
                         FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT, UPGRADE_SLOT

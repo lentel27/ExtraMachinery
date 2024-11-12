@@ -2,7 +2,7 @@ package net.lmor.botanicalextramachinery.blocks.tesr.mechanicalManaPool;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolBase;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.minecraft.client.Minecraft;
@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import org.moddingx.libx.render.block.RotatedBlockRenderer;
@@ -26,6 +27,7 @@ import javax.annotation.Nonnull;
 public class RenderManaPoolBase extends RotatedBlockRenderer<BlockEntityManaPoolBase> {
     public static final double INNER_POOL_HEIGHT = 0.28125;
     public static final double POOL_BOTTOM_HEIGHT = 0.071875;
+    private static final TextureAtlasSprite MANA_WATER_SPRITE;
 
     public RenderManaPoolBase() {
     }
@@ -38,10 +40,10 @@ public class RenderManaPoolBase extends RotatedBlockRenderer<BlockEntityManaPool
                 if (block instanceof PoolOverlayProvider) {
                     PoolOverlayProvider catalyst = (PoolOverlayProvider)block;
                     ResourceLocation spriteId = catalyst.getIcon(tile.getLevel(), tile.getBlockPos());
-                    TextureAtlasSprite sprite = (TextureAtlasSprite) Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(spriteId);
+                    TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(spriteId);
                     poseStack.pushPose();
                     poseStack.translate(0.125, POOL_BOTTOM_HEIGHT, 0.125);
-                    poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
+                    poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
                     poseStack.scale(0.0625F, 0.0625F, 0.0625F);
                     float alpha = (float)((Math.sin((double)((float) ClientTickHandler.ticksInGame + partialTick) / 20.0) + 1.0) * 0.3 + 0.2);
                     VertexConsumer vertex = buffer.getBuffer(RenderHelper.ICON_OVERLAY);
@@ -54,10 +56,10 @@ public class RenderManaPoolBase extends RotatedBlockRenderer<BlockEntityManaPool
                 double amount = (double)tile.getCurrentMana() / (double)tile.getMaxMana();
                 poseStack.pushPose();
                 poseStack.translate(0.1875, POOL_BOTTOM_HEIGHT + amount * INNER_POOL_HEIGHT, 0.1875);
-                poseStack.mulPose(Vector3f.XP.rotationDegrees(90.0F));
+                poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
                 poseStack.scale(0.625F, 0.625F, 0.625F);
                 VertexConsumer vertex = buffer.getBuffer(RenderHelper.MANA_POOL_WATER);
-                RenderHelper.renderIconFullBright(poseStack, vertex, MiscellaneousModels.INSTANCE.manaWater.sprite(), 1.0F);
+                RenderHelper.renderIconFullBright(poseStack, vertex, MANA_WATER_SPRITE, 1.0F);
                 poseStack.popPose();
             }
 
@@ -74,8 +76,8 @@ public class RenderManaPoolBase extends RotatedBlockRenderer<BlockEntityManaPool
                     poseStack.translate(0.02, 0, 0.2);
 
                     poseStack.scale(0.4375F, 0.4375F, 0.4375F);
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees((float)ClientTickHandler.ticksInGame + partialTick));
-                    Minecraft.getInstance().getItemRenderer().renderStatic(output_1, ItemTransforms.TransformType.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, (int)tile.getBlockPos().asLong());
+                    poseStack.mulPose(Axis.YP.rotationDegrees((float)ClientTickHandler.ticksInGame + partialTick));
+                    Minecraft.getInstance().getItemRenderer().renderStatic(output_1, ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), (int)tile.getBlockPos().asLong());
                     poseStack.popPose();
                 }
 
@@ -84,8 +86,8 @@ public class RenderManaPoolBase extends RotatedBlockRenderer<BlockEntityManaPool
                     poseStack.translate(0.02, 0, -0.2);
 
                     poseStack.scale(0.4375F, 0.4375F, 0.4375F);
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees((float)ClientTickHandler.ticksInGame + partialTick));
-                    Minecraft.getInstance().getItemRenderer().renderStatic(output_2, ItemTransforms.TransformType.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, (int)tile.getBlockPos().asLong());
+                    poseStack.mulPose(Axis.YP.rotationDegrees((float)ClientTickHandler.ticksInGame + partialTick));
+                    Minecraft.getInstance().getItemRenderer().renderStatic(output_2, ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), (int)tile.getBlockPos().asLong());
                     poseStack.popPose();
                 }
             }
@@ -101,13 +103,17 @@ public class RenderManaPoolBase extends RotatedBlockRenderer<BlockEntityManaPool
                     poseStack.translate(0, 0.0, -0.2 + 0.2 * (i - 1));
 
                     poseStack.scale(0.4375F, 0.4375F, 0.4375F);
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees((float)(ClientTickHandler.ticksInGame % 360)));
-                    Minecraft.getInstance().getItemRenderer().renderStatic(input, ItemTransforms.TransformType.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, (int)tile.getBlockPos().asLong());
+                    poseStack.mulPose(Axis.YP.rotationDegrees((float)(ClientTickHandler.ticksInGame % 360)));
+                    Minecraft.getInstance().getItemRenderer().renderStatic(input, ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), (int)tile.getBlockPos().asLong());
                     poseStack.popPose();
                 }
             }
 
             poseStack.popPose();
         }
+    }
+
+    static {
+        MANA_WATER_SPRITE = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(new ResourceLocation("botania", "block/mana_water"));
     }
 }

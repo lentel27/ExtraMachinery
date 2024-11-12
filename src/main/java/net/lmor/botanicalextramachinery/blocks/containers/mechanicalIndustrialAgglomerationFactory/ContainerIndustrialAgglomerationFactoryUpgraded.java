@@ -14,7 +14,7 @@ import org.moddingx.libx.menu.BlockEntityMenu;
 public class ContainerIndustrialAgglomerationFactoryUpgraded extends BlockEntityMenu<BlockEntityIndustrialAgglomerationFactoryUpgraded> {
     public ContainerIndustrialAgglomerationFactoryUpgraded(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 5, 11);
-        IItemHandlerModifiable inventory = ((BlockEntityIndustrialAgglomerationFactoryUpgraded)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = (this.blockEntity).getInventory();
 
 
         int index = this.addSlotBox(inventory, 0, 48, 22, 5, 18, 1, 18);

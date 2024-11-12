@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.tesr.mechanicalRunicAltar;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUpgraded;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.minecraft.client.Minecraft;
@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import org.moddingx.libx.render.block.RotatedBlockRenderer;
@@ -44,7 +45,7 @@ public class RendererRunicAltarUpgraded extends RotatedBlockRenderer<BlockEntity
                 poseStack.translate(6.5, 10.0, 6.5);
                 poseStack.scale(3.0F, 3.0F, 3.0F);
                 poseStack.translate(0.5, 0.0, 0.5);
-                poseStack.mulPose(Vector3f.YP.rotationDegrees(-((float) ClientTickHandler.ticksInGame + partialTicks)));
+                poseStack.mulPose(Axis.YP.rotationDegrees(-((float)ClientTickHandler.ticksInGame + partialTicks)));
                 poseStack.translate(-0.5, 0.0, -0.5);
                 Minecraft.getInstance().getBlockRenderer().renderSingleBlock(state, poseStack, buffer, 200, OverlayTexture.NO_OVERLAY);
                 poseStack.popPose();
@@ -88,16 +89,16 @@ public class RendererRunicAltarUpgraded extends RotatedBlockRenderer<BlockEntity
                     poseStack.pushPose();
                     poseStack.translate(0.5, 0.675, 0.5);
                     poseStack.scale(0.3F, 0.3F, 0.3F);
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees(angles[angleIdx] + time));
+                    poseStack.mulPose(Axis.YP.rotationDegrees(angles[angleIdx] + time));
                     poseStack.translate(travelCenter * 1.125, 0.0, travelCenter * 0.25);
-                    poseStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
+                    poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
                     poseStack.translate(0.0, 0.075 * Math.sin((double)(time + (float)(angleIdx * 10)) / 5.0), 0.0);
                     if (shrink) {
                         poseStack.scale(0.3F, 0.3F, 0.3F);
                     }
 
                     ItemStack stack = tile.getInventory().getStackInSlot(slot);
-                    Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemTransforms.TransformType.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, (int)tile.getBlockPos().asLong() + slot);
+                    Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.GROUND, light, OverlayTexture.NO_OVERLAY, poseStack, buffer, tile.getLevel(), (int)tile.getBlockPos().asLong() + slot);
                     poseStack.popPose();
                 }
             }

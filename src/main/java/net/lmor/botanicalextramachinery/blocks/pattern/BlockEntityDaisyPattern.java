@@ -358,11 +358,6 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     }
 
     @Override
-    public void securityBreak() {
-        this.level.destroyBlock(this.worldPosition, true);
-    }
-
-    @Override
     public void saveChanges() {
         if (level != null) {
             if (level.isClientSide) {

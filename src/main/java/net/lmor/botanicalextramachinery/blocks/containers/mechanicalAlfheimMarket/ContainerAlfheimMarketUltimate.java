@@ -15,7 +15,7 @@ import org.moddingx.libx.menu.BlockEntityMenu;
 public class ContainerAlfheimMarketUltimate extends BlockEntityMenu<BlockEntityAlfheimMarketUltimate> {
     public ContainerAlfheimMarketUltimate(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 13, 25);
-        IItemHandlerModifiable inventory = ((BlockEntityAlfheimMarketUltimate)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = (this.blockEntity).getInventory();
 
         this.addSlot(new SlotItemHandler(inventory, 0, 84, 84));
 

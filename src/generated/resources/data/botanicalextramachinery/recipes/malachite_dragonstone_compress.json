@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "a": {
       "item": "botanicalextramachinery:malachite_dragonstone"
@@ -12,5 +13,6 @@
   ],
   "result": {
     "item": "botanicalextramachinery:malachite_dragonstone_block"
-  }
+  },
+  "show_notification": true
 }

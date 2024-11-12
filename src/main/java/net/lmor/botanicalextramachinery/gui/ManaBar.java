@@ -5,8 +5,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.lmor.botanicalextramachinery.util.NumberFormatter;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 public class ManaBar {
     private final Screen parent;
@@ -43,24 +45,24 @@ public class ManaBar {
         return false;
     }
 
-    public void draw(PoseStack poseStack, float mana) {
-        RenderSystem.setShaderTexture(0, LibResources.MANA_BAR_CURRENT);
+    public void draw(GuiGraphics guiGraphics, float mana) {
+        ResourceLocation manaBar = LibResources.MANA_BAR_CURRENT;
+
+        RenderSystem.setShaderTexture(0, manaBar);
 
         float pct = Math.min(mana / (float)this.capacity, 1.0F);
         int relWidth = (int)((float)(129) * pct);
 
-        Screen.blit(poseStack, this.guiLeft + x, this.guiTop + y, 0.0F, 0.0F, relWidth, 5, 129, 5);
+        guiGraphics.blit(manaBar, this.guiLeft + x, this.guiTop + y, 0.0F, 0.0F, relWidth, 5, 129, 5);
 
     }
 
-    public void renderHoveredToolTip(PoseStack ms, int mouseX, int mouseY, int mana) {
+    public void renderHoveredToolTip(GuiGraphics guiGraphics, int mouseX, int mouseY, int mana) {
         if (this.isMouseOver(mouseX, mouseY) && LibXClientConfig.numericalFluid) {
-
             Component text = Component.translatable("botanicalextramachinery.tooltip.screen",
                     Component.literal(NumberFormatter.formatInteger(mana)),
                     Component.literal(NumberFormatter.formatInteger(this.capacity)));
-
-            this.parent.renderTooltip(ms, text, mouseX, mouseY);
+            guiGraphics.renderTooltip(this.parent.getMinecraft().font, text, mouseX, mouseY);
         }
 
     }

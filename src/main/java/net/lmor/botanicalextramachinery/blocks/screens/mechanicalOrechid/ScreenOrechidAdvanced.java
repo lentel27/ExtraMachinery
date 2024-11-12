@@ -1,12 +1,12 @@
 package net.lmor.botanicalextramachinery.blocks.screens.mechanicalOrechid;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
 import net.lmor.botanicalextramachinery.ModItems;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalOrechid.ContainerOrechidAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidAdvanced;
 import net.lmor.botanicalextramachinery.core.LibResources;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
@@ -47,13 +47,13 @@ public class ScreenOrechidAdvanced extends ExtraScreenBase<ContainerOrechidAdvan
 
         this.orechidSlotInfo.setCoord(ores, upgrades);
 
-        blockEntity = (BlockEntityOrechidAdvanced)((ContainerOrechidAdvanced)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     @Override
-    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
-        this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.ADVANCED_ORECHID_GUI);
-        this.drawLabelText(poseStack);
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+        this.drawDefaultGuiBackgroundLayer(guiGraphics, LibResources.ADVANCED_ORECHID_GUI);
+        this.drawLabelText(guiGraphics);
 
         for (int i = 0; i < 2; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null){
@@ -61,23 +61,27 @@ public class ScreenOrechidAdvanced extends ExtraScreenBase<ContainerOrechidAdvan
                 items.add(new ItemStack(ModItems.catalystManaInfinity));
                 items.add(new ItemStack(ModItems.catalystStoneInfinity));
 
-                GhostItemRenderer.renderGhostItem(items, poseStack, this.leftPos + 14 + 140 * i, this.topPos + 80);
+                GhostItemRenderer.renderGhostItem(items, guiGraphics, this.leftPos + 14 + 140 * i, this.topPos + 80);
             }
         }
-        this.orechidSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, true});
+        this.orechidSlotInfo.renderHoveredToolTip(guiGraphics, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, true});
 
 
     }
 
-    private void drawLabelText(PoseStack poseStack){
+    private void drawLabelText(GuiGraphics guiGraphics){
         Component titleText = Component.translatable("block.botanicalextramachinery.advanced_orechid");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
-        poseStack.pushPose();
-        poseStack.scale(scale, scale, scale);
-        this.font.draw(poseStack, titleText,
-                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
-                (topPos + 6) /scale, 0x00);
-        poseStack.popPose();
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().scale(scale, scale, scale);
+        guiGraphics.drawString(
+                this.font,
+                titleText,
+                (int)((leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale),
+                (int)((topPos + 6) / scale),
+                0x00, false
+        );
+        guiGraphics.pose().popPose();
     }
 
     private float calculateOptimalScale(Component text, int maxWidth) {

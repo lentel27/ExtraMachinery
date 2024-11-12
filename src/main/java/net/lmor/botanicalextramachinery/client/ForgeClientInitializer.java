@@ -16,6 +16,7 @@ import vazkii.botania.api.BotaniaForgeClientCapabilities;
 import vazkii.botania.api.block.WandHUD;
 import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.client.integration.ears.EarsIntegration;
+import vazkii.botania.common.lib.ResourceLocationHelper;
 import vazkii.botania.forge.CapabilityUtil;
 import vazkii.botania.xplat.XplatAbstractions;
 
@@ -25,7 +26,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static vazkii.botania.common.lib.ResourceLocationHelper.prefix;
 
 @Mod.EventBusSubscriber(modid = ExtraMachinery.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ForgeClientInitializer {
@@ -50,23 +50,27 @@ public class ForgeClientInitializer {
     }
 
     private static final Supplier<Map<EntityType<?>, Function<Entity, WandHUD>>> ENTITY_WAND_HUD = Suppliers.memoize(() -> {
-        var ret = new IdentityHashMap<EntityType<?>, Function<Entity, WandHUD>>();
+        IdentityHashMap<EntityType<?>, Function<Entity, WandHUD>> ret = new IdentityHashMap<>();
         ModEntities.registerWandHudCaps((factory, types) -> {
-            for (var type : types) {
+            EntityType[] entityTypes = types;
+            int typesLength = types.length;
+
+            for(int i = 0; i < typesLength; ++i) {
+                EntityType<?> type = entityTypes[i];
                 ret.put(type, factory);
             }
+
         });
         return Collections.unmodifiableMap(ret);
     });
 
     private static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> e) {
-        var entity = e.getObject();
-
-        var makeWandHud = ENTITY_WAND_HUD.get().get(entity.getType());
+        Entity entity = e.getObject();
+        Function<Entity, WandHUD> makeWandHud = (Function)((Map)ENTITY_WAND_HUD.get()).get(entity.getType());
         if (makeWandHud != null) {
-            e.addCapability(prefix("wand_hud"),
-                    CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, makeWandHud.apply(entity)));
+            e.addCapability(ResourceLocationHelper.prefix("wand_hud"), CapabilityUtil.makeProvider(BotaniaForgeClientCapabilities.WAND_HUD, makeWandHud.apply(entity)));
         }
+
     }
 
 }

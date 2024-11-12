@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import net.lmor.botanicalextramachinery.blocks.pattern.BlockEntityApothecaryPattern;
 import net.lmor.botanicalextramachinery.gui.*;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -73,37 +74,34 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         this.orechidSlotInfo.setGuiCoord(this.leftPos, this.topPos);
     }
 
-
-    public void render(@Nonnull PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
+    public void render(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         setGuiCoord();
 
-        this.renderBackground(poseStack);
-        super.render(poseStack, mouseX, mouseY, partialTick);
-        this.renderTooltip(poseStack, mouseX, mouseY);
+        this.renderBackground(guiGraphics);
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
         BlockEntity blockEntity = ((BlockEntityMenu)this.menu).getBlockEntity();
         if (blockEntity instanceof BotanicalTile botanicalTile && !(blockEntity instanceof BlockEntityApothecaryPattern)) {
-            this.manaBar.renderHoveredToolTip(poseStack, mouseX, mouseY, botanicalTile.getCurrentMana());
+            this.manaBar.renderHoveredToolTip(guiGraphics, mouseX, mouseY, botanicalTile.getCurrentMana());
         }
 
         if (blockEntity instanceof BlockEntityApothecaryPattern){
-            this.waterBar.renderHoveredToolTip(poseStack, mouseX, mouseY, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getFluid().getAmount());
+            this.waterBar.renderHoveredToolTip(guiGraphics, mouseX, mouseY, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getFluid().getAmount());
         }
-
     }
 
-    public void drawDefaultGuiBackgroundLayer(PoseStack poseStack, ResourceLocation screenLocation) {
+    public void drawDefaultGuiBackgroundLayer(GuiGraphics guiGraphics, ResourceLocation screenLocation) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, screenLocation);
-        this.blit(poseStack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(screenLocation, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
         BlockEntity blockEntity = ((BlockEntityMenu)this.menu).getBlockEntity();
-
         if (blockEntity instanceof BotanicalTile botanicalTile && !(blockEntity instanceof BlockEntityApothecaryPattern)) {
-            this.manaBar.draw(poseStack, (float)botanicalTile.getCurrentMana());
+            this.manaBar.draw(guiGraphics, (float)botanicalTile.getCurrentMana());
         }
 
         if (blockEntity instanceof BlockEntityApothecaryPattern){
-            this.waterBar.draw(poseStack, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getFluid().getAmount());
+            this.waterBar.draw(guiGraphics, ((BlockEntityApothecaryPattern) blockEntity).getFluidInventory().getFluid().getAmount());
         }
+
     }
 }

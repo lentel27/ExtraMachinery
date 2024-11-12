@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "a": {
       "item": "botania:mana_ring_greater"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "botanicalextramachinery:base_orechid"
-  }
+  },
+  "show_notification": true
 }

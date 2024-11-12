@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
+import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 import vazkii.botania.common.lib.BotaniaTags;
@@ -101,10 +101,10 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
 
                 this.countCraftPerRecipe = maxCountCraft(iteratorRecipe, stacks);
 
-                if (recipe.getResultItem().getCount() != 0){
+                if (recipe.getResultItem(this.level.registryAccess()).getCount() != 0){
                     int remainingItemsToPlace;
-                    if (recipe.getResultItem().getCount() != 0){
-                        remainingItemsToPlace = countCraftPerRecipe * recipe.getResultItem().getCount();
+                    if (recipe.getResultItem(this.level.registryAccess()).getCount() != 0){
+                        remainingItemsToPlace = countCraftPerRecipe * recipe.getResultItem(this.level.registryAccess()).getCount();
                     } else {
                         remainingItemsToPlace = countCraftPerRecipe;
                     }
@@ -112,8 +112,8 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
                     for (int slot = this.firstOutputSlot; slot < inventory.getSlots(); ++slot) {
                         ItemStack slotStack = inventory.getStackInSlot(slot);
 
-                        if (slotStack.isEmpty() || slotStack.sameItem(recipe.getResultItem())) {
-                            int maxStackSize = recipe.getResultItem().getMaxStackSize();
+                        if (slotStack.isEmpty() || slotStack == recipe.getResultItem(this.level.registryAccess())) {
+                            int maxStackSize = recipe.getResultItem(this.level.registryAccess()).getMaxStackSize();
                             int currentStackSize = slotStack.getCount();
                             int availableSpace = maxStackSize - currentStackSize;
 
@@ -127,10 +127,10 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
                         }
                     }
 
-                    if (remainingItemsToPlace < countCraftPerRecipe * recipe.getResultItem().getCount()) {
-                        this.countCraftPerRecipe -= remainingItemsToPlace / recipe.getResultItem().getCount();
+                    if (remainingItemsToPlace < countCraftPerRecipe * recipe.getResultItem(this.level.registryAccess()).getCount()) {
+                        this.countCraftPerRecipe -= remainingItemsToPlace / recipe.getResultItem(this.level.registryAccess()).getCount();
 
-                    } else if (remainingItemsToPlace >= countCraftPerRecipe * recipe.getResultItem().getCount()) {
+                    } else if (remainingItemsToPlace >= countCraftPerRecipe * recipe.getResultItem(this.level.registryAccess()).getCount()) {
                         this.recipe = null;
                         return;
                     }
@@ -326,7 +326,7 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
     }
 
     protected List<ItemStack> resultItems(T recipe, List<ItemStack> stacks) {
-        return recipe.getResultItem().isEmpty() ? List.of() : List.of(recipe.getResultItem().copy());
+        return recipe.getResultItem(this.level.registryAccess()).isEmpty() ? List.of() : List.of(recipe.getResultItem(this.level.registryAccess()).copy());
     }
 
     protected void putIntoOutputOrDrop(ItemStack stack) {

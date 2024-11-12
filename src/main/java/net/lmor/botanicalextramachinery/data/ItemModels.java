@@ -1,15 +1,12 @@
 package net.lmor.botanicalextramachinery.data;
 
-import net.lmor.botanicalextramachinery.ExtraMachinery;
-import net.minecraft.data.DataGenerator;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import org.moddingx.libx.annotation.data.Datagen;
-import org.moddingx.libx.datagen.provider.ItemModelProviderBase;
 
-@Datagen
+import org.moddingx.libx.datagen.DatagenContext;
+import org.moddingx.libx.datagen.provider.model.ItemModelProviderBase;
+
 public class ItemModels extends ItemModelProviderBase {
-    public ItemModels(DataGenerator gen, ExistingFileHelper helper) {
-        super(ExtraMachinery.getInstance(), gen, helper);
+    public ItemModels(DatagenContext context) {
+        super(context);
     }
 
     protected void setup() {

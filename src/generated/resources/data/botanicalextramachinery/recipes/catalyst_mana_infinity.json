@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "a": {
       "item": "botanicalextramachinery:crimson_dragonstone_block"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_mana_infinity"
-  }
+  },
+  "show_notification": true
 }

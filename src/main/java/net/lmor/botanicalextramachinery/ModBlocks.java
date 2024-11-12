@@ -84,9 +84,9 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUpgraded;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import org.moddingx.libx.annotation.registration.RegisterClass;
 import org.moddingx.libx.base.BlockBase;
 import org.moddingx.libx.base.tile.MenuBlockBE;
@@ -143,15 +143,15 @@ public class ModBlocks {
     }
 
     static {
-        malachiteDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
-        saffronDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
-        shadowDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
-        crimsonDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        malachiteDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        saffronDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        shadowDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        crimsonDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
 
-        malachiteIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
-        saffronIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
-        shadowIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
-        crimsonIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        malachiteIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        saffronIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        shadowIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        crimsonIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
 
         baseManaPool = new BlockManaPoolBase(ExtraMachinery.getInstance(), BlockEntityManaPoolBase.class, BlockEntityMenu.createMenuType(ContainerManaPoolBase::new));
         upgradedManaPool = new BlockManaPoolUpgraded(ExtraMachinery.getInstance(), BlockEntityManaPoolUpgraded.class, BlockEntityMenu.createMenuType(ContainerManaPoolUpgraded::new));

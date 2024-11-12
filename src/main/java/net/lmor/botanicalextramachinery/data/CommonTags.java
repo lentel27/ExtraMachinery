@@ -1,17 +1,13 @@
 package net.lmor.botanicalextramachinery.data;
 
 import net.lmor.botanicalextramachinery.ModBlocks;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import org.moddingx.libx.annotation.data.Datagen;
-import org.moddingx.libx.datagen.provider.CommonTagsProviderBase;
-import org.moddingx.libx.mod.ModX;
+import org.moddingx.libx.datagen.DatagenContext;
+import org.moddingx.libx.datagen.provider.tags.CommonTagsProviderBase;
 
-@Datagen
 public class CommonTags extends CommonTagsProviderBase {
-    public CommonTags(ModX mod, DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(mod, generator, fileHelper);
+    public CommonTags(DatagenContext context) {
+        super(context);
     }
 
     public void setup() {

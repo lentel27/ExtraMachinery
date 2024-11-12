@@ -34,7 +34,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.Nullable;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
+import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.ManaInfusionRecipe;
@@ -70,9 +70,9 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
 
 
-    public BlockEntityManaPoolPattern(BlockEntityType<?> blockEntityType, RecipeType<ManaInfusionRecipe> recipeType, BlockPos pos, BlockState state,
+    public BlockEntityManaPoolPattern(BlockEntityType<?> blockEntityType, BlockPos pos, BlockState state,
                                       int manaCap, int[] slots, boolean isUpgrade, int countCraft, SettingPattern config) {
-        super(blockEntityType, recipeType, pos, state, manaCap, slots[1], slots[3], countCraft);
+        super(blockEntityType, BotaniaRecipeTypes.MANA_INFUSION_TYPE, pos, state, manaCap, slots[1], slots[3], countCraft);
 
         CATALYSTS_SLOT = slots[0];
         UPGRADE_SLOT = isUpgrade ? slots[5] : -1;
@@ -376,11 +376,6 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
     @Override
     public IManagedGridNode getMainNode() {
         return this.mainNode;
-    }
-
-    @Override
-    public void securityBreak() {
-        this.level.destroyBlock(this.worldPosition, true);
     }
 
     @Override

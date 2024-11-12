@@ -37,7 +37,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.Nullable;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
+import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
 import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.ElvenTradeRecipe;
@@ -152,7 +152,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
                 for(int slot = 0; slot < 4; ++slot) {
                     if (this.inventory.getStackInSlot(slot).getItem() == Items.BREAD) {
                         this.level.setBlock(this.worldPosition, Blocks.AIR.defaultBlockState(), 3);
-                        this.level.explode((Entity)null, (double)this.worldPosition.getX(), (double)this.worldPosition.getY(), (double)this.worldPosition.getZ(), 3.0F, Explosion.BlockInteraction.BREAK);
+                        this.level.explode((Entity)null, (double)this.worldPosition.getX(), (double)this.worldPosition.getY(), (double)this.worldPosition.getZ(), 3.0F, Level.ExplosionInteraction.BLOCK);
                         break;
                     }
                 }
@@ -305,11 +305,6 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
     @Override
     public IManagedGridNode getMainNode() {
         return this.mainNode;
-    }
-
-    @Override
-    public void securityBreak() {
-        this.level.destroyBlock(this.worldPosition, true);
     }
 
     @Override

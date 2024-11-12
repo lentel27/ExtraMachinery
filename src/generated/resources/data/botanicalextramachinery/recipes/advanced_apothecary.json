@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "a": {
       "item": "botanicalextramachinery:malachite_ingot_block"
@@ -21,5 +22,6 @@
   ],
   "result": {
     "item": "botanicalextramachinery:advanced_apothecary"
-  }
+  },
+  "show_notification": true
 }

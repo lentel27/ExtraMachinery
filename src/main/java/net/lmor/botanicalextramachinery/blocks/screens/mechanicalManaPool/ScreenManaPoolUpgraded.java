@@ -1,11 +1,11 @@
 package net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolUpgraded;
 import net.lmor.botanicalextramachinery.core.LibResources;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
@@ -25,32 +25,36 @@ public class ScreenManaPoolUpgraded extends ExtraScreenBase<ContainerManaPoolUpg
                 new int[] {89, 57},
                 new int[] {0, 0});
 
-        blockEntity = (BlockEntityManaPoolUpgraded)((ContainerManaPoolUpgraded)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
 
 
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
-        this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.UPGRADED_MECHANICAL_MANA_POOL_GUI);
-        this.drawLabelText(poseStack);
+    protected void renderBg(@Nonnull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+        this.drawDefaultGuiBackgroundLayer(guiGraphics, LibResources.UPGRADED_MECHANICAL_MANA_POOL_GUI);
+        this.drawLabelText(guiGraphics);
 
         if (blockEntity.getInventory().getStackInSlot(0).isEmpty() && this.minecraft != null) {
-                GhostItemRenderer.renderGhostItem(blockEntity.getCatalysts().stream().map(ItemStack::new).toList(), poseStack, this.leftPos + 89, this.topPos + 57);
+                GhostItemRenderer.renderGhostItem(blockEntity.getCatalysts().stream().map(ItemStack::new).toList(), guiGraphics, this.leftPos + 89, this.topPos + 57);
         }
 
-        this.manaPoolSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, false});
+        this.manaPoolSlotInfo.renderHoveredToolTip(guiGraphics, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, false});
     }
 
-    private void drawLabelText(PoseStack poseStack){
+    private void drawLabelText(GuiGraphics guiGraphics){
         Component titleText = Component.translatable("block.botanicalextramachinery.upgraded_mana_pool");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
-        poseStack.pushPose();
-        poseStack.scale(scale, scale, scale);
-        this.font.draw(poseStack, titleText,
-                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
-                (topPos + 10) /scale, 0x00);
-        poseStack.popPose();
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().scale(scale, scale, scale);
+        guiGraphics.drawString(
+                this.font,
+                titleText,
+                (int)((leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale),
+                (int)((topPos + 10) / scale),
+                0x00, false
+        );
+        guiGraphics.pose().popPose();
     }
 
     private float calculateOptimalScale(Component text, int maxWidth) {
