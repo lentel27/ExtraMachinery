@@ -26,9 +26,9 @@ public class ScreenRunicAltarUpgraded extends ExtraScreenBase<ContainerRunicAlta
         this.imageHeight = 216;
         Map<Integer, int[]> livingrock = new HashMap<>();
 
-        livingrock.put(0, new int[] {66, 93});
-        livingrock.put(1, new int[] {84, 93});
-        livingrock.put(2, new int[] {102, 93});
+        livingrock.put(0, new int[] {66, 94});
+        livingrock.put(1, new int[] {84, 94});
+        livingrock.put(2, new int[] {102, 94});
 
         this.runicAltarSlotInfo.setCoord(livingrock, null);
 

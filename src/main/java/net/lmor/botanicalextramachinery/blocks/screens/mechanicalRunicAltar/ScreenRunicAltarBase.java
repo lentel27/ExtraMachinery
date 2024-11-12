@@ -25,7 +25,7 @@ public class ScreenRunicAltarBase extends ExtraScreenBase<ContainerRunicAltarBas
 
         Map<Integer, int[]> livingrock = new HashMap<>();
 
-        livingrock.put(0, new int[] {84, 93});
+        livingrock.put(0, new int[] {84, 94});
 
         this.runicAltarSlotInfo.setCoord(livingrock, null);
 
