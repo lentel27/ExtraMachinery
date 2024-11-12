@@ -137,8 +137,13 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public List<ItemStack> getUpgrades(){
         List<ItemStack> res = new ArrayList<>();
 
-        res.add(new ItemStack(ModItems.catalystManaInfinity));
-        res.add(new ItemStack(ModItems.catalystLivingRockInfinity));
+        if (UPGRADE_SLOT_1 != -1){
+            res.add(new ItemStack(ModItems.catalystSeedInfinity));
+        }
+
+        if (UPGRADE_SLOT_2 != -1){
+            res.add(new ItemStack(ModItems.catalystWaterInfinity));
+        }
 
         return res;
     }
