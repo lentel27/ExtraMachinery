@@ -1,5 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
   "key": {
     "a": {
       "item": "botania:mana_ring_greater"
@@ -14,11 +19,6 @@
       "item": "botanicalextramachinery:malachite_dragonstone_block"
     }
   },
-  "pattern": [
-    "aba",
-    "bcb",
-    "ddd"
-  ],
   "result": {
     "item": "botanicalextramachinery:base_runic_altar"
   }

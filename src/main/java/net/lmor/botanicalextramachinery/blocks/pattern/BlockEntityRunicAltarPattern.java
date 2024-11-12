@@ -10,6 +10,9 @@ import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
 import com.google.common.collect.Streams;
+import io.github.noeppi_noeppi.libx.crafting.recipe.RecipeHelper;
+import io.github.noeppi_noeppi.libx.inventory.BaseItemStackHandler;
+import io.github.noeppi_noeppi.libx.inventory.IAdvancedItemHandlerModifiable;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
 import net.lmor.botanicalextramachinery.blocks.base.WorkingTile;
@@ -33,14 +36,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
-import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
-import vazkii.botania.api.recipe.RunicAltarRecipe;
+import vazkii.botania.api.recipe.IRuneAltarRecipe;
 import vazkii.botania.client.fx.SparkleParticleData;
-import vazkii.botania.common.block.BotaniaBlocks;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
-import vazkii.botania.common.lib.BotaniaTags;
+import vazkii.botania.common.crafting.ModRecipeTypes;
+import vazkii.botania.common.lib.ModTags;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
+public class BlockEntityRunicAltarPattern extends WorkingTile<IRuneAltarRecipe>
         implements IInWorldGridNodeHost, IGridConnectedBlockEntity {
     public static final int MAX_MANA_PER_TICK = LibXServerConfig.RunicAltarSettings.manaCost;
 
@@ -77,7 +76,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                                         int manaCap, int[] slots, boolean[] isUpgrade, int countCraft,
                                         SettingPattern config) {
 
-        super(type, BotaniaRecipeTypes.RUNE_TYPE, pos, state, manaCap, slots[1], slots[3], countCraft);
+        super(type, ModRecipeTypes.RUNE_TYPE, pos, state, manaCap, slots[1], slots[3], countCraft);
 
         LIVINGROCK_SLOT_1 = addLivingRockSlotsArray(slots[0]);
 
@@ -95,23 +94,23 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
 
         if (isUpgrade[0] && isUpgrade[1]){
             inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
-                    .validator((stack) -> {return stack.getItem() == BotaniaBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
+                    .validator((stack) -> {return stack.getItem() == vazkii.botania.common.block.ModBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
                     .validator((stack) -> {return (stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystLivingRockInfinity.asItem());}, UPGRADE_SLOT_1)
                     .validator((stack) -> {return (stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystLivingRockInfinity.asItem()) ;}, UPGRADE_SLOT_2)
-                    .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
+                    .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), ModRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2).output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
         } else if (isUpgrade[0]){
             inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
-                    .validator((stack) -> {return stack.getItem() == BotaniaBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
+                    .validator((stack) -> {return stack.getItem() == vazkii.botania.common.block.ModBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
                     .validator((stack) -> {return stack.getItem() == ModItems.catalystManaInfinity.asItem() || stack.getItem() == ModItems.catalystLivingRockInfinity.asItem();}, UPGRADE_SLOT_1)
-                    .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
+                    .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), ModRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2).output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
         } else {
             inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
-                    .validator((stack) -> {return stack.getItem() == BotaniaBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
-                    .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
+                    .validator((stack) -> {return stack.getItem() == vazkii.botania.common.block.ModBlocks.livingrock.asItem();}, LIVINGROCK_SLOT_1, LIVINGROCK_SLOT_2, LIVINGROCK_SLOT_3)
+                    .validator((stack) -> {return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), ModRecipeTypes.RUNE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2).output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1)).contentsChanged(() -> {this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
         }
@@ -162,10 +161,10 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                 }
             }
 
-            if (isUpgrade[0] && this.getMaxMana() != this.getCurrentMana()
+            if (isUpgrade[0] && this.getManaCap() != this.getCurrentMana()
                     && ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystManaInfinity)
                     || (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystManaInfinity))){
-                this.receiveMana(this.getMaxMana());
+                this.receiveMana(this.getManaCap());
             }
 
             if (isUpgrade[0] &&
@@ -208,7 +207,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     }
 
     public void addLivingRockSlots(){
-        ItemStack livingrock = new ItemStack(BotaniaBlocks.livingrock.asItem());
+        ItemStack livingrock = new ItemStack(vazkii.botania.common.block.ModBlocks.livingrock.asItem());
         livingrock.setCount(64);
 
         if (LIVINGROCK_SLOT_1 == LIVINGROCK_SLOT_2 && LIVINGROCK_SLOT_2 == LIVINGROCK_SLOT_3
@@ -238,7 +237,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                 !this.inventory.getStackInSlot(LIVINGROCK_SLOT_3).isEmpty();
     }
 
-    protected void onCrafted(RunicAltarRecipe recipe, int countCraft) {
+    protected void onCrafted(IRuneAltarRecipe recipe, int countCraft) {
         int renaming = countCraft;
         for (int slot: slotsLivingRock){
             if (!inventory.getStackInSlot(slot).isEmpty()){
@@ -253,11 +252,11 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         }
     }
 
-    protected List<ItemStack> resultItems(RunicAltarRecipe recipe, @NotNull List<ItemStack> stacks) {
+    protected List<ItemStack> resultItems(IRuneAltarRecipe recipe, @NotNull List<ItemStack> stacks) {
         List res = Streams.concat(new Stream[]
             {
                 stacks.stream()
-                    .filter((s) -> {return s.is(BotaniaTags.Items.RUNES);})
+                    .filter((s) -> {return s.is(ModTags.Items.RUNES);})
                     .map(s -> {
                         ItemStack copy = s.copy();
                         copy.setCount(1);
@@ -269,7 +268,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         return res;
     }
 
-    protected int getMaxProgress(@NotNull RunicAltarRecipe recipe) {
+    protected int getMaxProgress(@NotNull IRuneAltarRecipe recipe) {
         return recipe.getManaUsage();
     }
 
@@ -408,7 +407,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }

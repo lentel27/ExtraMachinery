@@ -1,19 +1,19 @@
 package net.lmor.botanicalextramachinery.data;
 
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
+import io.github.noeppi_noeppi.libx.data.provider.recipe.RecipeProviderBase;
+import io.github.noeppi_noeppi.libx.data.provider.recipe.crafting.CompressionExtension;
+import io.github.noeppi_noeppi.libx.data.provider.recipe.crafting.CraftingExtension;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
 import net.minecraft.data.DataGenerator;
-import org.moddingx.libx.annotation.data.Datagen;
-import org.moddingx.libx.datagen.provider.recipe.RecipeProviderBase;
-import org.moddingx.libx.datagen.provider.recipe.crafting.CompressionExtension;
-import org.moddingx.libx.datagen.provider.recipe.crafting.CraftingExtension;
-import org.moddingx.libx.mod.ModX;
-import vazkii.botania.common.block.BotaniaBlocks;
-import vazkii.botania.common.block.BotaniaFlowerBlocks;
-import vazkii.botania.common.item.BotaniaItems;
+import net.minecraft.world.level.block.FlowerBlock;
+import vazkii.botania.common.block.BlockModFlower;
+import vazkii.botania.common.block.ModSubtiles;
 
 @Datagen
-public class Recipes extends RecipeProviderBase implements CraftingExtension, CompressionExtension  {
+public class Recipes extends RecipeProviderBase implements CraftingExtension, CompressionExtension {
     public Recipes(ModX mod, DataGenerator generator) {super(mod, generator);}
 
     @Override
@@ -28,21 +28,21 @@ public class Recipes extends RecipeProviderBase implements CraftingExtension, Co
         this.compress(ModItems.shadowIngot, ModBlocks.shadowIngotBlock);
         this.compress(ModItems.crimsonIngot, ModBlocks.crimsonIngotBlock);
 
-        this.machine(ModBlocks.baseIndustrialAgglomerationFactory, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.industrialAgglomerationFactory, ModBlocks.malachiteDragonstoneBlock);
-        this.machine(ModBlocks.baseManaPool, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalManaPool, ModBlocks.malachiteDragonstoneBlock);
-        this.machine(ModBlocks.baseRunicAltar, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalRunicAltar, ModBlocks.malachiteDragonstoneBlock);
-        this.machine(ModBlocks.baseDaisy, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalDaisy, ModBlocks.malachiteDragonstoneBlock);
-        this.machine(ModBlocks.baseApothecary, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalApothecary, ModBlocks.malachiteDragonstoneBlock);
-        this.machine(ModBlocks.baseAlfheimMarket, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.alfheimMarket, ModBlocks.malachiteDragonstoneBlock);
-        this.machine(ModBlocks.baseOrechid, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, BotaniaFlowerBlocks.orechid, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseIndustrialAgglomerationFactory, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.industrialAgglomerationFactory, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseManaPool, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalManaPool, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseRunicAltar, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalRunicAltar, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseDaisy, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalDaisy, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseApothecary, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalApothecary, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseAlfheimMarket, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.alfheimMarket, ModBlocks.malachiteDragonstoneBlock);
+        this.machine(ModBlocks.baseOrechid, vazkii.botania.common.item.ModItems.manaRingGreater, ModItems.malachiteIngot, ModSubtiles.orechid, ModBlocks.malachiteDragonstoneBlock);
 
-        this.machine(ModBlocks.upgradedIndustrialAgglomerationFactory, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseIndustrialAgglomerationFactory, ModBlocks.saffronDragonstoneBlock);
-        this.machine(ModBlocks.upgradedManaPool, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseManaPool, ModBlocks.saffronDragonstoneBlock);
-        this.machine(ModBlocks.upgradedRunicAltar, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseRunicAltar, ModBlocks.saffronDragonstoneBlock);
-        this.machine(ModBlocks.upgradedDaisy, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseDaisy, ModBlocks.saffronDragonstoneBlock);
-        this.machine(ModBlocks.upgradedApothecary, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseApothecary, ModBlocks.saffronDragonstoneBlock);
-        this.machine(ModBlocks.upgradedAlfheimMarket, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseAlfheimMarket, ModBlocks.saffronDragonstoneBlock);
-        this.machine(ModBlocks.upgradedOrechid, BotaniaBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseOrechid, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedIndustrialAgglomerationFactory, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseIndustrialAgglomerationFactory, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedManaPool, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseManaPool, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedRunicAltar, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseRunicAltar, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedDaisy, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseDaisy, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedApothecary, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseApothecary, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedAlfheimMarket, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseAlfheimMarket, ModBlocks.saffronDragonstoneBlock);
+        this.machine(ModBlocks.upgradedOrechid, vazkii.botania.common.block.ModBlocks.terrasteelBlock, ModItems.saffronIngot, ModBlocks.baseOrechid, ModBlocks.saffronDragonstoneBlock);
 
         this.machine(ModBlocks.advancedIndustrialAgglomerationFactory, ModBlocks.malachiteIngotBlock, ModItems.shadowIngot, ModBlocks.upgradedIndustrialAgglomerationFactory, ModBlocks.shadowDragonstoneBlock);
         this.machine(ModBlocks.advancedManaPool, ModBlocks.malachiteIngotBlock, ModItems.shadowIngot, ModBlocks.upgradedManaPool, ModBlocks.shadowDragonstoneBlock);

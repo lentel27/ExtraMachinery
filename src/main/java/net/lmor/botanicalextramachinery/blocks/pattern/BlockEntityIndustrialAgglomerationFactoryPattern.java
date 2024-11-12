@@ -12,6 +12,9 @@ import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
+import io.github.noeppi_noeppi.libx.crafting.recipe.RecipeHelper;
+import io.github.noeppi_noeppi.libx.inventory.BaseItemStackHandler;
+import io.github.noeppi_noeppi.libx.inventory.IAdvancedItemHandlerModifiable;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
 import net.lmor.botanicalextramachinery.blocks.base.WorkingTile;
@@ -34,17 +37,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
-import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
-import vazkii.botania.api.recipe.TerrestrialAgglomerationRecipe;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
+import vazkii.botania.api.recipe.ITerraPlateRecipe;
+import vazkii.botania.common.crafting.ModRecipeTypes;
 
 import javax.annotation.Nonnull;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTile<TerrestrialAgglomerationRecipe>
+public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTile<ITerraPlateRecipe>
         implements IInWorldGridNodeHost, IGridConnectedBlockEntity {
     public static final int MAX_MANA_PER_TICK = LibXServerConfig.IndustrialAgglomerationFactorySettings.workingDuration;
 
@@ -63,7 +63,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
     protected int speedMulti = 1;
 
     public BlockEntityIndustrialAgglomerationFactoryPattern(BlockEntityType<?> type, BlockPos pos, BlockState state, int manaCapacity, int countCraft, int[] slots, SettingPattern settingPattern) {
-        super(type, BotaniaRecipeTypes.TERRA_PLATE_TYPE, pos, state, manaCapacity, slots[0], slots[2], countCraft);
+        super(type, ModRecipeTypes.TERRA_PLATE_TYPE, pos, state, manaCapacity, slots[0], slots[2], countCraft);
 
         FIRST_INPUT_SLOT = slots[0];
         LAST_INPUT_SLOT = slots[1];
@@ -79,7 +79,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
 
         if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1){
             this.inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
-                    .validator((stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.TERRA_PLATE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
+                    .validator((stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), ModRecipeTypes.TERRA_PLATE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .validator((stack) -> {return (stack.getItem() == ModItems.catalystSpeed.asItem() || stack.getItem() == ModItems.catalystManaInfinity.asItem());}, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1))
                     .slotLimit(1, UPGRADE_SLOT_1, UPGRADE_SLOT_2)
@@ -88,7 +88,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
         }
         else {
             this.inventory = BaseItemStackHandler.builder(LAST_OUTPUT_SLOT + 1)
-                    .validator((stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), BotaniaRecipeTypes.TERRA_PLATE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
+                    .validator((stack) -> { return this.level != null && RecipeHelper.isItemValidInput(this.level.getRecipeManager(), ModRecipeTypes.TERRA_PLATE_TYPE, stack);}, Range.closedOpen(FIRST_INPUT_SLOT, LAST_INPUT_SLOT + 1))
                     .output(Range.closedOpen(FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT + 1))
                     .contentsChanged(() -> { this.setChanged();this.setDispatchable();this.needsRecipeUpdate();})
                     .build();
@@ -118,10 +118,10 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
                 }
             }
 
-            if (this.getMaxMana() != this.getCurrentMana() && (
+            if (this.getManaCap() != this.getCurrentMana() && (
                     (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystManaInfinity)||
                     (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystManaInfinity))){
-                this.receiveMana(this.getMaxMana());
+                this.receiveMana(this.getManaCap());
             }
 
             if (this.speedMulti == 1 && (
@@ -154,7 +154,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
         return this.inventory;
     }
 
-    protected int getMaxProgress(TerrestrialAgglomerationRecipe recipe) {
+    protected int getMaxProgress(ITerraPlateRecipe recipe) {
         return recipe.getMana();
     }
 
@@ -252,7 +252,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }

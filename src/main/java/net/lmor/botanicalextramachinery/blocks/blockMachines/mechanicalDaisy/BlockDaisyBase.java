@@ -1,13 +1,19 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalDaisy;
 
+import io.github.noeppi_noeppi.libx.base.tile.MenuBlockBE;
+import io.github.noeppi_noeppi.libx.mod.ModX;
+import io.github.noeppi_noeppi.libx.render.ItemStackRenderer;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalDaisy.ContainerDaisyBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalDaisy.ScreenDaisyBase;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalDaisy.RenderDaisyBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyBase;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
@@ -21,12 +27,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.minecraftforge.client.IItemRenderProperties;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.base.tile.MenuBlockBE;
-import org.moddingx.libx.mod.ModX;
-import org.moddingx.libx.registration.SetupContext;
-import org.moddingx.libx.render.ItemStackRenderer;
 
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
@@ -40,7 +42,8 @@ public class BlockDaisyBase extends MenuBlockBE<BlockEntityDaisyBase, ContainerD
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void registerClient(SetupContext ctx) {
+    public void registerClient(ResourceLocation id, Consumer<Runnable> defer) {
+        ItemBlockRenderTypes.setRenderLayer(this, RenderType.cutout());
         ItemStackRenderer.addRenderBlock(this.getBlockEntityType(), true);
         MenuScreens.register(ModBlocks.baseDaisy.menu, ScreenDaisyBase::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
@@ -49,7 +52,7 @@ public class BlockDaisyBase extends MenuBlockBE<BlockEntityDaisyBase, ContainerD
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void initializeItemClient(@Nonnull Consumer<IClientItemExtensions> consumer) {
+    public void initializeItemClient(@Nonnull Consumer<IItemRenderProperties> consumer) {
         consumer.accept(ItemStackRenderer.createProperties());
     }
 

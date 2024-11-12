@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
+import io.github.noeppi_noeppi.libx.render.block.RotatedBlockRenderer;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUpgraded;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.minecraft.client.Minecraft;
@@ -15,10 +16,9 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.world.item.ItemStack;
-import org.moddingx.libx.render.block.RotatedBlockRenderer;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.core.handler.MiscellaneousModels;
-import vazkii.botania.common.block.BotaniaBlocks;
+import vazkii.botania.common.block.ModBlocks;
 
 import javax.annotation.Nonnull;
 
@@ -32,9 +32,9 @@ public class RenderAlpheimMarketUpgraded extends RotatedBlockRenderer<BlockEntit
             poseStack.scale(0.0625F, 0.0625F, 0.0625F);
             poseStack.translate(3.2, 2.0, 3.6);
             poseStack.scale(3.6F, 3.6F, 3.6F);
-            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BotaniaBlocks.naturaPylon.defaultBlockState(), poseStack, buffer, light, overlay);
+            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(ModBlocks.naturaPylon.defaultBlockState(), poseStack, buffer, light, overlay);
             poseStack.translate(1.5555555555555556, 0.0, 0.0);
-            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(BotaniaBlocks.naturaPylon.defaultBlockState(), poseStack, buffer, light, overlay);
+            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(ModBlocks.naturaPylon.defaultBlockState(), poseStack, buffer, light, overlay);
             poseStack.popPose();
             if (tile.getCurrentMana() > 0) {
                 poseStack.pushPose();

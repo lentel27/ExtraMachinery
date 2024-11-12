@@ -8,10 +8,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.base.ItemBase;
-import org.moddingx.libx.mod.ModX;
-import vazkii.botania.api.mana.spark.SparkAttachable;
-import vazkii.botania.xplat.XplatAbstractions;
+import io.github.noeppi_noeppi.libx.base.ItemBase;
+import io.github.noeppi_noeppi.libx.mod.ModX;
+import vazkii.botania.api.mana.spark.ISparkAttachable;
+import vazkii.botania.xplat.IXplatAbstractions;
 
 public class ItemMalachiteManaSpark extends ItemBase {
 
@@ -25,7 +25,7 @@ public class ItemMalachiteManaSpark extends ItemBase {
     }
 
     public static boolean attachSpark(Level world, BlockPos pos, ItemStack stack) {
-        SparkAttachable attach = XplatAbstractions.INSTANCE.findSparkAttachable(world, pos, world.getBlockState(pos), world.getBlockEntity(pos), Direction.UP);
+        ISparkAttachable attach = IXplatAbstractions.INSTANCE.findSparkAttachable(world, pos, world.getBlockState(pos), world.getBlockEntity(pos), Direction.UP);
         if (attach != null && attach.canAttachSpark(stack) && attach.getAttachedSpark() == null) {
             if (!world.isClientSide) {
                 stack.shrink(1);

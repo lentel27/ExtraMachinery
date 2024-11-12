@@ -3,16 +3,17 @@ package net.lmor.botanicalextramachinery.blocks.screens.mechanicalApothecary;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.melanx.botanicalmachinery.helper.GhostItemRenderer;
+import io.github.noeppi_noeppi.libx.util.TagAccess;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalApothecary.ContainerApothecaryUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalApothecary.BlockEntityApothecaryUpgraded;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.Tags;
-import org.moddingx.libx.util.data.TagAccess;
 import vazkii.botania.client.core.helper.RenderHelper;
 
 import javax.annotation.Nonnull;
@@ -38,7 +39,7 @@ public class ScreenApothecaryUpgraded extends ExtraScreenBase<ContainerApothecar
         this.apothecarySlotInfo.setCoord(seed, null);
 
 
-        this.tile = (BlockEntityApothecaryUpgraded)((ContainerApothecaryUpgraded)this.menu).getLevel().getBlockEntity(((ContainerApothecaryUpgraded)this.menu).getPos());
+        this.tile = (BlockEntityApothecaryUpgraded) this.menu.getLevel().getBlockEntity(this.menu.getPos());
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
@@ -62,7 +63,7 @@ public class ScreenApothecaryUpgraded extends ExtraScreenBase<ContainerApothecar
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.upgraded_apothecary");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.upgraded_apothecary");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

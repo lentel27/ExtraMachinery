@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "key": {
-    "a": {
-      "item": "botanicalextramachinery:crimson_ingot"
-    }
-  },
   "pattern": [
     "aaa",
     "aaa",
     "aaa"
   ],
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:crimson_ingot"
+    }
+  },
   "result": {
     "item": "botanicalextramachinery:crimson_ingot_block"
   }

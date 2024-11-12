@@ -7,6 +7,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAg
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryBase;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import vazkii.botania.client.core.helper.RenderHelper;
 
@@ -20,7 +21,7 @@ public class ScreenIndustrialAgglomerationFactoryBase extends ExtraScreenBase<Co
         this.imageWidth = 184;
         this.imageHeight = 183;
 
-        blockEntity = (BlockEntityIndustrialAgglomerationFactoryBase)((ContainerIndustrialAgglomerationFactoryBase)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
 
     }
 
@@ -39,7 +40,7 @@ public class ScreenIndustrialAgglomerationFactoryBase extends ExtraScreenBase<Co
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_1");
+        Component titleText = new TranslatableComponent("text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_1");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);
@@ -48,7 +49,7 @@ public class ScreenIndustrialAgglomerationFactoryBase extends ExtraScreenBase<Co
                 (topPos + 4) /scale, 0x00);
         poseStack.popPose();
 
-        titleText = Component.translatable("text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_2");
+        titleText = new TranslatableComponent("text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_2");
         scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

@@ -8,6 +8,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.Con
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolUltimate;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,7 +30,7 @@ public class ScreenManaPoolUltimate extends ExtraScreenBase<ContainerManaPoolUlt
                 new int[] {80, 63},
                 new int[] {80, 16});
 
-        blockEntity = (BlockEntityManaPoolUltimate)((ContainerManaPoolUltimate)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -51,7 +52,7 @@ public class ScreenManaPoolUltimate extends ExtraScreenBase<ContainerManaPoolUlt
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.ultimate_mana_pool");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.ultimate_mana_pool");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

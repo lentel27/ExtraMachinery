@@ -1,15 +1,20 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
+import io.github.noeppi_noeppi.libx.block.RotationShape;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketBase;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketBase;
+import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketBase;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,11 +27,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.block.RotationShape;
-import org.moddingx.libx.mod.ModX;
-import org.moddingx.libx.registration.SetupContext;
 
 import javax.annotation.Nonnull;
+import java.util.function.Consumer;
 
 public class BlockAlfheimMarketBase extends BotanicalBlock<BlockEntityAlfheimMarketBase, ContainerAlfheimMarketBase> {
     public static final RotationShape SHAPE;
@@ -36,8 +39,8 @@ public class BlockAlfheimMarketBase extends BotanicalBlock<BlockEntityAlfheimMar
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void registerClient(SetupContext ctx) {
-        super.registerClient(ctx);
+    public void registerClient(ResourceLocation id, Consumer<Runnable> defer) {
+        super.registerClient(id, defer);
         MenuScreens.register(ModBlocks.baseAlfheimMarket.menu, ScreenAlfheimMarketBase::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderAlpheimMarketBase();

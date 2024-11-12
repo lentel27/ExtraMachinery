@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import javax.annotation.Nonnull;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
+import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
 import net.lmor.botanicalextramachinery.blocks.pattern.BlockEntityApothecaryPattern;
 import net.lmor.botanicalextramachinery.gui.*;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -13,7 +14,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.moddingx.libx.menu.BlockEntityMenu;
 
 
 public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends AbstractContainerScreen<X> {
@@ -31,7 +31,7 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
 
         BlockEntity blockEntity = ((BlockEntityMenu)this.menu).getBlockEntity();
         if (blockEntity instanceof BotanicalTile botanicalTile && !(blockEntity instanceof BlockEntityApothecaryPattern)) {
-            this.manaBar = new ManaBar(this, botanicalTile.getMaxMana(), x, y);
+            this.manaBar = new ManaBar(this, botanicalTile.getManaCap(), x, y);
         } else {
             this.manaBar = new ManaBar(this, 0, x, y);
         }

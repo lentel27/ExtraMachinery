@@ -1,5 +1,6 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalDaisy;
 
+import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.menu.BlockEntityMenu;
 
 import javax.annotation.Nonnull;
 
@@ -39,7 +39,7 @@ public class ContainerDaisyBase extends BlockEntityMenu<BlockEntityDaisyBase> {
     @Nonnull
     public ItemStack quickMoveStack(@Nonnull Player player, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.slots.get(index);
+        Slot slot = this.slots.get(index);
         if (slot.hasItem()) {
             ItemStack stack = slot.getItem();
             itemstack = stack.copy();

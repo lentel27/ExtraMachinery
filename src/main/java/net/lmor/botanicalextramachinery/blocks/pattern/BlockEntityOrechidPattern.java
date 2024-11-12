@@ -13,6 +13,8 @@ import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
+import io.github.noeppi_noeppi.libx.inventory.BaseItemStackHandler;
+import io.github.noeppi_noeppi.libx.inventory.IAdvancedItemHandlerModifiable;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidAdvanced;
@@ -37,10 +39,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
-import vazkii.botania.common.crafting.OrechidRecipe;
+import vazkii.botania.api.recipe.IOrechidRecipe;
+import vazkii.botania.common.crafting.ModRecipeTypes;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -154,7 +154,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
             if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1) {
                 if ((this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystManaInfinity
                         || this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)) {
-                    if (this.getMaxMana() != this.getCurrentMana()) this.receiveMana(this.getMaxMana());
+                    if (this.getManaCap() != this.getCurrentMana()) this.receiveMana(this.getManaCap());
                     catalystMana = true;
                 } else this.catalystMana = false;
             }
@@ -173,7 +173,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
                     output_slot++;
                     if (inventory.getStackInSlot(input_slot).isEmpty() || !inventory.getStackInSlot(output_slot).isEmpty()) continue;
 
-                    OrechidRecipe recipe = !checkFilterSlots() ? getRecipeOrechid() : getRecipeOrechidFilter();
+                    IOrechidRecipe recipe = !checkFilterSlots() ? getRecipeOrechid() : getRecipeOrechidFilter();
                     if (recipe == null) continue;
 
 
@@ -289,7 +289,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
 
         if (this.level == null) return List.of();
 
-        this.level.getRecipeManager().getAllRecipesFor(BotaniaRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
+        this.level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
             if (recipe.getOutput() != null) {
                 recipe.getOutput().getDisplayedStacks().stream().map(ItemStack::getItem).forEach((item -> {
                     if (!outputs.contains(item)){
@@ -308,13 +308,12 @@ public class BlockEntityOrechidPattern extends BotanicalTile
 
         if (this.level == null) return List.of();
 
-        this.level.getRecipeManager().getAllRecipesFor(BotaniaRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
+        this.level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
             if (recipe.getInput() != null) {
-                recipe.getInput().getDisplayedStacks().stream().map(ItemStack::getItem).forEach((item -> {
-                    if (!inputs.contains(item)){
-                        inputs.add(item);
-                    }
-                }));
+                Item input = recipe.getInput().defaultBlockState().getBlock().asItem();
+                if (!inputs.contains(input)){
+                    inputs.add(input);
+                }
             }
 
         });
@@ -322,20 +321,20 @@ public class BlockEntityOrechidPattern extends BotanicalTile
         return inputs;
     }
 
-    public @Nullable OrechidRecipe getRecipeOrechid(){
-        List<WeightedEntry.Wrapper<OrechidRecipe>> values = new ArrayList();
+    public @Nullable IOrechidRecipe getRecipeOrechid(){
+        List<WeightedEntry.Wrapper<IOrechidRecipe>> values = new ArrayList();
 
-        this.level.getRecipeManager().getAllRecipesFor(BotaniaRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
+        this.level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
             values.add(WeightedEntry.wrap(recipe, recipe.getWeight()));
         });
 
         return WeightedRandom.getRandomItem(this.level.random, values).map(WeightedEntry.Wrapper::getData).orElse(null);
     }
 
-    public @Nullable OrechidRecipe getRecipeOrechidFilter(){
-        List<WeightedEntry.Wrapper<OrechidRecipe>> values = new ArrayList();
+    public @Nullable IOrechidRecipe getRecipeOrechidFilter(){
+        List<WeightedEntry.Wrapper<IOrechidRecipe>> values = new ArrayList();
 
-        this.level.getRecipeManager().getAllRecipesFor(BotaniaRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
+        this.level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ORECHID_TYPE).forEach((recipe) -> {
             recipe.getOutput().getDisplayedStacks().stream().forEach(itemStack -> {
                 for (int index: FILTER_SLOTS){
                     if (inventory.getStackInSlot(index).getItem() == itemStack.getItem()){

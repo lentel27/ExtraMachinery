@@ -6,6 +6,7 @@ import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalDaisy.ContainerDaisyAdvanced;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -37,7 +38,7 @@ public class ScreenDaisyAdvanced extends ExtraScreenBase<ContainerDaisyAdvanced>
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.upgraded_daisy");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.upgraded_daisy");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

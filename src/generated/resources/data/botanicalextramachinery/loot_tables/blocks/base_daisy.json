@@ -2,51 +2,27 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "name": "main",
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": []
+            }
+          ],
+          "name": "botanicalextramachinery:base_daisy"
+        }
+      ],
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"
         }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "enchantments": [
-                      {
-                        "enchantment": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
-                        }
-                      }
-                    ]
-                  }
-                }
-              ],
-              "name": "botanicalextramachinery:base_daisy"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "function": "minecraft:copy_nbt",
-                  "ops": [],
-                  "source": "block_entity"
-                }
-              ],
-              "name": "botanicalextramachinery:base_daisy"
-            }
-          ]
-        }
-      ],
-      "name": "main",
-      "rolls": 1.0
+      ]
     }
   ]
 }

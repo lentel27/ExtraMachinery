@@ -1,15 +1,20 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
+import io.github.noeppi_noeppi.libx.block.RotationShape;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketUltimate;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketUltimate;
+import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUltimate;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,11 +27,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.block.RotationShape;
-import org.moddingx.libx.mod.ModX;
-import org.moddingx.libx.registration.SetupContext;
 
 import javax.annotation.Nonnull;
+import java.util.function.Consumer;
 
 public class BlockAlfheimMarketUltimate extends BotanicalBlock<BlockEntityAlfheimMarketUltimate, ContainerAlfheimMarketUltimate> {
     public static final RotationShape SHAPE;
@@ -36,8 +39,8 @@ public class BlockAlfheimMarketUltimate extends BotanicalBlock<BlockEntityAlfhei
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void registerClient(SetupContext ctx) {
-        super.registerClient(ctx);
+    public void registerClient(ResourceLocation id, Consumer<Runnable> defer) {
+        super.registerClient(id, defer);
         MenuScreens.register(ModBlocks.ultimateAlfheimMarket.menu, ScreenAlfheimMarketUltimate::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderAlpheimMarketUltimate();
@@ -46,7 +49,7 @@ public class BlockAlfheimMarketUltimate extends BotanicalBlock<BlockEntityAlfhei
 
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return SHAPE.getShape((Direction)state.getValue(BlockStateProperties.HORIZONTAL_FACING));
+        return SHAPE.getShape(state.getValue(BlockStateProperties.HORIZONTAL_FACING));
     }
 
     @Override

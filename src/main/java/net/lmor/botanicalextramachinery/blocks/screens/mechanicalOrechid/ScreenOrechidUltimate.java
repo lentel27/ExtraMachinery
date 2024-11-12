@@ -8,6 +8,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalOrechid.Cont
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidUltimate;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
@@ -47,7 +48,7 @@ public class ScreenOrechidUltimate extends ExtraScreenBase<ContainerOrechidUltim
 
         this.orechidSlotInfo.setCoord(ores, upgrades);
 
-        blockEntity = (BlockEntityOrechidUltimate)((ContainerOrechidUltimate)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     @Override
@@ -69,7 +70,7 @@ public class ScreenOrechidUltimate extends ExtraScreenBase<ContainerOrechidUltim
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.ultimate_orechid");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.ultimate_orechid");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

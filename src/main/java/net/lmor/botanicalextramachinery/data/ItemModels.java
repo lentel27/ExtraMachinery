@@ -1,10 +1,10 @@
 package net.lmor.botanicalextramachinery.data;
 
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
+import io.github.noeppi_noeppi.libx.data.provider.ItemModelProviderBase;
 import net.lmor.botanicalextramachinery.ExtraMachinery;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import org.moddingx.libx.annotation.data.Datagen;
-import org.moddingx.libx.datagen.provider.ItemModelProviderBase;
 
 @Datagen
 public class ItemModels extends ItemModelProviderBase {

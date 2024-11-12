@@ -2,6 +2,8 @@ package net.lmor.botanicalextramachinery.blocks.base;
 
 import com.google.common.collect.Streams;
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
+import io.github.noeppi_noeppi.libx.crafting.recipe.RecipeHelper;
+import io.github.noeppi_noeppi.libx.inventory.IAdvancedItemHandlerModifiable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
@@ -13,10 +15,8 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.moddingx.libx.crafting.recipe.RecipeHelper;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
-import vazkii.botania.common.lib.BotaniaTags;
+import vazkii.botania.common.crafting.ModRecipeTypes;
+import vazkii.botania.common.lib.ModTags;
 
 import javax.annotation.Nonnull;
 import java.util.*;
@@ -136,7 +136,7 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
                     }
                 }
 
-                if (recipe.getType() == BotaniaRecipeTypes.RUNE_TYPE){
+                if (recipe.getType() == ModRecipeTypes.RUNE_TYPE){
                     List<ItemStack> inputItemRes = new ArrayList<>();
                     iteratorRecipe = recipe.getIngredients().iterator();
                     while (iteratorRecipe.hasNext()){
@@ -150,7 +150,7 @@ public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalT
                     List res = Streams.concat(new Stream[]
                         {
                             inputItemRes.stream()
-                                .filter((s) -> {return s.is(BotaniaTags.Items.RUNES);})
+                                .filter((s) -> {return s.is(ModTags.Items.RUNES);})
                                 .map(ItemStack::copy)
                         }).toList();
 

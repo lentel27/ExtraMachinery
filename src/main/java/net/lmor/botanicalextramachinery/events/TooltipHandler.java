@@ -5,6 +5,7 @@ import net.lmor.botanicalextramachinery.ModItems;
 import net.lmor.botanicalextramachinery.util.NumberFormatter;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -67,7 +68,7 @@ public class TooltipHandler {
                 if (tag.getCompound("BlockEntityTag").contains("mana")){
                     int mana = tag.getCompound("BlockEntityTag").getInt("mana");
 
-                    event.getToolTip().add(Component.translatable("botanicalextramachinery.tooltip.item.mana", NumberFormatter.formatInteger(mana)));
+                    event.getToolTip().add(new TranslatableComponent("botanicalextramachinery.tooltip.item.mana", NumberFormatter.formatInteger(mana)));
                 }
             }
 
@@ -76,14 +77,14 @@ public class TooltipHandler {
                 if (tag.getCompound("BlockEntityTag").contains("fluid")){
                     int water = tag.getCompound("BlockEntityTag").getCompound("fluid").getInt("Amount");
 
-                    event.getToolTip().add(Component.translatable("botanicalextramachinery.tooltip.item.water", NumberFormatter.formatIntegerWater(water)));
+                    event.getToolTip().add(new TranslatableComponent("botanicalextramachinery.tooltip.item.water", NumberFormatter.formatIntegerWater(water)));
                 }
             }
         }
 
         if (stack.getItem().asItem() == ModItems.catalystSpeed.asItem()){
-            event.getToolTip().add(Component.translatable("botanicalextramachinery.tooltip.item.upgrade_speed_1"));
-            event.getToolTip().add(Component.translatable("botanicalextramachinery.tooltip.item.upgrade_speed_2"));
+            event.getToolTip().add(new TranslatableComponent("botanicalextramachinery.tooltip.item.upgrade_speed_1"));
+            event.getToolTip().add(new TranslatableComponent("botanicalextramachinery.tooltip.item.upgrade_speed_2"));
         }
     }
 }

@@ -1,9 +1,5 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "botanicalextramachinery:block/upgraded_apothecary",
-      "y": 90
-    },
     "facing=north": {
       "model": "botanicalextramachinery:block/upgraded_apothecary"
     },
@@ -14,6 +10,10 @@
     "facing=west": {
       "model": "botanicalextramachinery:block/upgraded_apothecary",
       "y": 270
+    },
+    "facing=east": {
+      "model": "botanicalextramachinery:block/upgraded_apothecary",
+      "y": 90
     }
   }
 }

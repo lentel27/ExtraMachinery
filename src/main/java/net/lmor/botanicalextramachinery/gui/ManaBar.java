@@ -7,6 +7,8 @@ import net.lmor.botanicalextramachinery.core.LibResources;
 import net.lmor.botanicalextramachinery.util.NumberFormatter;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class ManaBar {
     private final Screen parent;
@@ -56,9 +58,9 @@ public class ManaBar {
     public void renderHoveredToolTip(PoseStack ms, int mouseX, int mouseY, int mana) {
         if (this.isMouseOver(mouseX, mouseY) && LibXClientConfig.numericalFluid) {
 
-            Component text = Component.translatable("botanicalextramachinery.tooltip.screen",
-                    Component.literal(NumberFormatter.formatInteger(mana)),
-                    Component.literal(NumberFormatter.formatInteger(this.capacity)));
+            Component text = new TranslatableComponent("botanicalextramachinery.tooltip.screen",
+                    new TextComponent(NumberFormatter.formatInteger(mana)),
+                    new TextComponent(NumberFormatter.formatInteger(this.capacity)));
 
             this.parent.renderTooltip(ms, text, mouseX, mouseY);
         }

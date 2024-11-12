@@ -1,8 +1,8 @@
 package net.lmor.botanicalextramachinery.config;
 
-import org.moddingx.libx.annotation.config.RegisterConfig;
-import org.moddingx.libx.config.Config;
-import org.moddingx.libx.config.Group;
+import io.github.noeppi_noeppi.libx.annotation.config.RegisterConfig;
+import io.github.noeppi_noeppi.libx.config.Config;
+import io.github.noeppi_noeppi.libx.config.Group;
 
 @RegisterConfig(value = "client", client = true)
 public class LibXClientConfig {

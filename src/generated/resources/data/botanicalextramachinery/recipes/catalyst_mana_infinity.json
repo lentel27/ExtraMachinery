@@ -1,5 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
   "key": {
     "a": {
       "item": "botanicalextramachinery:crimson_dragonstone_block"
@@ -8,11 +13,6 @@
       "item": "botanicalextramachinery:ultimate_mana_pool"
     }
   },
-  "pattern": [
-    "aaa",
-    "aba",
-    "aaa"
-  ],
   "result": {
     "item": "botanicalextramachinery:catalyst_mana_infinity"
   }

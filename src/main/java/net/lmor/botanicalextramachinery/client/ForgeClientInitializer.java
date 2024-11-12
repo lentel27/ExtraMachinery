@@ -13,11 +13,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import vazkii.botania.api.BotaniaForgeClientCapabilities;
-import vazkii.botania.api.block.WandHUD;
+import vazkii.botania.api.block.IWandHUD;
 import vazkii.botania.client.core.proxy.ClientProxy;
 import vazkii.botania.client.integration.ears.EarsIntegration;
 import vazkii.botania.forge.CapabilityUtil;
-import vazkii.botania.xplat.XplatAbstractions;
+import vazkii.botania.xplat.IXplatAbstractions;
 
 import java.util.Collections;
 import java.util.IdentityHashMap;
@@ -39,7 +39,7 @@ public class ForgeClientInitializer {
         ClientProxy.initSeasonal();
         bus.addGenericListener(Entity.class, ForgeClientInitializer::attachEntityCapabilities);
 
-        if (XplatAbstractions.INSTANCE.isModLoaded("ears")) {
+        if (IXplatAbstractions.INSTANCE.isModLoaded("ears")) {
             EarsIntegration.register();
         }
     }
@@ -49,8 +49,8 @@ public class ForgeClientInitializer {
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
     }
 
-    private static final Supplier<Map<EntityType<?>, Function<Entity, WandHUD>>> ENTITY_WAND_HUD = Suppliers.memoize(() -> {
-        var ret = new IdentityHashMap<EntityType<?>, Function<Entity, WandHUD>>();
+    private static final Supplier<Map<EntityType<?>, Function<Entity, IWandHUD>>> ENTITY_WAND_HUD = Suppliers.memoize(() -> {
+        var ret = new IdentityHashMap<EntityType<?>, Function<Entity, IWandHUD>>();
         ModEntities.registerWandHudCaps((factory, types) -> {
             for (var type : types) {
                 ret.put(type, factory);

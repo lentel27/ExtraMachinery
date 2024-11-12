@@ -9,9 +9,10 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import vazkii.botania.common.block.BotaniaBlocks;
+import vazkii.botania.common.block.ModBlocks;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public class ScreenRunicAltarUltimate extends ExtraScreenBase<ContainerRunicAltarUltimate> {
 
-    BlockEntityRunicAltarUltimate blockEntity = (BlockEntityRunicAltarUltimate)((ContainerRunicAltarUltimate)this.menu).getBlockEntity();
+    BlockEntityRunicAltarUltimate blockEntity;
 
     public ScreenRunicAltarUltimate(ContainerRunicAltarUltimate menu, Inventory inventory, Component title) {
         super(menu, inventory, title, 27, 120);
@@ -38,7 +39,7 @@ public class ScreenRunicAltarUltimate extends ExtraScreenBase<ContainerRunicAlta
 
         this.runicAltarSlotInfo.setCoord(livingrock, upgrades);
 
-        blockEntity = (BlockEntityRunicAltarUltimate)((ContainerRunicAltarUltimate)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
@@ -47,7 +48,7 @@ public class ScreenRunicAltarUltimate extends ExtraScreenBase<ContainerRunicAlta
 
         for (int i = 0; i < 3; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null) {
-                GhostItemRenderer.renderGhostItem(new ItemStack(BotaniaBlocks.livingrock), poseStack, this.leftPos + 66 + i * 18, this.topPos + 94);
+                GhostItemRenderer.renderGhostItem(new ItemStack(ModBlocks.livingrock), poseStack, this.leftPos + 66 + i * 18, this.topPos + 94);
             }
         }
 
@@ -71,7 +72,7 @@ public class ScreenRunicAltarUltimate extends ExtraScreenBase<ContainerRunicAlta
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.ultimate_runic_altar");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.ultimate_runic_altar");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

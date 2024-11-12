@@ -9,6 +9,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAg
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import vazkii.botania.client.core.helper.RenderHelper;
@@ -34,7 +35,7 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
 
         this.agglomerationSlotInfo.setCoord(upgrades);
 
-        blockEntity = (BlockEntityIndustrialAgglomerationFactoryUltimate)((ContainerIndustrialAgglomerationFactoryUltimate)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
 
     }
 
@@ -65,7 +66,7 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1");
+        Component titleText = new TranslatableComponent("text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);
@@ -74,7 +75,7 @@ public class ScreenIndustrialAgglomerationFactoryUltimate extends ExtraScreenBas
                 (topPos + 4) /scale, 0x00);
         poseStack.popPose();
 
-        titleText = Component.translatable("text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2");
+        titleText = new TranslatableComponent("text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2");
         scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

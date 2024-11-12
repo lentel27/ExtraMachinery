@@ -1,15 +1,20 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
+import io.github.noeppi_noeppi.libx.block.RotationShape;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketUpgraded;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketUltimate;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketUpgraded;
+import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketUltimate;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalAlfheimMarket.RenderAlpheimMarketUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUpgraded;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,11 +27,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.block.RotationShape;
-import org.moddingx.libx.mod.ModX;
-import org.moddingx.libx.registration.SetupContext;
+
 
 import javax.annotation.Nonnull;
+import java.util.function.Consumer;
 
 public class
 BlockAlfheimMarketUpgraded extends BotanicalBlock<BlockEntityAlfheimMarketUpgraded, ContainerAlfheimMarketUpgraded> {
@@ -35,15 +39,15 @@ BlockAlfheimMarketUpgraded extends BotanicalBlock<BlockEntityAlfheimMarketUpgrad
     public BlockAlfheimMarketUpgraded(ModX mod, Class<BlockEntityAlfheimMarketUpgraded> teClass, MenuType<ContainerAlfheimMarketUpgraded> menu) {
         super(mod, teClass, menu, false, true);
     }
-
     @OnlyIn(Dist.CLIENT)
-    public void registerClient(SetupContext ctx) {
-        super.registerClient(ctx);
+    public void registerClient(ResourceLocation id, Consumer<Runnable> defer) {
+        super.registerClient(id, defer);
         MenuScreens.register(ModBlocks.upgradedAlfheimMarket.menu, ScreenAlfheimMarketUpgraded::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderAlpheimMarketUpgraded();
         });
     }
+
 
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {

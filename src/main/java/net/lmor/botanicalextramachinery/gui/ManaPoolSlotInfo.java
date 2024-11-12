@@ -1,10 +1,11 @@
 package net.lmor.botanicalextramachinery.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.github.noeppi_noeppi.libx.inventory.BaseItemStackHandler;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import org.moddingx.libx.inventory.BaseItemStackHandler;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class ManaPoolSlotInfo {
 
@@ -61,12 +62,12 @@ public class ManaPoolSlotInfo {
 
     public void renderHoveredToolTip(PoseStack poseStack, int mouseX, int mouseY, BaseItemStackHandler inventory, boolean[] setInfo) {
         if (setInfo[0] && this.isMouseOverCatalystSlot(mouseX, mouseY) && LibXClientConfig.slotInfo && inventory.getStackInSlot(0).isEmpty()) {
-            Component text = Component.translatable("botanicalextramachinery.tooltip.screen.catalyst_slot");
+            Component text = new TranslatableComponent("botanicalextramachinery.tooltip.screen.catalyst_slot");
             this.parent.renderTooltip(poseStack, text, mouseX, mouseY);
         }
 
         if (setInfo[1] && this.isMouseOverUpgradeSlot(mouseX, mouseY) && LibXClientConfig.slotInfo && inventory.getStackInSlot(1).isEmpty()) {
-            Component text = Component.translatable("botanicalextramachinery.tooltip.screen.upgrade_slot");
+            Component text = new TranslatableComponent("botanicalextramachinery.tooltip.screen.upgrade_slot");
             this.parent.renderTooltip(poseStack, text, mouseX, mouseY);
         }
 

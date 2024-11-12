@@ -12,6 +12,9 @@ import appeng.api.util.AECableType;
 import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
+import io.github.noeppi_noeppi.libx.base.tile.BlockEntityBase;
+import io.github.noeppi_noeppi.libx.base.tile.TickableBlock;
+import io.github.noeppi_noeppi.libx.capability.ItemCapabilities;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyBase;
@@ -34,25 +37,22 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
-import org.moddingx.libx.base.tile.BlockEntityBase;
-import org.moddingx.libx.base.tile.TickingBlock;
-import org.moddingx.libx.capability.ItemCapabilities;
-import vazkii.botania.api.block_entity.SpecialFlowerBlockEntity;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
-import vazkii.botania.api.recipe.PureDaisyRecipe;
+import vazkii.botania.api.recipe.IPureDaisyRecipe;
 import vazkii.botania.client.fx.WispParticleData;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
 import javax.annotation.Nonnull;
 import org.jetbrains.annotations.Nullable;
+import vazkii.botania.common.crafting.ModRecipeTypes;
+
 import java.util.Iterator;
 import java.util.function.BiPredicate;
 
-public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingBlock,
+public class BlockEntityDaisyPattern extends BlockEntityBase implements TickableBlock,
         IInWorldGridNodeHost, IGridConnectedBlockEntity {
     private int ticksToNextUpdate = DaisySettings.ticksToNextUpdate;
     private int[] workingTicks;
@@ -83,7 +83,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
 
         this.lazyInventory = ItemCapabilities.create(this.inventory).cast();
-        this.hopperInventory = ItemCapabilities.create(this.inventory, (slot) -> { return this.workingTicks[slot] < 0;}, (BiPredicate)null).cast();
+        this.hopperInventory = ItemCapabilities.create(this.inventory, (slot) -> { return this.workingTicks[slot] < 0;}, null).cast();
 
         this.setChangedQueued = false;
 
@@ -102,7 +102,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
         boolean hasSpawnedParticles = false;
 
         for(int i = 0; i < this.countSlotInventory; ++i) {
-            PureDaisyRecipe recipe = this.getRecipe(i);
+            IPureDaisyRecipe recipe = this.getRecipe(i);
 
             if (recipe != null && this.workingTicks[i] >= 0) {
                 if (!this.level.isClientSide) {
@@ -155,7 +155,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     }
 
     @Nullable
-    private PureDaisyRecipe getRecipe(int slot) {
+    private IPureDaisyRecipe getRecipe(int slot) {
         BlockState state = this.getState(slot);
         return state == null ? null : this.getRecipe(state);
     }
@@ -172,17 +172,17 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     }
 
     @Nullable
-    public PureDaisyRecipe getRecipe(BlockState state) {
+    public IPureDaisyRecipe getRecipe(BlockState state) {
         if (this.level == null) {
             return null;
         } else {
-            Iterator iterator = this.level.getRecipeManager().getAllRecipesFor(BotaniaRecipeTypes.PURE_DAISY_TYPE).iterator();
+            Iterator iterator = this.level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PURE_DAISY_TYPE).iterator();
 
             while(iterator.hasNext()) {
                 Recipe<?> genericRecipe = (Recipe)iterator.next();
-                if (genericRecipe instanceof PureDaisyRecipe) {
-                    PureDaisyRecipe recipe = (PureDaisyRecipe)genericRecipe;
-                    if (recipe.matches(this.level, this.worldPosition, (SpecialFlowerBlockEntity)null, state)) {
+                if (genericRecipe instanceof IPureDaisyRecipe) {
+                    IPureDaisyRecipe recipe = (IPureDaisyRecipe)genericRecipe;
+                    if (recipe.matches(this.level, this.worldPosition, null, state)) {
                         return recipe;
                     }
                 }
@@ -198,7 +198,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
     @Nonnull
     public <X> LazyOptional<X> getCapability(@Nonnull Capability<X> cap, @Nullable Direction side) {
-        if (!this.remove && cap == ForgeCapabilities.ITEM_HANDLER) {
+        if (!this.remove && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return (LazyOptional<X>) (side == null ? this.lazyInventory : this.hopperInventory);
         }
         return super.getCapability(cap, side);

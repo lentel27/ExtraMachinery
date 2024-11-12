@@ -7,6 +7,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAg
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryUpgraded;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import vazkii.botania.client.core.helper.RenderHelper;
 
@@ -20,7 +21,7 @@ public class ScreenIndustrialAgglomerationFactoryUpgraded extends ExtraScreenBas
         this.imageWidth = 184;
         this.imageHeight = 183;
 
-        blockEntity = (BlockEntityIndustrialAgglomerationFactoryUpgraded)((ContainerIndustrialAgglomerationFactoryUpgraded)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
@@ -38,7 +39,7 @@ public class ScreenIndustrialAgglomerationFactoryUpgraded extends ExtraScreenBas
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_1");
+        Component titleText = new TranslatableComponent("text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_1");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);
@@ -47,7 +48,7 @@ public class ScreenIndustrialAgglomerationFactoryUpgraded extends ExtraScreenBas
                 (topPos + 4) /scale, 0x00);
         poseStack.popPose();
 
-        titleText = Component.translatable("text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_2");
+        titleText = new TranslatableComponent("text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_2");
         scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

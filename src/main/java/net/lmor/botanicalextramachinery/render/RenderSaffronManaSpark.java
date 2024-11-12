@@ -6,9 +6,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import org.jetbrains.annotations.Nullable;
 import vazkii.botania.client.core.handler.MiscellaneousModels;
-import vazkii.botania.client.render.entity.BaseSparkRenderer;
+import vazkii.botania.client.render.entity.RenderSparkBase;
 
-public class RenderSaffronManaSpark extends BaseSparkRenderer<EntitySaffronManaSpark> {
+public class RenderSaffronManaSpark extends RenderSparkBase<EntitySaffronManaSpark> {
     public RenderSaffronManaSpark(EntityRendererProvider.Context ctx) {
         super(ctx);
     }

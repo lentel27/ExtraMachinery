@@ -9,9 +9,10 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import vazkii.botania.common.block.BotaniaBlocks;
+import vazkii.botania.common.block.ModBlocks;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -31,7 +32,7 @@ public class ScreenRunicAltarBase extends ExtraScreenBase<ContainerRunicAltarBas
 
         this.runicAltarSlotInfo.setCoord(livingrock, null);
 
-        blockEntity = (BlockEntityRunicAltarBase)((ContainerRunicAltarBase)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
@@ -39,7 +40,7 @@ public class ScreenRunicAltarBase extends ExtraScreenBase<ContainerRunicAltarBas
         this.drawLabelText(poseStack);
 
         if (blockEntity.getInventory().getStackInSlot(0).isEmpty() && this.minecraft != null) {
-            GhostItemRenderer.renderGhostItem(new ItemStack(BotaniaBlocks.livingrock), poseStack, this.leftPos + 84, this.topPos + 94);
+            GhostItemRenderer.renderGhostItem(new ItemStack(ModBlocks.livingrock), poseStack, this.leftPos + 84, this.topPos + 94);
         }
 
         this.runicAltarSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, false});
@@ -54,7 +55,7 @@ public class ScreenRunicAltarBase extends ExtraScreenBase<ContainerRunicAltarBas
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.base_runic_altar");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.base_runic_altar");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

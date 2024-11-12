@@ -1,5 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
   "key": {
     "a": {
       "item": "botanicalextramachinery:saffron_ingot_block"
@@ -14,11 +19,6 @@
       "item": "botanicalextramachinery:crimson_dragonstone_block"
     }
   },
-  "pattern": [
-    "aba",
-    "bcb",
-    "ddd"
-  ],
   "result": {
     "item": "botanicalextramachinery:ultimate_apothecary"
   }

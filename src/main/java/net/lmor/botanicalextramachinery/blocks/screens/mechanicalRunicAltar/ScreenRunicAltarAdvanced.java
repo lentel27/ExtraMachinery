@@ -9,9 +9,10 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
-import vazkii.botania.common.block.BotaniaBlocks;
+import vazkii.botania.common.block.ModBlocks;
 
 import javax.annotation.Nonnull;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
 
         this.runicAltarSlotInfo.setCoord(livingrock, upgrades);
 
-        blockEntity = (BlockEntityRunicAltarAdvanced)((ContainerRunicAltarAdvanced)this.menu).getBlockEntity();
+        blockEntity = this.menu.getBlockEntity();
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
@@ -45,7 +46,7 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
 
         for (int i = 0; i < 3; i++){
             if (blockEntity.getInventory().getStackInSlot(i).isEmpty() && this.minecraft != null) {
-                GhostItemRenderer.renderGhostItem(new ItemStack(BotaniaBlocks.livingrock), poseStack, this.leftPos + 66 + i * 18, this.topPos + 94);
+                GhostItemRenderer.renderGhostItem(new ItemStack(ModBlocks.livingrock), poseStack, this.leftPos + 66 + i * 18, this.topPos + 94);
             }
         }
 
@@ -65,7 +66,7 @@ public class ScreenRunicAltarAdvanced extends ExtraScreenBase<ContainerRunicAlta
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.advanced_runic_altar");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.advanced_runic_altar");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

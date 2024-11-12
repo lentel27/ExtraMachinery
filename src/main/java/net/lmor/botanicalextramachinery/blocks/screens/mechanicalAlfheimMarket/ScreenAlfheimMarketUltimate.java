@@ -9,6 +9,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarke
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUltimate;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import vazkii.botania.client.core.helper.RenderHelper;
@@ -37,7 +38,7 @@ public class ScreenAlfheimMarketUltimate extends ExtraScreenBase<ContainerAlfhei
 
         this.agglomerationSlotInfo.setCoord(upgrades);
 
-        blockEntity = (BlockEntityAlfheimMarketUltimate)((ContainerAlfheimMarketUltimate)this.menu).getBlockEntity();
+        blockEntity = this.getMenu().getBlockEntity();
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
@@ -61,7 +62,7 @@ public class ScreenAlfheimMarketUltimate extends ExtraScreenBase<ContainerAlfhei
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.ultimate_alfheim_market");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.ultimate_alfheim_market");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

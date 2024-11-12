@@ -1,11 +1,11 @@
 package net.lmor.botanicalextramachinery.data;
 
 import de.melanx.botanicalmachinery.core.TileTags;
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
+import io.github.noeppi_noeppi.libx.data.provider.BlockLootProviderBase;
 import net.lmor.botanicalextramachinery.ExtraMachinery;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.minecraft.data.DataGenerator;
-import org.moddingx.libx.annotation.data.Datagen;
-import org.moddingx.libx.datagen.provider.loot.BlockLootProviderBase;
 
 @Datagen
 public class LootTables extends BlockLootProviderBase {

@@ -2,6 +2,7 @@ package net.lmor.botanicalextramachinery.blocks.tesr.mechanicalRunicAltar;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import io.github.noeppi_noeppi.libx.render.block.RotatedBlockRenderer;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.minecraft.client.Minecraft;
@@ -11,7 +12,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import org.moddingx.libx.render.block.RotatedBlockRenderer;
 import vazkii.botania.client.core.handler.ClientTickHandler;
 
 import javax.annotation.Nonnull;

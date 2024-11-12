@@ -1,6 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket;
 
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketAdvanced;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -10,12 +11,11 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerAlfheimMarketAdvanced extends BlockEntityMenu<BlockEntityAlfheimMarketAdvanced> {
     public ContainerAlfheimMarketAdvanced(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 10, 19);
-        IItemHandlerModifiable inventory = ((BlockEntityAlfheimMarketAdvanced)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = (this.blockEntity).getInventory();
 
         this.addSlot(new SlotItemHandler(inventory, 0, 84, 84));
 

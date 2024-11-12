@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "key": {
-    "a": {
-      "item": "botanicalextramachinery:malachite_dragonstone"
-    }
-  },
   "pattern": [
     "aaa",
     "aaa",
     "aaa"
   ],
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:malachite_dragonstone"
+    }
+  },
   "result": {
     "item": "botanicalextramachinery:malachite_dragonstone_block"
   }

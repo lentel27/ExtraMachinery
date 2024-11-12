@@ -1,53 +1,53 @@
 modLoader="javafml"
-loaderVersion="${loader_version_range}"
-license="${mod_license}"
+loaderVersion="[40,)"
+license="Apache-2.0 license"
 loggFile="logo.png"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
-authors="${mod_authors}"
-description='''${mod_description}'''
+modId="botanicalextramachinery"
+version="1.0.0"
+displayName="Botanical Extra Machinery"
+authors="LMor, nexxx_7"
+description='''New and improved machines from the Botanical Machinery mod. Also new sparks and a mechanical orechid.'''
 
-[[dependencies.${mod_id}]]
+[[dependencies.botanicalextramachinery]]
     modId="forge"
     mandatory=true
-    versionRange="${forge_version_range}"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.botanicalextramachinery]]
     modId="minecraft"
     mandatory=true
-    versionRange="${minecraft_version_range}"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.botanicalextramachinery]]
     modId="libx"
     mandatory=true
-    versionRange="[1.19.2-4.2.8,)"
+    versionRange="[1.18.2-3.2.18,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.botanicalextramachinery]]
     modId="botania"
     mandatory=true
-    versionRange="[1.19.2-439,)"
+    versionRange="[1.18.2-435,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.botanicalextramachinery]]
     modId="botanicalmachinery"
     mandatory=true
-    versionRange="[1.19.2-2.0.5,)"
+    versionRange="[1.18.2-1.0.3,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.${mod_id}]]
+[[dependencies.botanicalextramachinery]]
     modId="ae2"
     mandatory=true
-    versionRange="[12.9.9,)"
+    versionRange="[11.7.6,)"
     ordering="NONE"
     side="BOTH"

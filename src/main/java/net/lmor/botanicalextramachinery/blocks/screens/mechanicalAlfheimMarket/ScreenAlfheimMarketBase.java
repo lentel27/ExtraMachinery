@@ -7,6 +7,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarke
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.core.LibResources;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import vazkii.botania.client.core.helper.RenderHelper;
 
@@ -25,7 +26,7 @@ public class ScreenAlfheimMarketBase extends ExtraScreenBase<ContainerAlfheimMar
         this.inventoryLabelY = -999;
         this.titleLabelY = -999;
 
-        blockEntity = (BlockEntityAlfheimMarketBase)((ContainerAlfheimMarketBase)this.menu).getBlockEntity();
+        blockEntity = this.getMenu().getBlockEntity();
     }
 
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
@@ -40,7 +41,7 @@ public class ScreenAlfheimMarketBase extends ExtraScreenBase<ContainerAlfheimMar
     }
 
     private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.base_alfheim_market");
+        Component titleText = new TranslatableComponent("block.botanicalextramachinery.base_alfheim_market");
         float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
         poseStack.pushPose();
         poseStack.scale(scale, scale, scale);

@@ -7,6 +7,7 @@ import net.lmor.botanicalextramachinery.core.LibResources;
 import net.lmor.botanicalextramachinery.util.NumberFormatter;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 
 public class WaterBar {
     private final Screen parent;
@@ -55,7 +56,7 @@ public class WaterBar {
     public void renderHoveredToolTip(PoseStack ms, int mouseX, int mouseY, int countFluid) {
         if (this.isMouseOver(mouseX, mouseY) && LibXClientConfig.numericalFluid) {
 
-            Component fluid = Component.literal(countFluid + " / " + NumberFormatter.formatIntegerWater(this.capacity));
+            Component fluid = new TextComponent(countFluid + " / " + NumberFormatter.formatIntegerWater(this.capacity));
 
             this.parent.renderTooltip(ms, fluid, mouseX, mouseY);
         }

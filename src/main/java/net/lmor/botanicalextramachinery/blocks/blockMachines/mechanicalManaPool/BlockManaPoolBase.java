@@ -1,6 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
+import io.github.noeppi_noeppi.libx.block.RotationShape;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolBase;
@@ -10,6 +12,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,11 +25,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.block.RotationShape;
-import org.moddingx.libx.mod.ModX;
-import org.moddingx.libx.registration.SetupContext;
 
 import javax.annotation.Nonnull;
+import java.util.function.Consumer;
 
 public class BlockManaPoolBase extends BotanicalBlock<BlockEntityManaPoolBase, ContainerManaPoolBase> {
     public static final RotationShape SHAPE;
@@ -36,8 +37,8 @@ public class BlockManaPoolBase extends BotanicalBlock<BlockEntityManaPoolBase, C
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void registerClient(SetupContext ctx) {
-        super.registerClient(ctx);
+    public void registerClient(ResourceLocation id, Consumer<Runnable> defer) {
+        super.registerClient(id, defer);
         MenuScreens.register(ModBlocks.baseManaPool.menu, ScreenManaPoolBase::new);
         BlockEntityRenderers.register(this.getBlockEntityType(), (context) -> {
             return new RenderManaPoolBase();

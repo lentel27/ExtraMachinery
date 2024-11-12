@@ -1,5 +1,9 @@
 package net.lmor.botanicalextramachinery;
 
+import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
+import io.github.noeppi_noeppi.libx.base.BlockBase;
+import io.github.noeppi_noeppi.libx.base.tile.MenuBlockBE;
+import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket.BlockAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket.BlockAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket.BlockAlfheimMarketUltimate;
@@ -87,12 +91,8 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
-import org.moddingx.libx.annotation.registration.RegisterClass;
-import org.moddingx.libx.base.BlockBase;
-import org.moddingx.libx.base.tile.MenuBlockBE;
-import org.moddingx.libx.menu.BlockEntityMenu;
 
-@RegisterClass(registry = "BLOCKS", priority = 1)
+@RegisterClass
 public class ModBlocks {
     public static final BlockBase malachiteDragonstoneBlock;
     public static final BlockBase malachiteIngotBlock;

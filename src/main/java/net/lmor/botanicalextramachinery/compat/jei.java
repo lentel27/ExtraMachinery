@@ -47,83 +47,88 @@ public class jei implements IModPlugin {
     }
 
     @Nonnull
+    @Override
     public ResourceLocation getPluginUid() {
         return new ResourceLocation(ExtraMachinery.getInstance().modid, "jei_plugin");
     }
 
+    @Override
+    @SuppressWarnings("removal")
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 
-        registration.addRecipeClickArea(ScreenManaPoolBase.class, 79, 38, 35, 11, ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenManaPoolUpgraded.class, 79, 38, 35, 11, ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenManaPoolAdvanced.class, 79, 38, 35, 11, ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenManaPoolUltimate.class, 70, 42, 35, 11, ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenManaPoolBase.class, 79, 38, 35, 11, ManaPoolRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenManaPoolUpgraded.class, 79, 38, 35, 11, ManaPoolRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenManaPoolAdvanced.class, 79, 38, 35, 11, ManaPoolRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenManaPoolUltimate.class, 70, 42, 35, 11, ManaPoolRecipeCategory.UID);
 
-        registration.addRecipeClickArea(ScreenRunicAltarBase.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenRunicAltarUpgraded.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenRunicAltarAdvanced.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenRunicAltarUltimate.class, 87, 31, 11, 37, RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenRunicAltarBase.class, 87, 31, 11, 37, RunicAltarRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenRunicAltarUpgraded.class, 87, 31, 11, 37, RunicAltarRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenRunicAltarAdvanced.class, 87, 31, 11, 37, RunicAltarRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenRunicAltarUltimate.class, 87, 31, 11, 37, RunicAltarRecipeCategory.UID);
 
-        registration.addRecipeClickArea(ScreenDaisyBase.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenDaisyUpgraded.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenDaisyAdvanced.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenDaisyUltimate.class, 84, 64, 16, 16, PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenDaisyBase.class, 84, 64, 16, 16, PureDaisyRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenDaisyUpgraded.class, 84, 64, 16, 16, PureDaisyRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenDaisyAdvanced.class, 84, 64, 16, 16, PureDaisyRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenDaisyUltimate.class, 84, 64, 16, 16, PureDaisyRecipeCategory.UID);
 
-        registration.addRecipeClickArea(ScreenApothecaryBase.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenApothecaryUpgraded.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenApothecaryAdvanced.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenApothecaryUltimate.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenApothecaryBase.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenApothecaryUpgraded.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenApothecaryAdvanced.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenApothecaryUltimate.class, 87, 31, 11, 37, PetalApothecaryRecipeCategory.UID);
 
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryBase.class, 72, 40, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUpgraded.class, 72, 40, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryAdvanced.class, 72, 40, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUltimate.class, 72, 58, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryBase.class, 72, 40, 40, 16, TerraPlateRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUpgraded.class, 72, 40, 40, 16, TerraPlateRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryAdvanced.class, 72, 40, 40, 16, TerraPlateRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUltimate.class, 72, 58, 40, 16, TerraPlateRecipeCategory.UID);
 
-        registration.addRecipeClickArea(ScreenAlfheimMarketBase.class, 84, 36, 16, 16, ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenAlfheimMarketUpgraded.class, 84, 36, 16, 16, ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenAlfheimMarketAdvanced.class, 84, 42, 16, 16, ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenAlfheimMarketUltimate.class, 84, 42, 16, 16, ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenAlfheimMarketBase.class, 84, 36, 16, 16, ElvenTradeRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenAlfheimMarketUpgraded.class, 84, 36, 16, 16, ElvenTradeRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenAlfheimMarketAdvanced.class, 84, 42, 16, 16, ElvenTradeRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenAlfheimMarketUltimate.class, 84, 42, 16, 16, ElvenTradeRecipeCategory.UID);
 
-        registration.addRecipeClickArea(ScreenOrechidBase.class, 65, 63, 54, 16, OrechidRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenOrechidUpgraded.class, 65, 63, 54, 16, OrechidRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenOrechidAdvanced.class, 65, 80, 54, 16, OrechidRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ScreenOrechidUltimate.class, 65, 80, 54, 16, OrechidRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ScreenOrechidBase.class, 65, 63, 54, 16, OrechidRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenOrechidUpgraded.class, 65, 63, 54, 16, OrechidRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenOrechidAdvanced.class, 65, 80, 54, 16, OrechidRecipeCategory.UID);
+        registration.addRecipeClickArea(ScreenOrechidUltimate.class, 65, 80, 54, 16, OrechidRecipeCategory.UID);
 
     }
 
+    @Override
+    @SuppressWarnings("removal")
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseManaPool), ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedManaPool), ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedManaPool), ManaPoolRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateManaPool), ManaPoolRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseManaPool), ManaPoolRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedManaPool), ManaPoolRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedManaPool), ManaPoolRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateManaPool), ManaPoolRecipeCategory.UID);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseRunicAltar), RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedRunicAltar), RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedRunicAltar), RunicAltarRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateRunicAltar), RunicAltarRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseRunicAltar), RunicAltarRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedRunicAltar), RunicAltarRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedRunicAltar), RunicAltarRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateRunicAltar), RunicAltarRecipeCategory.UID);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseDaisy), PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedDaisy), PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedDaisy), PureDaisyRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateDaisy), PureDaisyRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseDaisy), PureDaisyRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedDaisy), PureDaisyRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedDaisy), PureDaisyRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateDaisy), PureDaisyRecipeCategory.UID);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseApothecary), PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedApothecary), PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedApothecary), PetalApothecaryRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateApothecary), PetalApothecaryRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseApothecary), PetalApothecaryRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedApothecary), PetalApothecaryRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedApothecary), PetalApothecaryRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateApothecary), PetalApothecaryRecipeCategory.UID);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseIndustrialAgglomerationFactory), TerraPlateRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedIndustrialAgglomerationFactory), TerraPlateRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedIndustrialAgglomerationFactory), TerraPlateRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateIndustrialAgglomerationFactory), TerraPlateRecipeCategory.UID);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseAlfheimMarket), ElvenTradeRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedAlfheimMarket), ElvenTradeRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedAlfheimMarket), ElvenTradeRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateAlfheimMarket), ElvenTradeRecipeCategory.UID);
 
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseOrechid), OrechidRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedOrechid), OrechidRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedOrechid), OrechidRecipeCategory.TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateOrechid), OrechidRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseOrechid), OrechidRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedOrechid), OrechidRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedOrechid), OrechidRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateOrechid), OrechidRecipeCategory.UID);
     }
 }

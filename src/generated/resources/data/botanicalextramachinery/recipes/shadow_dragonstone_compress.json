@@ -1,15 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "key": {
-    "a": {
-      "item": "botanicalextramachinery:shadow_dragonstone"
-    }
-  },
   "pattern": [
     "aaa",
     "aaa",
     "aaa"
   ],
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:shadow_dragonstone"
+    }
+  },
   "result": {
     "item": "botanicalextramachinery:shadow_dragonstone_block"
   }

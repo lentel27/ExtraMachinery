@@ -1,15 +1,15 @@
 package net.lmor.botanicalextramachinery;
 
+import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
+import io.github.noeppi_noeppi.libx.base.ItemBase;
 import net.lmor.botanicalextramachinery.Items.ItemCrimsonManaSpark;
 import net.lmor.botanicalextramachinery.Items.ItemMalachiteManaSpark;
 import net.lmor.botanicalextramachinery.Items.ItemSaffronManaSpark;
 import net.lmor.botanicalextramachinery.Items.ItemShadowManaSpark;
 import net.minecraft.world.item.Item;
-import org.moddingx.libx.annotation.registration.RegisterClass;
-import org.moddingx.libx.base.ItemBase;
 
 
-@RegisterClass(registry = "ITEMS", priority = 1)
+@RegisterClass
 public class ModItems {
 
     public static final Item malachiteDragonstone;

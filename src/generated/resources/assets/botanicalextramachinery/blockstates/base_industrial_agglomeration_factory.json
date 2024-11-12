@@ -1,9 +1,5 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "botanicalextramachinery:block/base_industrial_agglomeration_factory",
-      "y": 90
-    },
     "facing=north": {
       "model": "botanicalextramachinery:block/base_industrial_agglomeration_factory"
     },
@@ -14,6 +10,10 @@
     "facing=west": {
       "model": "botanicalextramachinery:block/base_industrial_agglomeration_factory",
       "y": 270
+    },
+    "facing=east": {
+      "model": "botanicalextramachinery:block/base_industrial_agglomeration_factory",
+      "y": 90
     }
   }
 }

@@ -2,6 +2,7 @@ package net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUpgraded;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,16 +12,15 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerRunicAltarUpgraded extends BlockEntityMenu<BlockEntityRunicAltarUpgraded> {
     public ContainerRunicAltarUpgraded(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 19, 35);
         IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 66, 93));
-        this.addSlot(new SlotItemHandler(inventory, 1, 84, 93));
-        this.addSlot(new SlotItemHandler(inventory, 2, 102, 93));
+        this.addSlot(new SlotItemHandler(inventory, 0, 66, 94));
+        this.addSlot(new SlotItemHandler(inventory, 1, 84, 94));
+        this.addSlot(new SlotItemHandler(inventory, 2, 102, 94));
 
         int index = this.addSlotBox(inventory, 3, 11, 14, 4, 18, 4, 18);
         this.addSlotBox(inventory, index, 103, 14, 4, 18, 4, 18, UnrestrictedOutputSlot::new);

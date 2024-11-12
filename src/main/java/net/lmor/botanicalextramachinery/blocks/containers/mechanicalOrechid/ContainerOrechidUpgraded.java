@@ -2,6 +2,7 @@ package net.lmor.botanicalextramachinery.blocks.containers.mechanicalOrechid;
 
 import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidUpgraded;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -10,7 +11,6 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
-import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerOrechidUpgraded extends BlockEntityMenu<BlockEntityOrechidUpgraded> {
     public ContainerOrechidUpgraded(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {

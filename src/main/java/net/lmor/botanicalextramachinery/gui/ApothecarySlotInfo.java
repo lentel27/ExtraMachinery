@@ -1,10 +1,11 @@
 package net.lmor.botanicalextramachinery.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.github.noeppi_noeppi.libx.inventory.BaseItemStackHandler;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import org.moddingx.libx.inventory.BaseItemStackHandler;
+import net.minecraft.network.chat.TranslatableComponent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class ApothecarySlotInfo {
                 int[] x_y = seeds_slots.get(key);
                 if (inventory.getStackInSlot(key).isEmpty()){
                     if (isMouseOver(mouseX, mouseY, x_y[0], x_y[1])){
-                        Component text = Component.translatable("botanicalextramachinery.tooltip.screen.seed_slot");
+                        Component text = new TranslatableComponent("botanicalextramachinery.tooltip.screen.seed_slot");
                         this.parent.renderTooltip(poseStack, text, mouseX, mouseY);
                     }
                 }
@@ -66,7 +67,7 @@ public class ApothecarySlotInfo {
                 int [] x_y = upgrade_slots.get(key);
                 if (isMouseOver(mouseX, mouseY, x_y[0], x_y[1])){
                     if (inventory.getStackInSlot(key).isEmpty()){
-                        Component text = Component.translatable("botanicalextramachinery.tooltip.screen.upgrade_slot");
+                        Component text = new TranslatableComponent("botanicalextramachinery.tooltip.screen.upgrade_slot");
                         this.parent.renderTooltip(poseStack, text, mouseX, mouseY);
                     }
                 }

@@ -1,6 +1,5 @@
 package net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool;
 
-
 import net.lmor.botanicalextramachinery.blocks.pattern.BlockEntityManaPoolPattern;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig.RenderingVisualContent.ManaPoolSettings;
 import net.lmor.botanicalextramachinery.config.LibXServerConfig.ManaPoolSettings.ultimateManaPool;
@@ -8,7 +7,6 @@ import net.lmor.botanicalextramachinery.util.SettingPattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
 public class BlockEntityManaPoolUltimate extends BlockEntityManaPoolPattern {
 
@@ -21,7 +19,7 @@ public class BlockEntityManaPoolUltimate extends BlockEntityManaPoolPattern {
 
 
     public BlockEntityManaPoolUltimate(BlockEntityType<?> type, BlockPos pos, BlockState state) {
-        super(type, BotaniaRecipeTypes.MANA_INFUSION_TYPE, pos, state, ultimateManaPool.manaStorage,
+        super(type, pos, state, ultimateManaPool.manaStorage,
                 new int[] {
                         CATALYSTS_SLOT, FIRST_INPUT_SLOT, LAST_INPUT_SLOT,
                         FIRST_OUTPUT_SLOT, LAST_OUTPUT_SLOT, UPGRADE_SLOT
