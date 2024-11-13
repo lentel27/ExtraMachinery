@@ -43,7 +43,7 @@ public class ScreenOrechidAdvanced extends ExtraScreenBase<ContainerOrechidAdvan
         ores.put(5, new int[] {84, 19});
         ores.put(6, new int[] {102, 19});
         ores.put(7, new int[] {120, 19});
-        ores.put(7, new int[] {138, 19});
+        ores.put(8, new int[] {138, 19});
 
 
         this.orechidSlotInfo.setCoord(ores, upgrades);
