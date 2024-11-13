@@ -48,7 +48,7 @@ public class jei implements IModPlugin {
 
     @Nonnull
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(ExtraMachinery.getInstance().modid, "jei_plugin");
+        return new ResourceLocation("botanicalextramachinery", "jei_plugin");
     }
 
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
