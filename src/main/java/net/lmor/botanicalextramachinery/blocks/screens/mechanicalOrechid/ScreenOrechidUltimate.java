@@ -36,13 +36,13 @@ public class ScreenOrechidUltimate extends ExtraScreenBase<ContainerOrechidUltim
         upgrades.put(1, new int[] {160, 80});
 
 
-        ores.put(2, new int[] {30, 19});
+        ores.put(2, new int[] {30,  19});
         ores.put(3, new int[] {48, 19});
         ores.put(4, new int[] {66, 19});
         ores.put(5, new int[] {84, 19});
         ores.put(6, new int[] {102, 19});
         ores.put(7, new int[] {120, 19});
-        ores.put(7, new int[] {138, 19});
+        ores.put(8, new int[] {138, 19});
 
 
         this.orechidSlotInfo.setCoord(ores, upgrades);
