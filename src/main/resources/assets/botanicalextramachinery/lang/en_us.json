@@ -78,6 +78,7 @@
   "item.botanicalextramachinery.catalyst_seed_infinity": "Infinity Seed Catalyst",
   "item.botanicalextramachinery.catalyst_speed": "Speed Catalyst",
   "item.botanicalextramachinery.catalyst_stone_infinity": "Infinity Stone Catalyst",
+  "item.botanicalextramachinery.catalyst_wood_infinity": "Infinity Wood Catalyst",
 
   "botanicalextramachinery.tooltip.screen": "%1$s / %2$s Mana",
   "botanicalextramachinery.tooltip.screen.catalyst_slot": "Slot for catalysts",

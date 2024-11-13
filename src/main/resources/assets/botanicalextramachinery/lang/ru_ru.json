@@ -78,6 +78,7 @@
   "item.botanicalextramachinery.catalyst_seed_infinity": "Катализатор бесконечных семян",
   "item.botanicalextramachinery.catalyst_speed": "Катализатор скорости",
   "item.botanicalextramachinery.catalyst_stone_infinity": "Катализатор бесконечного камня",
+  "item.botanicalextramachinery.catalyst_wood_infinity": "Катализатор бесконечного дерева",
 
   "botanicalextramachinery.tooltip.screen": "%1$s / %2$s Маны",
   "botanicalextramachinery.tooltip.screen.catalyst_slot": "Cлот для катализаторов",

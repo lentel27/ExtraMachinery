@@ -31,6 +31,7 @@ public class ModItems {
     public static final Item catalystSeedInfinity;
     public static final Item catalystSpeed;
     public static final Item catalystStoneInfinity;;
+    public static final Item catalystWoodInfinity;;
 
     public static final Item malachiteSpark;
     public static final Item saffronSpark;
@@ -56,13 +57,13 @@ public class ModItems {
         shadowIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         crimsonIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
 
-
         catalystManaInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystLivingRockInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystWaterInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystSeedInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystSpeed = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystStoneInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
+        catalystWoodInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
     }
 
 }

@@ -19,7 +19,7 @@ public class ContainerDaisyUltimate extends BlockEntityMenu<BlockEntityDaisyUlti
     private static final int SIZE_INVENTORY = 18;
 
     public ContainerDaisyUltimate(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
-        super(type, windowId, level, pos, playerContainer, player, SIZE_INVENTORY, SIZE_INVENTORY);
+        super(type, windowId, level, pos, playerContainer, player, SIZE_INVENTORY + 1, SIZE_INVENTORY + 1);
 
         IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
@@ -42,6 +42,7 @@ public class ContainerDaisyUltimate extends BlockEntityMenu<BlockEntityDaisyUlti
         this.addSlot(new SlotItemHandler(inventory, 16, 62, 20));
         this.addSlot(new SlotItemHandler(inventory, 17, 62, 106));
 
+        this.addSlot(new SlotItemHandler(this.blockEntity.getInventoryUpgrade(), 0, 154, 106));
 
         this.layoutPlayerInventorySlots(12, 135);
     }
@@ -54,14 +55,14 @@ public class ContainerDaisyUltimate extends BlockEntityMenu<BlockEntityDaisyUlti
             ItemStack stack = slot.getItem();
             itemstack = stack.copy();
 
-            if (index < SIZE_INVENTORY) {
-                if (!this.moveItemStackTo(stack, SIZE_INVENTORY, 36 + SIZE_INVENTORY, true)) {
+            if (index < (SIZE_INVENTORY + 1)) {
+                if (!this.moveItemStackTo(stack, SIZE_INVENTORY, 36 + (SIZE_INVENTORY + 1), true)) {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onQuickCraft(stack, itemstack);
             } else {
-                if (!this.moveItemStackTo(stack, 0, SIZE_INVENTORY, false)) {
+                if (!this.moveItemStackTo(stack, 0, (SIZE_INVENTORY + 1), false)) {
                     return ItemStack.EMPTY;
                 }
             }

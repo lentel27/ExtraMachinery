@@ -12,7 +12,9 @@ import appeng.api.util.AECableType;
 import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
+import com.google.common.collect.Range;
 import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.ModItems;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyUpgraded;
@@ -30,6 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,6 +44,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.moddingx.libx.base.tile.BlockEntityBase;
 import org.moddingx.libx.base.tile.TickingBlock;
 import org.moddingx.libx.capability.ItemCapabilities;
+import org.moddingx.libx.crafting.RecipeHelper;
+import org.moddingx.libx.inventory.BaseItemStackHandler;
 import vazkii.botania.api.block_entity.SpecialFlowerBlockEntity;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.recipe.PureDaisyRecipe;
@@ -49,7 +54,10 @@ import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
 import javax.annotation.Nonnull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.BiPredicate;
 
 public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingBlock,
@@ -57,6 +65,9 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     private int ticksToNextUpdate = DaisySettings.ticksToNextUpdate;
     private int[] workingTicks;
     private final InventoryHandler inventory;
+
+    private int SLOT_UPGRADE = -1;
+    private BaseItemStackHandler inventoryUpgrade;
 
     private final int sizeItemSlots;
     private final LazyOptional<IItemHandlerModifiable> lazyInventory;
@@ -68,8 +79,17 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
 
     public BlockEntityDaisyPattern(BlockEntityType<?> type, BlockPos pos, BlockState state, int countSlotInventory,
-                                   SettingPattern settingPattern) {
+                                   SettingPattern settingPattern, int... slotUpgrade) {
         super(type, pos, state);
+
+        if (slotUpgrade.length != 0){
+            SLOT_UPGRADE = slotUpgrade[0];
+            inventoryUpgrade = BaseItemStackHandler.builder(SLOT_UPGRADE + 1)
+                    .validator((stack) -> { return stack.getItem() == ModItems.catalystStoneInfinity.asItem() || stack.getItem() == ModItems.catalystWoodInfinity.asItem();}, SLOT_UPGRADE)
+                    .slotLimit(1, SLOT_UPGRADE).output().contentsChanged(() -> {this.setChanged();this.setDispatchable();this.activeUpgradeSlot();})
+                    .build();
+        }
+
 
         this.countSlotInventory = countSlotInventory;
         this.setting = settingPattern;
@@ -83,7 +103,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
 
         this.lazyInventory = ItemCapabilities.create(this.inventory).cast();
-        this.hopperInventory = ItemCapabilities.create(this.inventory, (slot) -> { return this.workingTicks[slot] < 0;}, (BiPredicate)null).cast();
+        this.hopperInventory = ItemCapabilities.create(this.inventory, (slot) -> { return this.workingTicks[slot] < 0;}, null).cast();
 
         this.setChangedQueued = false;
 
@@ -142,6 +162,8 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
             if (this.getMainNode().isReady() && this.recipeOutputItem) {
                 exportResultsItemsME();
                 this.recipeOutputItem = false;
+
+                this.activeUpgradeSlot();
             }
 
             if (this.ticksToNextUpdate <= 0) {
@@ -152,6 +174,29 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
             }
         }
 
+    }
+
+    private void activeUpgradeSlot(){
+        if (this.inventoryUpgrade != null && !this.inventoryUpgrade.getStackInSlot(0).isEmpty()){
+            ItemStack upgradeItem = this.inventoryUpgrade.getStackInSlot(SLOT_UPGRADE);
+            ItemStack setSlotItem = ItemStack.EMPTY;
+
+            if (upgradeItem.getItem() == ModItems.catalystStoneInfinity.asItem()){
+                setSlotItem = new ItemStack(Blocks.STONE);
+            } else if (upgradeItem.getItem() == ModItems.catalystWoodInfinity.asItem()){
+                setSlotItem = new ItemStack(Blocks.OAK_LOG);
+            }
+
+            if (!setSlotItem.isEmpty()){
+                setSlotItem.setCount(setting.getConfigInt("sizeSlots"));
+
+                for(int i = 0; i < this.countSlotInventory; ++i) {
+                    if (!this.inventory.getStackInSlot(i).isEmpty()) continue;
+
+                    this.inventory.setStackInSlot(i, setSlotItem);
+                }
+            }
+        }
     }
 
     @Nullable
@@ -182,7 +227,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
                 Recipe<?> genericRecipe = (Recipe)iterator.next();
                 if (genericRecipe instanceof PureDaisyRecipe) {
                     PureDaisyRecipe recipe = (PureDaisyRecipe)genericRecipe;
-                    if (recipe.matches(this.level, this.worldPosition, (SpecialFlowerBlockEntity)null, state)) {
+                    if (recipe.matches(this.level, this.worldPosition, null, state)) {
                         return recipe;
                     }
                 }
@@ -194,6 +239,19 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
     public InventoryHandler getInventory() {
         return this.inventory;
+    }
+
+    public BaseItemStackHandler getInventoryUpgrade() {
+        return this.inventoryUpgrade;
+    }
+
+    public List<ItemStack> getUpgrades(){
+        List<ItemStack> upgrade = new ArrayList<>();
+
+        upgrade.add(new ItemStack(ModItems.catalystWoodInfinity));
+        upgrade.add(new ItemStack(ModItems.catalystStoneInfinity));
+
+        return upgrade;
     }
 
     @Nonnull
@@ -301,6 +359,11 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
             ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
             this.level.addFreshEntity(ie);
         }
+
+        if (this.inventoryUpgrade != null && !this.inventoryUpgrade.getStackInSlot(0).isEmpty()){
+            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, this.inventoryUpgrade.getStackInSlot(0).copy());
+            this.level.addFreshEntity(ie);
+        }
     }
 
     //endregion
@@ -365,7 +428,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }
