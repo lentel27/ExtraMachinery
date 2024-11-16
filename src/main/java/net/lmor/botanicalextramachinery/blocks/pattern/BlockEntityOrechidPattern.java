@@ -145,7 +145,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
                         this.exportResultsItemsME();
                     }
 
-                    timeCheckOutputSlot = 20;
+                    timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
                 } else {
                     timeCheckOutputSlot--;
                 }

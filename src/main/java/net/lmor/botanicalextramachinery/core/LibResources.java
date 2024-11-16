@@ -49,6 +49,7 @@ public class LibResources {
     public static final ResourceLocation UPGRADED_ORECHID_GUI = gui(LibNames.UPGRADED_ORECHID);
     public static final ResourceLocation ADVANCED_ORECHID_GUI = gui(LibNames.ADVANCED_ORECHID);
     public static final ResourceLocation ULTIMATE_ORECHID_GUI = gui(LibNames.ULTIMATE_ORECHID);
+    public static final ResourceLocation JADED_AMARANTHUS_GUI = gui(LibNames.JADED_AMARANTHUS);
 
     public LibResources() {
     }

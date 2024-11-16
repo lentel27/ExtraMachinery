@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "criterion0": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botanicalextramachinery:catalyst_petal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "criterion1": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "botanicalextramachinery:jaded_amaranthus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "botanicalextramachinery:catalyst_petal_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "criterion0",
+      "criterion1",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "botanicalextramachinery:catalyst_petal_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}

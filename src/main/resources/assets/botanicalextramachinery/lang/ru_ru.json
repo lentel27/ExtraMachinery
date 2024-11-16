@@ -47,15 +47,19 @@
   "block.botanicalextramachinery.advanced_orechid": "Продвинутый Рудноцвет",
   "block.botanicalextramachinery.ultimate_orechid": "Совершенный Рудноцвет",
 
+  "block.botanicalextramachinery.jaded_amaranthus": "Измученный амарант",
+
   "block.botanicalextramachinery.malachite_dragonstone_block": "Малахитовый блок дракона",
   "block.botanicalextramachinery.saffron_dragonstone_block": "Саффроновый блок дракона",
   "block.botanicalextramachinery.shadow_dragonstone_block": "Теневой блок дракона",
   "block.botanicalextramachinery.crimson_dragonstone_block": "Алый блок дракона",
+  "block.botanicalextramachinery.crystal_dragonstone_block": "Кристальный блок дракона",
 
   "block.botanicalextramachinery.malachite_ingot_block": "Малахитовый блок",
   "block.botanicalextramachinery.saffron_ingot_block": "Саффроновый блок",
   "block.botanicalextramachinery.shadow_ingot_block": "Теневой блок",
   "block.botanicalextramachinery.crimson_ingot_block": "Алый блок",
+  "block.botanicalextramachinery.crystal_ingot_block": "Кристальный блок",
 
   "item.botanicalextramachinery.malachite_spark": "Малахитовая искра",
   "item.botanicalextramachinery.saffron_spark": "Саффроновая искра",
@@ -66,11 +70,13 @@
   "item.botanicalextramachinery.saffron_dragonstone": "Саффроновый камень дракона",
   "item.botanicalextramachinery.shadow_dragonstone": "Теневой камень дракона",
   "item.botanicalextramachinery.crimson_dragonstone": "Алый камень дракона",
+  "item.botanicalextramachinery.crystal_dragonstone": "Кристальный камень дракона",
 
   "item.botanicalextramachinery.malachite_ingot": "Малахитовый слиток",
   "item.botanicalextramachinery.saffron_ingot": "Саффроновый слиток",
   "item.botanicalextramachinery.shadow_ingot": "Теневой слиток",
   "item.botanicalextramachinery.crimson_ingot": "Алый слиток",
+  "item.botanicalextramachinery.crystal_ingot": "Кристальный слиток",
 
   "item.botanicalextramachinery.catalyst_mana_infinity": "Катализатор бесконечной маны",
   "item.botanicalextramachinery.catalyst_living_rock_infinity": "Катализатор бесконечного жизнекамня",
@@ -79,6 +85,8 @@
   "item.botanicalextramachinery.catalyst_speed": "Катализатор скорости",
   "item.botanicalextramachinery.catalyst_stone_infinity": "Катализатор бесконечного камня",
   "item.botanicalextramachinery.catalyst_wood_infinity": "Катализатор бесконечного дерева",
+  "item.botanicalextramachinery.catalyst_petal": "Катализатор лепестков",
+  "item.botanicalextramachinery.catalyst_petal_block": "Катализатор блоков лепестков",
 
   "botanicalextramachinery.tooltip.screen": "%1$s / %2$s Маны",
   "botanicalextramachinery.tooltip.screen.catalyst_slot": "Cлот для катализаторов",
@@ -90,5 +98,9 @@
   "botanicalextramachinery.tooltip.item.mana": "§bТекущая мана: §6 %1$s",
   "botanicalextramachinery.tooltip.item.water": "§bТекущая вода:§r §6 %1$s",
   "botanicalextramachinery.tooltip.item.upgrade_speed_1": "§6Ускоряет крафт в §d4 раза",
-  "botanicalextramachinery.tooltip.item.upgrade_speed_2": "§6Только для §cзавода промышленной агломерации"
+  "botanicalextramachinery.tooltip.item.upgrade_speed_2": "§6Только для §cзавода промышленной агломерации",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_1": "Преобразует §dмистические цветки§r в §aлепестки§r.",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_2": "Преобразует §dмистические цветки§r в §aблоки лепестков§r.",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_3": "Используется в §6механическом измученном амаранте§r.",
+  "botanicalextramachinery.tooltip.item.sparkTransfer": "§aПередает %1$s маны"
 }

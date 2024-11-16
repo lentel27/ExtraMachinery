@@ -27,6 +27,7 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
     public final AlfheimMarketSlotInfo alfheiumMarketSlotInfo;
     public final OrechidSlotInfo orechidSlotInfo;
     public final DaisySlotInfo daisySlotInfo;
+    public final JadedAmaranthusSlotInfo jadedAmaranthusSlotInfo;
 
     public ExtraScreenBase(X menu, Inventory inventory, Component title, int x, int y) {
         super(menu, inventory, title);
@@ -51,6 +52,7 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         this.alfheiumMarketSlotInfo = new AlfheimMarketSlotInfo(this);
         this.orechidSlotInfo = new OrechidSlotInfo(this);
         this.daisySlotInfo = new DaisySlotInfo(this);
+        this.jadedAmaranthusSlotInfo = new JadedAmaranthusSlotInfo(this);
 
     }
 
@@ -75,6 +77,7 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         this.alfheiumMarketSlotInfo.setGuiCoord(this.leftPos, this.topPos);
         this.orechidSlotInfo.setGuiCoord(this.leftPos, this.topPos);
         this.daisySlotInfo.setGuiCoord(this.leftPos, this.topPos);
+        this.jadedAmaranthusSlotInfo.setGuiCoord(this.leftPos, this.topPos);
     }
 
     public void render(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {

@@ -154,7 +154,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
                         this.exportResultsItemsME();
                     }
 
-                    timeCheckOutputSlot = 20;
+                    timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
                 } else {
                     timeCheckOutputSlot--;
                 }

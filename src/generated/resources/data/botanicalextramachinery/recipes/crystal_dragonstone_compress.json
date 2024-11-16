@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:crystal_dragonstone"
+    }
+  },
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:crystal_dragonstone_block"
+  },
+  "show_notification": true
+}

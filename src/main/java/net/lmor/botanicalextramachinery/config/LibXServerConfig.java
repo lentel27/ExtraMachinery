@@ -423,6 +423,27 @@ public class LibXServerConfig {
         public OrechidSettings() {}
     }
 
+    @Group({"Jaded Amaranthus settings"})
+    public static class JadedAmaranthusSettings {
+        @Config({"Mana Storage"})
+        @IntRange( min = 1 )
+        public static int manaStorage = 1000000;
+
+        @Config({"Cooldown per recipe. For all color petal/petal block/flower"})
+        @IntRange( min = 1 )
+        public static int cooldown = 30;
+
+        @Config({"Count craft. For petal countCraft * 2. For petal block = countCraft as for a flower"})
+        @IntRange( min = 1 )
+        public static int countCraft = 1;
+
+        @Config({"Cost mana per one craft for petal/petal block/flower"})
+        @IntRange(min = 1)
+        public static int costMana = 200;
+
+        public JadedAmaranthusSettings() {}
+    }
+
     @Config({"How long will it take for a request to send resources from output slots to ME? (In ticks)"})
     @IntRange( min = 1 )
     public static int tickOutputSlots = 20;

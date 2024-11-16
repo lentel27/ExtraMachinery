@@ -110,14 +110,6 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
     }
 
     //region Base
-    public void load(@Nonnull CompoundTag nbt) {
-        super.load(nbt);
-        if (nbt.contains("workingTicks")) {
-            this.workingTicks = nbt.getIntArray("workingTicks");
-        }
-
-    }
-
     public void tick() {
         boolean hasSpawnedParticles = false;
 
@@ -263,9 +255,24 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
     }
 
+    public void load(@Nonnull CompoundTag nbt) {
+        super.load(nbt);
+        if (nbt.contains("workingTicks")) {
+            this.workingTicks = nbt.getIntArray("workingTicks");
+        }
+
+        if (nbt.contains("inv")){
+            this.getInventoryUpgrade().deserializeNBT(nbt.getCompound("inv"));
+        }
+    }
+
     public void saveAdditional(@Nonnull CompoundTag nbt) {
         super.saveAdditional(nbt);
         nbt.putIntArray("workingTicks", this.workingTicks);
+
+        if (this.inventoryUpgrade != null){
+            nbt.put("inv", this.getInventoryUpgrade().serializeNBT());
+        }
     }
 
     public void handleUpdateTag(CompoundTag nbt) {
@@ -274,6 +281,10 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
 
             if (nbt.contains("workingTicks")) {
                 this.workingTicks = nbt.getIntArray("workingTicks");
+            }
+
+            if (nbt.contains("inv")){
+                this.getInventoryUpgrade().deserializeNBT(nbt.getCompound("inv"));
             }
 
         }
@@ -286,6 +297,11 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
         } else {
             CompoundTag nbt = super.getUpdateTag();
             nbt.putIntArray("workingTicks", this.workingTicks);
+
+            if (this.inventoryUpgrade != null){
+                nbt.put("inv", this.getInventoryUpgrade().serializeNBT());
+            }
+
             return nbt;
         }
     }

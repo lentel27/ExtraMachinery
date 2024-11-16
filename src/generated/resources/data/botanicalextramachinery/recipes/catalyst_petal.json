@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "tag": "botania:petals"
+    },
+    "c": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:catalyst_petal"
+  },
+  "show_notification": true
+}
