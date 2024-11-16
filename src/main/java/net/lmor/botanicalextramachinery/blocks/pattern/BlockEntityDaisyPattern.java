@@ -185,7 +185,7 @@ public class BlockEntityDaisyPattern extends BlockEntityBase implements TickingB
                 for(int i = 0; i < this.countSlotInventory; ++i) {
                     if (!this.inventory.getStackInSlot(i).isEmpty()) continue;
 
-                    this.inventory.setStackInSlot(i, setSlotItem);
+                    this.inventory.setStackInSlot(i, setSlotItem.copy());
                 }
             }
         }
