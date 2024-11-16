@@ -9,9 +9,15 @@ import net.minecraft.world.level.Level;
 
 public class EntityShadowManaSpark extends EntityManaSparkPattern {
 
+    private static int RATE = 500000;
+
     public EntityShadowManaSpark(EntityType<?> entityEntityType, Level level) {
         super(entityEntityType, level);
-        this.TRANSFER_RATE = 500000;
+        this.TRANSFER_RATE = RATE;
+    }
+
+    public static int geRate(){
+        return RATE;
     }
 
     public EntityShadowManaSpark(Level level){

@@ -48,5 +48,7 @@ public class LootTables extends BlockLootProviderBase {
         this.drops(ModBlocks.upgradedOrechid, this.copyNBT(TileTags.MANA));
         this.drops(ModBlocks.advancedOrechid, this.copyNBT(TileTags.MANA));
         this.drops(ModBlocks.ultimateOrechid, this.copyNBT(TileTags.MANA));
+
+        this.drops(ModBlocks.jadedAmaranthus, this.copyNBT(TileTags.MANA));
     }
 }

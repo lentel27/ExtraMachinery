@@ -155,7 +155,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<IRuneAltarRecipe>
                         this.exportResultsItemsME();
                     }
 
-                    timeCheckOutputSlot = 20;
+                    timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
                 } else {
                     timeCheckOutputSlot--;
                 }

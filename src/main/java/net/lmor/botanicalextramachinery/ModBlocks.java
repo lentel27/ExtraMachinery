@@ -4,6 +4,7 @@ import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
 import io.github.noeppi_noeppi.libx.base.BlockBase;
 import io.github.noeppi_noeppi.libx.base.tile.MenuBlockBE;
 import io.github.noeppi_noeppi.libx.menu.BlockEntityMenu;
+import net.lmor.botanicalextramachinery.blocks.blockMachines.BlockJadedAmaranthus;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket.BlockAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket.BlockAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalAlfheimMarket.BlockAlfheimMarketUltimate;
@@ -32,6 +33,7 @@ import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalRunicAlta
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalRunicAltar.BlockRunicAltarBase;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalRunicAltar.BlockRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalRunicAltar.BlockRunicAltarUpgraded;
+import net.lmor.botanicalextramachinery.blocks.containers.ContainerJadedAmaranthus;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketUltimate;
@@ -60,6 +62,7 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.C
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarUpgraded;
+import net.lmor.botanicalextramachinery.blocks.tiles.BlockEntityJadedAmaranthus;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUltimate;
@@ -88,6 +91,7 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarUpgraded;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -102,6 +106,8 @@ public class ModBlocks {
     public static final BlockBase shadowIngotBlock;
     public static final BlockBase crimsonDragonstoneBlock;
     public static final BlockBase crimsonIngotBlock;
+    public static final BlockBase crystalDragonstoneBlock;
+    public static final BlockBase crystalIngotBlock;
 
     public static final MenuBlockBE<BlockEntityManaPoolBase, ContainerManaPoolBase> baseManaPool;
     public static final MenuBlockBE<BlockEntityManaPoolUpgraded, ContainerManaPoolUpgraded> upgradedManaPool;
@@ -138,6 +144,7 @@ public class ModBlocks {
     public static final MenuBlockBE<BlockEntityOrechidAdvanced, ContainerOrechidAdvanced> advancedOrechid;
     public static final MenuBlockBE<BlockEntityOrechidUltimate, ContainerOrechidUltimate> ultimateOrechid;
 
+    public static final MenuBlockBE<BlockEntityJadedAmaranthus, ContainerJadedAmaranthus> jadedAmaranthus;
 
     public ModBlocks() {
     }
@@ -147,11 +154,13 @@ public class ModBlocks {
         saffronDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
         shadowDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
         crimsonDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        crystalDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
 
         malachiteIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
         saffronIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
         shadowIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
         crimsonIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.of(Material.METAL).strength(5.0F, 6.0F).sound(SoundType.METAL));
+        crystalIngotBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
 
         baseManaPool = new BlockManaPoolBase(ExtraMachinery.getInstance(), BlockEntityManaPoolBase.class, BlockEntityMenu.createMenuType(ContainerManaPoolBase::new));
         upgradedManaPool = new BlockManaPoolUpgraded(ExtraMachinery.getInstance(), BlockEntityManaPoolUpgraded.class, BlockEntityMenu.createMenuType(ContainerManaPoolUpgraded::new));
@@ -188,6 +197,7 @@ public class ModBlocks {
         advancedOrechid = new BlockOrechidAdvanced(ExtraMachinery.getInstance(), BlockEntityOrechidAdvanced.class, BlockEntityMenu.createMenuType(ContainerOrechidAdvanced::new));
         ultimateOrechid = new BlockOrechidUltimate(ExtraMachinery.getInstance(), BlockEntityOrechidUltimate.class, BlockEntityMenu.createMenuType(ContainerOrechidUltimate::new));
 
+        jadedAmaranthus = new BlockJadedAmaranthus(ExtraMachinery.getInstance(), BlockEntityJadedAmaranthus.class, BlockEntityMenu.createMenuType(ContainerJadedAmaranthus::new));
     }
 
 

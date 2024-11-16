@@ -3,7 +3,9 @@
   "values": [
     "botanicalextramachinery:malachite_dragonstone_block",
     "botanicalextramachinery:saffron_dragonstone_block",
+    "botanicalextramachinery:crystal_dragonstone_block",
     "botanicalextramachinery:malachite_ingot_block",
-    "botanicalextramachinery:saffron_ingot_block"
+    "botanicalextramachinery:saffron_ingot_block",
+    "botanicalextramachinery:crystal_ingot_block"
   ]
 }

@@ -120,7 +120,7 @@ public class BlockEntityManaPoolPattern extends RecipeTile<IManaInfusionRecipe>
                         this.exportResultsItemsME();
                     }
 
-                    timeCheckOutputSlot = 20;
+                    timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
                 } else {
                     timeCheckOutputSlot--;
                 }

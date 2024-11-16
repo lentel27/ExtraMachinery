@@ -259,6 +259,26 @@
     }
   },
   
+  // Jaded Amaranthus settings
+  "JadedAmaranthusSettings": {
+  
+    // Cooldown per recipe. For all color petal/petal block/flower
+    // Minimum: 1
+    "cooldown": 30,
+    
+    // Cost mana per one craft for petal/petal block/flower
+    // Minimum: 1
+    "costMana": 200,
+    
+    // Count craft. For petal countCraft * 2. For petal block = countCraft as for a flower
+    // Minimum: 1
+    "countCraft": 1,
+    
+    // Mana Storage
+    // Minimum: 1
+    "manaStorage": 1000000
+  },
+  
   // Mana pool settings for all types
   "ManaPoolSettings": {
   

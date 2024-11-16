@@ -24,13 +24,18 @@ public class ModItems {
     public static final Item crimsonDragonstone;
     public static final Item crimsonIngot;
 
+    public static final Item crystalDragonstone;
+    public static final Item crystalIngot;
 
     public static final Item catalystManaInfinity;
     public static final Item catalystLivingRockInfinity;
     public static final Item catalystWaterInfinity;
     public static final Item catalystSeedInfinity;
     public static final Item catalystSpeed;
-    public static final Item catalystStoneInfinity;;
+    public static final Item catalystStoneInfinity;
+    public static final Item catalystWoodInfinity;
+    public static final Item catalystPetal;
+    public static final Item catalystPetalBlock;
 
     public static final Item malachiteSpark;
     public static final Item saffronSpark;
@@ -50,12 +55,13 @@ public class ModItems {
         saffronDragonstone = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         shadowDragonstone = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         crimsonDragonstone = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
+        crystalDragonstone = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
 
         malachiteIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         saffronIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         shadowIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         crimsonIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
-
+        crystalIngot = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
 
         catalystManaInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystLivingRockInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
@@ -63,6 +69,9 @@ public class ModItems {
         catalystSeedInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystSpeed = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
         catalystStoneInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
+        catalystWoodInfinity = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
+        catalystPetal = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
+        catalystPetalBlock = new ItemBase(ExtraMachinery.getInstance(), new Item.Properties());
     }
 
 }

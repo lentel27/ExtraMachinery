@@ -53,5 +53,7 @@ public class BlockStates extends BlockStateProviderBase {
         this.manualModel(ModBlocks.upgradedOrechid);
         this.manualModel(ModBlocks.advancedOrechid);
         this.manualModel(ModBlocks.ultimateOrechid);
+
+        this.manualModel(ModBlocks.jadedAmaranthus);
     }
 }

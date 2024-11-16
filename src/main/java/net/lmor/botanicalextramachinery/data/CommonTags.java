@@ -19,16 +19,20 @@ public class CommonTags extends CommonTagsProviderBase {
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.saffronDragonstoneBlock);
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.shadowDragonstoneBlock);
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.crimsonDragonstoneBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.crystalDragonstoneBlock);
 
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.malachiteIngotBlock);
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.saffronIngotBlock);
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.shadowIngotBlock);
         this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.crimsonIngotBlock);
+        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.crystalIngotBlock);
 
         this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.malachiteDragonstoneBlock);
         this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.saffronDragonstoneBlock);
+        this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.crystalDragonstoneBlock);
         this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.malachiteIngotBlock);
         this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.saffronIngotBlock);
+        this.block(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.crystalIngotBlock);
 
         this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.shadowDragonstoneBlock);
         this.block(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.crimsonDragonstoneBlock);

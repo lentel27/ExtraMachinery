@@ -16,6 +16,6 @@ public class BlockEntityDaisyUltimate extends BlockEntityDaisyPattern {
         super(type, pos, state, SLOT_INVENTORY,
                 new SettingPattern().addConfig("durationTime", Integer.toString(ultimateDaisy.durationTime))
                         .addConfig("renderingDaisy", Boolean.toString(DaisySettings.daisyUltimate))
-                        .addConfig("sizeSlots", Integer.toString(ultimateDaisy.sizeItemSlots)));
+                        .addConfig("sizeSlots", Integer.toString(ultimateDaisy.sizeItemSlots)), 0);
     }
 }

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "abc",
+    "bdb",
+    "cba"
+  ],
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:saffron_dragonstone_block"
+    },
+    "b": {
+      "item": "botanicalextramachinery:shadow_dragonstone_block"
+    },
+    "c": {
+      "item": "botanicalextramachinery:crimson_dragonstone_block"
+    },
+    "d": {
+      "item": "botanicalextramachinery:ultimate_daisy"
+    }
+  },
+  "result": {
+    "item": "botanicalextramachinery:catalyst_wood_infinity"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
+  "key": {
+    "a": {
+      "item": "botania:mana_ring_greater"
+    },
+    "b": {
+      "item": "botanicalextramachinery:crystal_ingot"
+    },
+    "c": {
+      "item": "botania:jaded_amaranthus"
+    },
+    "d": {
+      "item": "botanicalextramachinery:crystal_dragonstone_block"
+    }
+  },
+  "result": {
+    "item": "botanicalextramachinery:jaded_amaranthus"
+  }
+}

@@ -47,15 +47,19 @@
   "block.botanicalextramachinery.advanced_orechid": "Advanced Orechid",
   "block.botanicalextramachinery.ultimate_orechid": "Ultimate Orechid",
 
+  "block.botanicalextramachinery.jaded_amaranthus": "Jaded Amaranthus",
+
   "block.botanicalextramachinery.malachite_dragonstone_block": "Malachite Dragonstone Block",
   "block.botanicalextramachinery.saffron_dragonstone_block": "Saffron Dragonstone Block",
   "block.botanicalextramachinery.shadow_dragonstone_block": "Shadow Dragonstone Block",
   "block.botanicalextramachinery.crimson_dragonstone_block": "Crimson Dragonstone Block",
+  "block.botanicalextramachinery.crystal_dragonstone_block": "Crystal Dragonstone Block",
 
   "block.botanicalextramachinery.malachite_ingot_block": "Malachite Block",
   "block.botanicalextramachinery.saffron_ingot_block": "Saffron Block",
   "block.botanicalextramachinery.shadow_ingot_block": "Shadow Block",
   "block.botanicalextramachinery.crimson_ingot_block": "Crimson Block",
+  "block.botanicalextramachinery.crystal_ingot_block": "Crystal Block",
 
   "item.botanicalextramachinery.malachite_spark": "Malachite Spark",
   "item.botanicalextramachinery.saffron_spark": "Saffron Spark",
@@ -66,11 +70,13 @@
   "item.botanicalextramachinery.saffron_dragonstone": "Saffron Dragonstone",
   "item.botanicalextramachinery.shadow_dragonstone": "Shadow Dragonstone",
   "item.botanicalextramachinery.crimson_dragonstone": "Crimson Dragonstone",
+  "item.botanicalextramachinery.crystal_dragonstone": "Crystal Dragonstone",
 
   "item.botanicalextramachinery.malachite_ingot": "Malachite ingot",
   "item.botanicalextramachinery.saffron_ingot": "Saffron ingot",
   "item.botanicalextramachinery.shadow_ingot": "Shadow ingot",
   "item.botanicalextramachinery.crimson_ingot": "Crimson ingot",
+  "item.botanicalextramachinery.crystal_ingot": "Crystal ingot",
 
   "item.botanicalextramachinery.catalyst_mana_infinity": "Infinity Mana Catalyst",
   "item.botanicalextramachinery.catalyst_living_rock_infinity": "Infinity LivingRock Catalyst",
@@ -78,6 +84,9 @@
   "item.botanicalextramachinery.catalyst_seed_infinity": "Infinity Seed Catalyst",
   "item.botanicalextramachinery.catalyst_speed": "Speed Catalyst",
   "item.botanicalextramachinery.catalyst_stone_infinity": "Infinity Stone Catalyst",
+  "item.botanicalextramachinery.catalyst_wood_infinity": "Infinity Wood Catalyst",
+  "item.botanicalextramachinery.catalyst_petal": "Petal Catalyst",
+  "item.botanicalextramachinery.catalyst_petal_block": "Petal Block Catalyst",
 
   "botanicalextramachinery.tooltip.screen": "%1$s / %2$s Mana",
   "botanicalextramachinery.tooltip.screen.catalyst_slot": "Slot for catalysts",
@@ -89,5 +98,9 @@
   "botanicalextramachinery.tooltip.item.mana": "§bCurrent Mana:§r §6 %1$s",
   "botanicalextramachinery.tooltip.item.water": "§bCurrent Water:§r §6 %1$s",
   "botanicalextramachinery.tooltip.item.upgrade_speed_1": "§6Speeds up crafting by §d4 times",
-  "botanicalextramachinery.tooltip.item.upgrade_speed_2": "§6Only for §cindustrial agglomeration factory"
+  "botanicalextramachinery.tooltip.item.upgrade_speed_2": "§6Only for §cindustrial agglomeration factory",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_1": "Transforms §dmystical flowers§r into §apetals§r.",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_2": "Transforms §dmystical flowers§r into §ablock petals§r.",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_3": "Used in §6mechanical jaded amaranth§r.",
+  "botanicalextramachinery.tooltip.item.sparkTransfer": "§aTransfers %1$s mana"
 }

@@ -140,7 +140,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<IElvenTradeReci
                         this.exportResultsItemsME();
                     }
 
-                    timeCheckOutputSlot = 20;
+                    timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
                 } else {
                     timeCheckOutputSlot--;
                 }

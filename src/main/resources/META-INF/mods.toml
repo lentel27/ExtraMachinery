@@ -5,7 +5,7 @@ loggFile="logo.png"
 
 [[mods]]
 modId="botanicalextramachinery"
-version="1.0.0"
+version="1.0.1"
 displayName="Botanical Extra Machinery"
 authors="LMor, nexxx_7"
 description='''New and improved machines from the Botanical Machinery mod. Also new sparks and a mechanical orechid.'''

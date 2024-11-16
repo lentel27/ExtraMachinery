@@ -9,9 +9,15 @@ import net.minecraft.world.level.Level;
 
 public class EntityMalachiteManaSpark extends EntityManaSparkPattern {
 
+    private static int RATE = 25000;
+
     public EntityMalachiteManaSpark(EntityType<?> entityEntityType, Level level) {
         super(entityEntityType, level);
-        this.TRANSFER_RATE = 25000;
+        this.TRANSFER_RATE = RATE;
+    }
+
+    public static int geRate(){
+        return RATE;
     }
 
     public EntityMalachiteManaSpark(Level level){

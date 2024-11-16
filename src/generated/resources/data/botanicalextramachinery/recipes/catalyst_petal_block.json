@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:catalyst_petal"
+    },
+    "b": {
+      "item": "botanicalextramachinery:jaded_amaranthus"
+    }
+  },
+  "result": {
+    "item": "botanicalextramachinery:catalyst_petal_block"
+  }
+}

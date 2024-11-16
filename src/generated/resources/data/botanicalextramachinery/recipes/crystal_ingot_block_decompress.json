@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "botanicalextramachinery:crystal_ingot_block"
+    }
+  ],
+  "result": {
+    "item": "botanicalextramachinery:crystal_ingot",
+    "count": 9
+  }
+}
