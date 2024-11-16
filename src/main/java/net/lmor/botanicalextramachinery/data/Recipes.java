@@ -3,6 +3,7 @@ package net.lmor.botanicalextramachinery.data;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.Items;
 import org.moddingx.libx.annotation.data.Datagen;
 import org.moddingx.libx.datagen.provider.recipe.RecipeProviderBase;
 import org.moddingx.libx.datagen.provider.recipe.crafting.CompressionExtension;
@@ -11,6 +12,7 @@ import org.moddingx.libx.mod.ModX;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.block.BotaniaFlowerBlocks;
 import vazkii.botania.common.item.BotaniaItems;
+import vazkii.botania.common.lib.BotaniaTags;
 
 @Datagen
 public class Recipes extends RecipeProviderBase implements CraftingExtension, CompressionExtension  {
@@ -22,11 +24,15 @@ public class Recipes extends RecipeProviderBase implements CraftingExtension, Co
         this.compress(ModItems.saffronDragonstone, ModBlocks.saffronDragonstoneBlock);
         this.compress(ModItems.shadowDragonstone, ModBlocks.shadowDragonstoneBlock);
         this.compress(ModItems.crimsonDragonstone, ModBlocks.crimsonDragonstoneBlock);
+        this.compress(ModItems.crystalDragonstone, ModBlocks.crystalDragonstoneBlock);
 
         this.compress(ModItems.malachiteIngot, ModBlocks.malachiteIngotBlock);
         this.compress(ModItems.saffronIngot, ModBlocks.saffronIngotBlock);
         this.compress(ModItems.shadowIngot, ModBlocks.shadowIngotBlock);
         this.compress(ModItems.crimsonIngot, ModBlocks.crimsonIngotBlock);
+        this.compress(ModItems.crystalIngot, ModBlocks.crystalIngotBlock);
+
+        this.machine(ModBlocks.jadedAmaranthus, BotaniaItems.manaRingGreater, ModItems.crystalIngot, BotaniaFlowerBlocks.jadedAmaranthus, ModBlocks.crystalDragonstoneBlock);
 
         this.machine(ModBlocks.baseIndustrialAgglomerationFactory, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.industrialAgglomerationFactory, ModBlocks.malachiteDragonstoneBlock);
         this.machine(ModBlocks.baseManaPool, BotaniaItems.manaRingGreater, ModItems.malachiteIngot, de.melanx.botanicalmachinery.ModBlocks.mechanicalManaPool, ModBlocks.malachiteDragonstoneBlock);
@@ -66,6 +72,10 @@ public class Recipes extends RecipeProviderBase implements CraftingExtension, Co
         this.upgrade(ModItems.catalystLivingRockInfinity, ModBlocks.upgradedRunicAltar);
         this.upgrade(ModItems.catalystWaterInfinity, ModBlocks.advancedApothecary);
         this.upgrade(ModItems.catalystStoneInfinity, ModItems.catalystLivingRockInfinity);
+        this.upgrade(ModItems.catalystWoodInfinity, ModBlocks.ultimateDaisy);
+
+        this.shaped( ModItems.catalystPetal, "aba", "bcb", "aba", 'a', Items.DIAMOND, 'b', BotaniaTags.Items.PETALS, 'c', Items.IRON_BLOCK);
+        this.upgrade_2(ModItems.catalystPetalBlock, ModItems.catalystPetal, ModBlocks.jadedAmaranthus);
     }
 
     private void machine(Object output, Object special1, Object special2, Object special3, Object special4) {

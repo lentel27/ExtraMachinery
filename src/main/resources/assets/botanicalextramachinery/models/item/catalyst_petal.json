@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "botanicalextramachinery:item/catalyst_pattern",
+    "layer1": "botanicalextramachinery:item/catalyst_petal_pattern",
+    "layer2": "botanicalextramachinery:item/template/transformation"
+  }
+}

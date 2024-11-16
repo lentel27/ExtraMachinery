@@ -112,7 +112,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
                         this.exportResultsItemsME();
                     }
 
-                    timeCheckOutputSlot = 20;
+                    timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
                 } else {
                     timeCheckOutputSlot--;
                 }

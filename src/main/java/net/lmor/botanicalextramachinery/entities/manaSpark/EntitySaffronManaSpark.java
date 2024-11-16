@@ -9,10 +9,17 @@ import net.minecraft.world.level.Level;
 
 public class EntitySaffronManaSpark extends EntityManaSparkPattern {
 
+    private static int RATE = 100000;
+
     public EntitySaffronManaSpark(EntityType<?> entityEntityType, Level level) {
         super(entityEntityType, level);
-        this.TRANSFER_RATE = 100000;
+        this.TRANSFER_RATE = RATE;
     }
+
+    public static int geRate(){
+        return RATE;
+    }
+
 
     public EntitySaffronManaSpark(Level level){
         this(ModEntities.SAFFRON_SPARK, level);

@@ -3,10 +3,12 @@ package net.lmor.botanicalextramachinery.client;
 import com.google.common.base.Suppliers;
 import net.lmor.botanicalextramachinery.ExtraMachinery;
 import net.lmor.botanicalextramachinery.ModEntities;
+import net.lmor.botanicalextramachinery.client.render.ColorHandler;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -47,6 +49,11 @@ public class ForgeClientInitializer {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers evt) {
         EntityRenderers.registerEntityRenderers(evt::registerEntityRenderer);
+    }
+
+    @SubscribeEvent
+    public static void registerItemColors(RegisterColorHandlersEvent.Item evt) {
+        ColorHandler.submitItems(evt::register);
     }
 
     private static final Supplier<Map<EntityType<?>, Function<Entity, WandHUD>>> ENTITY_WAND_HUD = Suppliers.memoize(() -> {

@@ -16,7 +16,7 @@ import org.moddingx.libx.menu.BlockEntityMenu;
 import javax.annotation.Nonnull;
 
 public class ContainerDaisyUltimate extends BlockEntityMenu<BlockEntityDaisyUltimate> {
-    private static final int SIZE_INVENTORY = 18;
+    private static final int SIZE_INVENTORY = 19;
 
     public ContainerDaisyUltimate(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, SIZE_INVENTORY, SIZE_INVENTORY);
@@ -42,6 +42,7 @@ public class ContainerDaisyUltimate extends BlockEntityMenu<BlockEntityDaisyUlti
         this.addSlot(new SlotItemHandler(inventory, 16, 62, 20));
         this.addSlot(new SlotItemHandler(inventory, 17, 62, 106));
 
+        this.addSlot(new SlotItemHandler(this.blockEntity.getInventoryUpgrade(), 0, 154, 106));
 
         this.layoutPlayerInventorySlots(12, 135);
     }

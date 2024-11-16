@@ -25,6 +25,8 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
     public final IndustrialAgglomerationFactorySlotInfo agglomerationSlotInfo;
     public final AlfheimMarketSlotInfo alfheiumMarketSlotInfo;
     public final OrechidSlotInfo orechidSlotInfo;
+    public final DaisySlotInfo daisySlotInfo;
+    public final JadedAmaranthusSlotInfo jadedAmaranthusSlotInfo;
 
     public ExtraScreenBase(X menu, Inventory inventory, Component title, int x, int y) {
         super(menu, inventory, title);
@@ -48,6 +50,8 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         this.agglomerationSlotInfo = new IndustrialAgglomerationFactorySlotInfo(this);
         this.alfheiumMarketSlotInfo = new AlfheimMarketSlotInfo(this);
         this.orechidSlotInfo = new OrechidSlotInfo(this);
+        this.daisySlotInfo = new DaisySlotInfo(this);
+        this.jadedAmaranthusSlotInfo = new JadedAmaranthusSlotInfo(this);
 
     }
 
@@ -71,6 +75,8 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
         this.agglomerationSlotInfo.setGuiCoord(this.leftPos, this.topPos);
         this.alfheiumMarketSlotInfo.setGuiCoord(this.leftPos, this.topPos);
         this.orechidSlotInfo.setGuiCoord(this.leftPos, this.topPos);
+        this.daisySlotInfo.setGuiCoord(this.leftPos, this.topPos);
+        this.jadedAmaranthusSlotInfo.setGuiCoord(this.leftPos, this.topPos);
     }
 
 
