@@ -1,6 +1,5 @@
 package net.lmor.botanicalextramachinery.blocks.tiles;
 
-import appbot.ae2.ManaKey;
 import appeng.api.config.Actionable;
 import appeng.api.networking.GridHelper;
 import appeng.api.networking.IGridNode;
@@ -19,6 +18,7 @@ import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalTile;
 import net.lmor.botanicalextramachinery.blocks.flowersGreenhouse.GenFlowers;
 import net.lmor.botanicalextramachinery.config.LibXClientConfig;
 import net.lmor.botanicalextramachinery.config.LibXServerConfig;
+import net.lmor.botanicalextramachinery.util.ExportManaME;
 import net.lmor.botanicalextramachinery.util.ResizeBaseItemStackHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -82,8 +82,14 @@ public class BlockEntityGreenhouse extends ExtraBotanicalTile implements IEnergy
 
     private int greenhouseSleep;
 
-        public BlockEntityGreenhouse(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state) {
+    private static final boolean isModAppbot = ModList.get().isLoaded("appbot");
+
+    private static final ExportManaME exportManaME = ModList.get().isLoaded("appbot") ? new ExportManaME() : null;
+
+    public BlockEntityGreenhouse(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state) {
         super(blockEntityTypeIn, pos, state, baseManaStorage);
+
+
 
         energy_capacity = LibXServerConfig.GreenhouseSettings.energyCapacity;
         energyTransfer = LibXServerConfig.GreenhouseSettings.energyTransfer;
@@ -372,8 +378,8 @@ public class BlockEntityGreenhouse extends ExtraBotanicalTile implements IEnergy
                     }
                 }
 
-                if (this.getMainNode() != null && this.getMainNode().getNode() != null && this.getMainNode().isOnline()){
-                    this.exportManaME();
+                if (isModAppbot && exportManaME != null&& this.getMainNode() != null && this.getMainNode().getNode() != null && this.getMainNode().isOnline()){
+                    receiveMana(exportManaME.exportManaME(this.getCurrentMana(), this.getMainNode().getNode().getGrid()));
                 }
 
                 if (craft && upgrade_heat) {
@@ -659,6 +665,8 @@ public class BlockEntityGreenhouse extends ExtraBotanicalTile implements IEnergy
     @Nullable
     @Override
     public IGridNode getGridNode(Direction direction) {
+        if (this.getMainNode() == null) return null;
+
         return this.getMainNode().getNode();
     }
 
@@ -685,13 +693,6 @@ public class BlockEntityGreenhouse extends ExtraBotanicalTile implements IEnergy
     @Override
     public AECableType getCableConnectionType(Direction dir) {
         return AECableType.SMART;
-    }
-
-    private void exportManaME(){
-        if (this.getCurrentMana() <= 0) return;
-
-        long export = this.getMainNode().getGrid().getStorageService().getInventory().insert(ManaKey.KEY, this.getCurrentMana(), Actionable.MODULATE, IActionSource.empty());
-        this.receiveMana(-(int)export);
     }
     //endregion
 }

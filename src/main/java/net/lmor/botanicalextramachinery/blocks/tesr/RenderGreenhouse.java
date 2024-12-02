@@ -136,18 +136,4 @@ public class RenderGreenhouse implements BlockEntityRenderer<BlockEntityGreenhou
             }
         }
     }
-
-    private float[] getCoordFlower(int slot){
-        switch (slot) {
-            case 0 -> { return new float[] {0.2f, 0.2f};}
-            case 1 -> { return new float[] {0.0f, 0.0f};}
-            case 2 -> { return new float[] {0.0f, 0.0f};}
-            case 3 -> { return new float[] {0.0f, 0.0f};}
-            case 4 -> { return new float[] {0.0f, 0.0f};}
-            case 5 -> { return new float[] {0.0f, 0.0f};}
-            case 6 -> { return new float[] {0.0f, 0.0f};}
-            default -> { return new float[] {0, 0}; }
-        }
-    }
-
 }
