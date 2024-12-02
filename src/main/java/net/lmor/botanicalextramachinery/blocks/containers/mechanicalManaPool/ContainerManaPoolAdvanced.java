@@ -1,7 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolAdvanced;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,17 +15,21 @@ import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerManaPoolAdvanced extends BlockEntityMenu<BlockEntityManaPoolAdvanced> {
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 124;
+
     public ContainerManaPoolAdvanced(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 11, 17);
-        IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 89, 57));
-        this.addSlot(new SlotItemHandler(inventory, 1, 89, 13));
+        this.addSlot(new SlotItemHandler(inventory, 0, 98, 72));
+        this.addSlot(new SlotItemHandler(inventory, 1, 98, 36));
 
-        int index = this.addSlotBox(inventory, 2, 23, 17, 3, 18, 3, 18);
-        this.addSlotBox(inventory, index, 118, 17, 2, 18, 3, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 2, 33, 36, 3, 18, 3, 18);
+        this.addSlotBox(inventory, index, 128, 36, 2, 18, 3, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(8, 97);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.ADVANCED, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

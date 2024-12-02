@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "c": {
+      "tag": "botania:petals"
+    }
+  },
+  "pattern": [
+    " a ",
+    "bcb",
+    " a "
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_pattern"
+  },
+  "show_notification": true
+}

@@ -9,6 +9,7 @@ public class ModModels {
 
     public static final ModModels INSTANCE = new ModModels();
 
+    public final Material baseSparkWorldIcon = mainAtlas("item/base_spark");
     public final Material malachiteSparkWorldIcon = mainAtlas("item/malachite_spark");
     public final Material saffronSparkWorldIcon = mainAtlas("item/saffron_spark");
     public final Material shadowSparkWorldIcon = mainAtlas("item/shadow_spark");

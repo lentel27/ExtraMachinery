@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "botanicalextramachinery:block/greenhouse",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "botanicalextramachinery:block/greenhouse"
+    },
+    "facing=south": {
+      "model": "botanicalextramachinery:block/greenhouse",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "botanicalextramachinery:block/greenhouse",
+      "y": 270
+    }
+  }
+}

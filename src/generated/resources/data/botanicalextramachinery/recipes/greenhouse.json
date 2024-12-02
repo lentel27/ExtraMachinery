@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:crimson_ingot"
+    },
+    "b": {
+      "item": "minecraft:dirt"
+    },
+    "c": {
+      "item": "botanicalextramachinery:crimson_ingot_block"
+    },
+    "d": {
+      "item": "botanicalextramachinery:crimson_dragonstone"
+    },
+    "e": {
+      "item": "minecraft:glass"
+    },
+    "f": {
+      "item": "minecraft:netherite_block"
+    }
+  },
+  "pattern": [
+    "aea",
+    "dbd",
+    "fcf"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:greenhouse"
+  },
+  "show_notification": true
+}

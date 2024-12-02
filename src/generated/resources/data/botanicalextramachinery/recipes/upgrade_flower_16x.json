@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:upgrade_pattern"
+    },
+    "b": {
+      "item": "botanicalextramachinery:upgrade_flower_4x"
+    },
+    "c": {
+      "item": "botanicalextramachinery:upgrade_slot_add"
+    },
+    "d": {
+      "item": "botanicalextramachinery:saffron_ingot"
+    },
+    "e": {
+      "item": "botanicalextramachinery:saffron_dragonstone_block"
+    }
+  },
+  "pattern": [
+    "ddd",
+    "bab",
+    "ece"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_flower_16x"
+  },
+  "show_notification": true
+}

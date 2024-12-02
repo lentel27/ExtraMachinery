@@ -31,13 +31,13 @@ import org.moddingx.libx.render.ItemStackRenderer;
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
-public class BlockJadedAmaranthus  extends MenuBlockBE<BlockEntityJadedAmaranthus, ContainerJadedAmaranthus> {
+public class BlockJadedAmaranthus extends MenuBlockBE<BlockEntityJadedAmaranthus, ContainerJadedAmaranthus> {
 
     private static final VoxelShape COLLISION_SHAPE;
     public static final VoxelShape SHAPE;
 
     public BlockJadedAmaranthus(ModX mod, Class<BlockEntityJadedAmaranthus> teClass, MenuType<ContainerJadedAmaranthus> menu) {
-        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 5.0F).dynamicShape().forceSolidOn(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -75,21 +75,6 @@ public class BlockJadedAmaranthus  extends MenuBlockBE<BlockEntityJadedAmaranthu
     @Nonnull
     public VoxelShape getOcclusionShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos) {
         return SHAPE;
-    }
-
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BlockEntityJadedAmaranthus){
-                ((BlockEntityJadedAmaranthus) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
-    protected boolean shouldDropInventory(Level level, BlockPos pos, BlockState state) {
-        return false;
     }
 
     static {

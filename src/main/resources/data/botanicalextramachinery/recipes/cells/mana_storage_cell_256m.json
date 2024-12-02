@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:crimson_dragonstone"
+    },
+    "b": {
+      "item": "botanicalextramachinery:crimson_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:cell_component_64m"
+    },
+    "d": {
+      "item": "botanicalextramachinery:shadow_ingot"
+    }
+  },
+  "pattern": [
+    "aba", "cdc", "aca"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:cell_component_256m"
+  },
+  "show_notification": true
+}

@@ -137,13 +137,8 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public List<ItemStack> getUpgrades(){
         List<ItemStack> res = new ArrayList<>();
 
-        if (UPGRADE_SLOT_1 != -1){
-            res.add(new ItemStack(ModItems.catalystSeedInfinity));
-        }
-
-        if (UPGRADE_SLOT_2 != -1){
-            res.add(new ItemStack(ModItems.catalystWaterInfinity));
-        }
+        res.add(new ItemStack(ModItems.catalystManaInfinity));
+        res.add(new ItemStack(ModItems.catalystLivingRockInfinity));
 
         return res;
     }
@@ -300,6 +295,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         super.load(nbt);
         this.slotsUsed.clear();
         this.slotsUsed.addAll(Arrays.stream(nbt.getIntArray("slotsUsed")).boxed().toList());
+        this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
         this.setDispatchable();
@@ -308,6 +304,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public void saveAdditional(@Nonnull CompoundTag nbt) {
         super.saveAdditional(nbt);
         nbt.putIntArray("slotsUsed", this.slotsUsed);
+        this.getMainNode().saveToNBT(nbt);
     }
 
     public void handleUpdateTag(CompoundTag nbt) {
@@ -334,17 +331,6 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public BlockEntity getBlockEntity() {
         return this;
     }
-
-    public void drops(){
-        IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
-        for (int i = 0; i < inventory.getSlots(); i++){
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack.isEmpty()) continue;
-            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
-            this.level.addFreshEntity(ie);
-        }
-    }
-
     //endregion
 
 

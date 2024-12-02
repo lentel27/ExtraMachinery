@@ -3,22 +3,22 @@
   "category": "misc",
   "key": {
     "a": {
-      "item": "botanicalextramachinery:saffron_dragonstone_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     },
     "b": {
-      "item": "botanicalextramachinery:shadow_dragonstone_block"
+      "item": "botania:livingrock"
     },
     "c": {
-      "item": "botanicalextramachinery:crimson_dragonstone_block"
+      "item": "botania:runic_altar"
     },
     "d": {
-      "item": "botanicalextramachinery:upgraded_runic_altar"
+      "item": "botania:rune_envy"
     }
   },
   "pattern": [
-    "abc",
     "bdb",
-    "cba"
+    "bab",
+    "bcb"
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_living_rock_infinity"

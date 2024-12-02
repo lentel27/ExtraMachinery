@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
 import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalBlock;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolUpgraded;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalManaPool.RenderManaPoolUpgraded;
@@ -27,7 +27,7 @@ import org.moddingx.libx.registration.SetupContext;
 
 import javax.annotation.Nonnull;
 
-public class BlockManaPoolUpgraded extends BotanicalBlock<BlockEntityManaPoolUpgraded, ContainerManaPoolUpgraded> {
+public class BlockManaPoolUpgraded extends ExtraBotanicalBlock<BlockEntityManaPoolUpgraded, ContainerManaPoolUpgraded> {
     public static final RotationShape SHAPE;
 
     public BlockManaPoolUpgraded(ModX mod, Class<BlockEntityManaPoolUpgraded> teClass, MenuType<ContainerManaPoolUpgraded> menu) {
@@ -48,18 +48,7 @@ public class BlockManaPoolUpgraded extends BotanicalBlock<BlockEntityManaPoolUpg
         return SHAPE.getShape(state.getValue(BlockStateProperties.HORIZONTAL_FACING));
     }
 
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BlockEntityManaPoolUpgraded){
-                ((BlockEntityManaPoolUpgraded) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
     static {
-        SHAPE = new RotationShape(Shapes.or(BotanicalBlock.FRAME_SHAPE, box(2.0, 1.0, 2.0, 14.0, 1.1, 14.0), box(2.0, 1.0, 13.0, 14.0, 6.0, 14.0), box(2.0, 1.0, 2.0, 14.0, 6.0, 3.0), box(13.0, 1.0, 3.0, 14.0, 6.0, 13.0), box(2.0, 1.0, 3.0, 3.0, 6.0, 13.0)));
+        SHAPE = new RotationShape(Shapes.or(ExtraBotanicalBlock.FRAME_SHAPE, box(2.0, 1.0, 2.0, 14.0, 1.1, 14.0), box(2.0, 1.0, 13.0, 14.0, 6.0, 14.0), box(2.0, 1.0, 2.0, 14.0, 6.0, 3.0), box(13.0, 1.0, 3.0, 14.0, 6.0, 13.0), box(2.0, 1.0, 3.0, 3.0, 6.0, 13.0)));
     }
 }

@@ -1,6 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory;
 
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryAdvanced;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,17 +15,21 @@ import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerIndustrialAgglomerationFactoryAdvanced extends BlockEntityMenu<BlockEntityIndustrialAgglomerationFactoryAdvanced> {
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 131;
+
     public ContainerIndustrialAgglomerationFactoryAdvanced(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 9, 15);
-        IItemHandlerModifiable inventory = (this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 9, 58));
-        this.addSlot(new SlotItemHandler(inventory, 1, 158, 58));
+        this.addSlot(new SlotItemHandler(inventory, 0, 17, 61));
+        this.addSlot(new SlotItemHandler(inventory, 1, 163, 61));
 
-        int index = this.addSlotBox(inventory, 2, 30, 22, 7, 18, 1, 18);
-        this.addSlotBox(inventory, index, 39, 58, 6, 18, 1, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 2, 36, 39, 7, 18, 1, 18);
+        this.addSlotBox(inventory, index, 45, 75, 6, 18, 1, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 101);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.ADVANCED, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

@@ -1,7 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolUpgraded;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,16 +15,20 @@ import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerManaPoolUpgraded extends BlockEntityMenu<BlockEntityManaPoolUpgraded> {
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 124;
+
     public ContainerManaPoolUpgraded(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 7, 11);
-        IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 89, 57));
+        this.addSlot(new SlotItemHandler(inventory, 0, 98, 76));
 
-        int index = this.addSlotBox(inventory, 1, 23, 27, 3, 18, 2, 18);
-        this.addSlotBox(inventory, index, 118, 27, 2, 18, 2, 18, UnrestrictedOutputSlot::new);
+        int index = this.addSlotBox(inventory, 1, 33, 36, 3, 18, 2, 18);
+        this.addSlotBox(inventory, index, 128, 36, 2, 18, 2, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(8, 97);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.UPGRADE, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

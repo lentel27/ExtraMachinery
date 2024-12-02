@@ -1,6 +1,8 @@
 package net.lmor.botanicalextramachinery.entities.manaSpark;
 
 import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalTile;
+import net.lmor.botanicalextramachinery.blocks.tiles.BlockEntityGreenhouse;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -188,7 +190,7 @@ public class EntityManaSparkPattern extends SparkBaseEntity implements ManaSpark
                             --count;
                             SparkAttachable attached = spark.getAttachedTile();
                             ManaReceiver attachedReceiver = spark.getAttachedManaReceiver();
-                            if (attached != null && attachedReceiver != null && !attachedReceiver.isFull() && !spark.areIncomingTransfersDone()) {
+                            if (attached != null && attachedReceiver != null && !attachedReceiver.isFull() && !spark.areIncomingTransfersDone() && (!(receiver instanceof ExtraBotanicalTile) || receiver instanceof BlockEntityGreenhouse) && !(attachedReceiver instanceof BlockEntityGreenhouse)) {
                                 int spend = Math.min(attached.getAvailableSpaceForMana(), (manaTotal - manaSpent) / (count + 1));
                                 attachedReceiver.receiveMana(spend);
                                 manaSpent += spend;

@@ -138,9 +138,16 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
     @Override
     public void load(@NotNull CompoundTag nbt) {
         super.load(nbt);
+        this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
         this.setDispatchable();
+    }
+
+    @Override
+    public void saveAdditional(@NotNull CompoundTag nbt) {
+        super.saveAdditional(nbt);
+        this.getMainNode().saveToNBT(nbt);
     }
 
     protected Predicate<Integer> getExtracts(Supplier<IItemHandlerModifiable> inventory) {
@@ -182,17 +189,6 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
             this.getMainNode().destroy();
         }
     }
-
-    public void drops(){
-        IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
-        for (int i = 0; i < inventory.getSlots(); i++){
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack.isEmpty()) continue;
-            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
-            this.level.addFreshEntity(ie);
-        }
-    }
-
     //endregion
 
     //region AE INTEGRATION

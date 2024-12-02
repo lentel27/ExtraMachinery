@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "tag": "botania:petals"
+    },
+    "b": {
+      "item": "minecraft:blaze_powder"
+    },
+    "c": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    " a ",
+    "bcb",
+    " a "
+  ],
+  "result": {
+    "item": "botanicalextramachinery:base_spark"
+  },
+  "show_notification": true
+}

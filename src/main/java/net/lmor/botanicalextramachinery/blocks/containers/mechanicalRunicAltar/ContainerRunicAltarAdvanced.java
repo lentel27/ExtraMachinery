@@ -1,7 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockEntityRunicAltarAdvanced;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,19 +15,24 @@ import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerRunicAltarAdvanced extends BlockEntityMenu<BlockEntityRunicAltarAdvanced> {
+    public final static int WIDTH_GUI = 216;
+    public final static int HEIGHT_GUI = 140;
+
     public ContainerRunicAltarAdvanced(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 20, 36);
-        IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 66, 94));
-        this.addSlot(new SlotItemHandler(inventory, 1, 84, 94));
-        this.addSlot(new SlotItemHandler(inventory, 2, 102, 94));
-        this.addSlot(new SlotItemHandler(inventory, 3, 27, 94));
+        this.addSlot(new SlotItemHandler(inventory, 0, 81, 100));
+        this.addSlot(new SlotItemHandler(inventory, 1, 100, 100));
+        this.addSlot(new SlotItemHandler(inventory, 2, 119, 100));
 
-        int index = this.addSlotBox(inventory, 4, 11, 14, 4, 18, 4, 18);
-        this.addSlotBox(inventory, index, 103, 14, 4, 18, 4, 18, UnrestrictedOutputSlot::new);
+        this.addSlot(new SlotItemHandler(inventory, 3, 45, 100));
 
-        this.layoutPlayerInventorySlots(12, 134);
+        int index = this.addSlotBox(inventory, 4, 27, 25, 4, 18, 4, 18);
+        this.addSlotBox(inventory, index, 119, 25, 4, 18, 4, 18, UnrestrictedOutputSlot::new);
+
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.ADVANCED, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

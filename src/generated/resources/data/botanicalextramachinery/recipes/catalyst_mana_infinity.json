@@ -3,16 +3,19 @@
   "category": "misc",
   "key": {
     "a": {
-      "item": "botanicalextramachinery:crimson_dragonstone_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     },
     "b": {
-      "item": "botanicalextramachinery:ultimate_mana_pool"
+      "item": "botanicalextramachinery:crimson_dragonstone_block"
+    },
+    "c": {
+      "item": "botanicalextramachinery:crimson_spark"
     }
   },
   "pattern": [
-    "aaa",
-    "aba",
-    "aaa"
+    "cbc",
+    "bab",
+    "cbc"
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_mana_infinity"

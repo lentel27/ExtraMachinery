@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:diamond"
+    },
+    "c": {
+      "tag": "botania:petals"
+    }
+  },
+  "pattern": [
+    " a ",
+    "bcb",
+    " a "
+  ],
+  "result": {
+    "item": "botanicalextramachinery:catalyst_pattern"
+  },
+  "show_notification": true
+}

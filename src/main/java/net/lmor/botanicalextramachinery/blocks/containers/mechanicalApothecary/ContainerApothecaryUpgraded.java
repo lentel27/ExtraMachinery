@@ -1,6 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalApothecary;
 
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalApothecary.BlockEntityApothecaryUpgraded;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,15 +15,20 @@ import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerApothecaryUpgraded extends BlockEntityMenu<BlockEntityApothecaryUpgraded> {
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 140;
+
     public ContainerApothecaryUpgraded(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 13, 24);
-        IItemHandlerModifiable inventory = (this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 89));
+        this.addSlot(new SlotItemHandler(inventory, 0, 90, 95));
 
-        int index = this.addSlotBox(inventory, 1, 24, 14, 3, 18, 4, 18);
-        this.addSlotBox(inventory, index, 109, 14, 3, 18, 4, 18, UnrestrictedOutputSlot::new);
-        this.layoutPlayerInventorySlots(12, 124);
+        int index = this.addSlotBox(inventory, 1, 30, 26, 3, 18, 4, 18);
+        this.addSlotBox(inventory, index, 114, 26, 3, 18, 4, 18, UnrestrictedOutputSlot::new);
+
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.UPGRADE, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

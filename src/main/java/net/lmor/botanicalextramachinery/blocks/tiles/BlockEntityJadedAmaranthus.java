@@ -11,14 +11,13 @@ import appeng.api.util.AECableType;
 import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalTile;
 import net.lmor.botanicalextramachinery.config.LibXServerConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +29,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.item.BotaniaItems;
 
@@ -39,7 +37,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class BlockEntityJadedAmaranthus extends BotanicalTile implements IInWorldGridNodeHost, IGridConnectedBlockEntity {
+public class BlockEntityJadedAmaranthus extends ExtraBotanicalTile implements IInWorldGridNodeHost, IGridConnectedBlockEntity {
     private final List<Integer> UPGRADE_SLOT = new ArrayList<>();
     private final int FIRST_OUTPUT_SLOT;
     private final int LAST_OUTPUT_SLOT;
@@ -145,7 +143,7 @@ public class BlockEntityJadedAmaranthus extends BotanicalTile implements IInWorl
                 }
 
                 ItemStack itemSlot = this.getInventory().getStackInSlot(dyeIndex + FIRST_OUTPUT_SLOT);
-                if (itemSlot.isEmpty() || (itemSlot.is(flowerOrPetal))){
+                if (itemSlot.isEmpty() || ((itemSlot.is(flowerOrPetal)) && itemSlot.getCount() != itemSlot.getMaxStackSize())){
 
                     ItemStack addItem = new ItemStack(flowerOrPetal);
                     int mana = this.costMana * countCraft;
@@ -246,16 +244,6 @@ public class BlockEntityJadedAmaranthus extends BotanicalTile implements IInWorl
     @Override
     public int getComparatorOutput() {
         return 0;
-    }
-
-    public void drops(){
-        IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
-        for (int i = 0; i < inventory.getSlots(); i++){
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack.isEmpty()) continue;
-            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
-            this.level.addFreshEntity(ie);
-        }
     }
 
     @Override

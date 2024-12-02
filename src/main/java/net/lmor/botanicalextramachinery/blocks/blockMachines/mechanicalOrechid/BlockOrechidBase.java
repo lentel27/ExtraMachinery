@@ -77,21 +77,6 @@ public class BlockOrechidBase extends MenuBlockBE<BlockEntityOrechidBase, Contai
         return SHAPE;
     }
 
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BlockEntityOrechidBase){
-                ((BlockEntityOrechidBase) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
-    protected boolean shouldDropInventory(Level level, BlockPos pos, BlockState state) {
-        return false;
-    }
-
     static {
         COLLISION_SHAPE = Shapes.joinUnoptimized(box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0), box(5.0, 2.0, 5.0, 11.0, 3.0, 11.0), BooleanOp.OR);
         SHAPE = box(0.0, 0.0, 0.0, 16.0, 11.4, 16.0);

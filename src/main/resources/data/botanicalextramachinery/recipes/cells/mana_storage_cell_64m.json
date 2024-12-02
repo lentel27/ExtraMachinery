@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:shadow_dragonstone"
+    },
+    "b": {
+      "item": "botanicalextramachinery:shadow_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:cell_component_16m"
+    },
+    "d": {
+      "item": "botanicalextramachinery:saffron_ingot"
+    }
+  },
+  "pattern": [
+    "aba", "cdc", "aca"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:cell_component_64m"
+  },
+  "show_notification": true
+}

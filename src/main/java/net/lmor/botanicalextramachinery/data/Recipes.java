@@ -1,7 +1,9 @@
 package net.lmor.botanicalextramachinery.data;
 
+import appbot.forge.ABItems;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.ModItemsAvailableReg;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -9,6 +11,9 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.moddingx.libx.datagen.DatagenContext;
 import org.moddingx.libx.datagen.provider.recipe.RecipeProviderBase;
@@ -72,28 +77,48 @@ public class Recipes extends RecipeProviderBase implements CraftingExtension, Co
         this.machine(ModBlocks.ultimateAlfheimMarket, ModBlocks.saffronIngotBlock, ModItems.crimsonIngot, ModBlocks.advancedAlfheimMarket, ModBlocks.crimsonDragonstoneBlock);
         this.machine(ModBlocks.ultimateOrechid, ModBlocks.saffronIngotBlock, ModItems.crimsonIngot, ModBlocks.advancedOrechid, ModBlocks.crimsonDragonstoneBlock);
 
-        this.upgrade_2(ModItems.catalystManaInfinity, ModBlocks.crimsonDragonstoneBlock, ModBlocks.ultimateManaPool);
-        this.upgrade(ModItems.catalystSpeed, ModBlocks.upgradedIndustrialAgglomerationFactory);
-        this.upgrade(ModItems.catalystSeedInfinity, ModBlocks.ultimateApothecary);
-        this.upgrade(ModItems.catalystLivingRockInfinity, ModBlocks.upgradedRunicAltar);
-        this.upgrade(ModItems.catalystWaterInfinity, ModBlocks.advancedApothecary);
-        this.upgrade(ModItems.catalystStoneInfinity, ModItems.catalystLivingRockInfinity);
-        this.upgrade(ModItems.catalystWoodInfinity, ModBlocks.ultimateDaisy);
+        this.shaped(ModItems.catalystPattern, " a ", "bcb", " a ", 'a', Items.IRON_INGOT, 'b', Items.DIAMOND, 'c', BotaniaTags.Items.PETALS);
+        this.shaped(ModItems.catalystManaInfinity, "cbc", "bab", "cbc", 'a', ModItems.catalystPattern, 'b', ModBlocks.crimsonDragonstoneBlock, 'c', ModItems.crimsonSpark);
+        this.shaped(ModItems.catalystSpeed, " c ", "dad", "bbb", 'a', ModItems.catalystPattern, 'b', Blocks.REDSTONE_BLOCK, 'c', ModItems.saffronSpark, 'd', Items.IRON_INGOT);
+        this.shaped(ModItems.catalystSeedInfinity, " c ", "bab", " c ", 'a', ModItems.catalystPattern, 'b', Tags.Items.SEEDS, 'c', Items.DIAMOND);
+        this.shaped(ModItems.catalystLivingRockInfinity, "bdb", "bab", "bcb", 'a', ModItems.catalystPattern, 'b', BotaniaBlocks.livingrock, 'c', BotaniaBlocks.runeAltar, 'd', BotaniaItems.runeEnvy);
+        this.shaped(ModItems.catalystWaterInfinity, " d ", "dad", "bbb", 'a', ModItems.catalystPattern, 'b', Items.WATER_BUCKET, 'd', BotaniaTags.Items.PETALS);
+        this.shaped(ModItems.catalystStoneInfinity, "bcb", "bab", "bcb", 'a', ModItems.catalystPattern, 'b', Blocks.STONE, 'c', BotaniaItems.runePride);
+        this.shaped(ModItems.catalystWoodInfinity, "bcb", "bab", "bcb", 'a', ModItems.catalystPattern, 'b', Blocks.OAK_LOG, 'c', BotaniaItems.runeSloth);
 
-        this.shaped( ModItems.catalystPetal, "aba", "bcb", "aba", 'a', Items.DIAMOND, 'b', BotaniaTags.Items.PETALS, 'c', Items.IRON_BLOCK);
-        this.upgrade_2(ModItems.catalystPetalBlock, ModItems.catalystPetal, ModBlocks.jadedAmaranthus);
+        this.shaped( ModItems.catalystPetal, "aba", "bcb", "aba", 'a', Items.DIAMOND, 'b', BotaniaTags.Items.PETALS, 'c', ModItems.catalystPattern);
+        this.shaped(ModItems.catalystPetalBlock, "aaa", "aba", "aaa", 'a', ModItems.catalystPetal, 'b', Blocks.DIAMOND_BLOCK);
+
+        this.shaped(ModItems.upgradePattern, " a ", "bcb", " a ", 'a', Items.DIAMOND, 'b', Items.NETHERITE_INGOT, 'c', BotaniaTags.Items.PETALS);
+
+        this.shaped(ModItems.upgradeStorageEnergy_1, "aba", "cdc", "aba", 'a', ModItems.crystalIngot, 'b', Blocks.REDSTONE_BLOCK, 'c', Items.IRON_INGOT, 'd', ModItems.upgradePattern);
+        this.shaped(ModItems.upgradeStorageEnergy_2, "aba", "bcb", "aba", 'a', ModItems.malachiteIngot, 'b', ModItems.upgradeStorageEnergy_1, 'c', BotaniaItems.manaSteel);
+        this.shaped(ModItems.upgradeStorageEnergy_3, "aba", "bcb", "aba", 'a', ModItems.saffronIngot, 'b', ModItems.upgradeStorageEnergy_2, 'c', ModItems.malachiteIngot);
+
+        this.shaped(ModItems.upgradeStorageMana_1, "aba", "cdc", "aba", 'a', ModItems.crystalIngot, 'b', Blocks.REDSTONE_BLOCK, 'c', Items.DIAMOND, 'd', ModItems.upgradePattern);
+        this.shaped(ModItems.upgradeStorageMana_2, "aba", "bcb", "aba", 'a', ModItems.malachiteIngot, 'b', ModItems.upgradeStorageMana_1, 'c', BotaniaItems.manaSteel);
+        this.shaped(ModItems.upgradeStorageMana_3, "aba", "bcb", "aba", 'a', ModItems.saffronIngot, 'b', ModItems.upgradeStorageMana_2, 'c', ModItems.malachiteIngot);
+
+        this.shaped(ModItems.upgradeTickGenMana_2, "dbd", "aca", "dbd", 'a', ModItems.upgradeTickGenMana_1, 'b', ModItems.crimsonIngot, 'c', ModItems.upgradePattern, 'd', ModItems.crystalIngot);
+        this.shaped(ModItems.upgradeSlotAdd, "cbc", "bab", "cbc", 'a', ModItems.upgradePattern, 'b', BotaniaItems.craftingHalo, 'c', Blocks.CHEST);
+
+        this.shaped(ModItems.upgradeHeatGreenhouse, "cec", "bab", "ddd", 'a', ModItems.upgradePattern, 'b', ModItems.upgradeStorageEnergy_2, 'c', ModItems.saffronIngot, 'd', Blocks.REDSTONE_BLOCK, 'e', Blocks.GLASS);
+
+        this.shaped(ModItems.upgradeGenMana, "beb", "faf", "dcd", 'a', ModItems.upgradePattern, 'b', ModItems.upgradeCostEnergy, 'c', ModItems.upgradeHeatGreenhouse, 'd', ModItems.upgradeStorageEnergy_1, 'e', Blocks.GLASS, 'f', Items.BLAZE_POWDER);
+
+        this.shaped(ModItems.upgradeFlower_64x, "ddd", "bab", "ece", 'a', ModItems.upgradePattern, 'b', ModItems.upgradeFlower_32x, 'c', ModItems.upgradeSlotAdd, 'd', ModItems.crimsonIngot, 'e', ModBlocks.crimsonDragonstoneBlock);
+        this.shaped(ModItems.upgradeFlower_32x, "ddd", "bab", "ece", 'a', ModItems.upgradePattern, 'b', ModItems.upgradeFlower_16x, 'c', ModItems.upgradeSlotAdd, 'd', ModItems.shadowIngot, 'e', ModBlocks.shadowDragonstoneBlock);
+        this.shaped(ModItems.upgradeFlower_16x, "ddd", "bab", "ece", 'a', ModItems.upgradePattern, 'b', ModItems.upgradeFlower_4x, 'c', ModItems.upgradeSlotAdd, 'd', ModItems.saffronIngot, 'e', ModBlocks.saffronDragonstoneBlock);
+        this.shaped(ModItems.upgradeFlower_4x, "ddd", "bab", "ece", 'a', ModItems.upgradePattern, 'b', Blocks.CHEST, 'c', ModItems.upgradeSlotAdd, 'd', ModItems.malachiteIngot, 'e', ModBlocks.malachiteDragonstoneBlock);
+
+        this.shaped(ModItems.upgradeCostEnergy, "bcb", "dad", "efe", 'a', ModItems.upgradePattern, 'b', ModItems.upgradeStorageEnergy_1, 'c', ModItems.upgradeStorageEnergy_2, 'd', Blocks.REDSTONE_BLOCK, 'e', Items.DIAMOND, 'f', Items.NETHERITE_INGOT);
+
+        this.shaped(ModItems.baseSpark, " a ", "bcb", " a ", 'a', BotaniaTags.Items.PETALS, 'b', Items.BLAZE_POWDER, 'c', Items.GOLD_NUGGET);
+
+        this.shaped(ModBlocks.greenhouse, "aea", "dbd", "fcf", 'a', ModItems.crimsonIngot, 'b', Blocks.DIRT, 'c', ModBlocks.crimsonIngotBlock, 'd', ModItems.crimsonDragonstone, 'e', Blocks.GLASS, 'f', Blocks.NETHERITE_BLOCK);
     }
 
     private void machine(Object output, Object special1, Object special2, Object special3, Object special4) {
         this.shaped(output, "aba", "bcb", "ddd", 'a', special1, 'b', special2, 'c', special3, 'd', special4);
     }
-
-    private void upgrade(Object output, Object special1) {
-        this.shaped(output, "abc", "bdb", "cba", 'a', ModBlocks.saffronDragonstoneBlock, 'b', ModBlocks.shadowDragonstoneBlock, 'c', ModBlocks.crimsonDragonstoneBlock, 'd', special1);
-    }
-
-    private void upgrade_2(Object output, Object special1, Object special2) {
-        this.shaped(output, "aaa", "aba", "aaa", 'a', special1, 'b', special2);
-    }
-
 }

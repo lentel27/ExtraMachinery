@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalRunicAltar;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
 import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalBlock;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalRunicAltar.ContainerRunicAltarAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalRunicAltar.ScreenRunicAltarAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalRunicAltar.RendererRunicAltarAdvanced;
@@ -27,7 +27,7 @@ import org.moddingx.libx.registration.SetupContext;
 
 import javax.annotation.Nonnull;
 
-public class BlockRunicAltarAdvanced extends BotanicalBlock<BlockEntityRunicAltarAdvanced, ContainerRunicAltarAdvanced> {
+public class BlockRunicAltarAdvanced extends ExtraBotanicalBlock<BlockEntityRunicAltarAdvanced, ContainerRunicAltarAdvanced> {
     public static final RotationShape SHAPE;
 
     public BlockRunicAltarAdvanced(ModX mod, Class<BlockEntityRunicAltarAdvanced> teClass, MenuType<ContainerRunicAltarAdvanced> menu) {
@@ -48,19 +48,7 @@ public class BlockRunicAltarAdvanced extends BotanicalBlock<BlockEntityRunicAlta
         return SHAPE.getShape(state.getValue(BlockStateProperties.HORIZONTAL_FACING));
     }
 
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BlockEntityRunicAltarAdvanced){
-                ((BlockEntityRunicAltarAdvanced) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
-
     static {
-        SHAPE = new RotationShape(Shapes.or(BotanicalBlock.FRAME_SHAPE, box(2.0, 5.0, 2.0, 14.0, 9.0, 14.0), box(6.0, 3.0, 6.0, 10.0, 5.0, 10.0), box(4.0, 1.0, 4.0, 12.0, 3.0, 12.0)));
+        SHAPE = new RotationShape(Shapes.or(ExtraBotanicalBlock.FRAME_SHAPE, box(2.0, 5.0, 2.0, 14.0, 9.0, 14.0), box(6.0, 3.0, 6.0, 10.0, 5.0, 10.0), box(4.0, 1.0, 4.0, 12.0, 3.0, 12.0)));
     }
 }

@@ -3,22 +3,19 @@
   "category": "misc",
   "key": {
     "a": {
-      "item": "botanicalextramachinery:saffron_dragonstone_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     },
     "b": {
-      "item": "botanicalextramachinery:shadow_dragonstone_block"
+      "item": "minecraft:oak_log"
     },
     "c": {
-      "item": "botanicalextramachinery:crimson_dragonstone_block"
-    },
-    "d": {
-      "item": "botanicalextramachinery:ultimate_daisy"
+      "item": "botania:rune_sloth"
     }
   },
   "pattern": [
-    "abc",
-    "bdb",
-    "cba"
+    "bcb",
+    "bab",
+    "bcb"
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_wood_infinity"

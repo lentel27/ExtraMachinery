@@ -12,9 +12,9 @@ import appeng.hooks.ticking.TickHandler;
 import appeng.me.helpers.BlockEntityNodeListener;
 import appeng.me.helpers.IGridConnectedBlockEntity;
 import com.google.common.collect.Range;
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalTile;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidUpgraded;
@@ -25,7 +25,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.util.random.WeightedRandom;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -46,10 +45,10 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class BlockEntityOrechidPattern extends BotanicalTile
+public class BlockEntityOrechidPattern extends ExtraBotanicalTile
         implements IInWorldGridNodeHost, IGridConnectedBlockEntity {
 
-    private List<Integer> FILTER_SLOTS = new ArrayList<>();
+    private final List<Integer> FILTER_SLOTS = new ArrayList<>();
 
     private final int FIRST_INPUT_SLOT;
     private final int LAST_INPUT_SLOT;
@@ -209,7 +208,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
                             ItemStack stone = new ItemStack(Items.STONE);
                             stone.setCount(64);
                             for (int i = FIRST_INPUT_SLOT; i <= LAST_INPUT_SLOT; i++){
-                                inventory.setStackInSlot(i, stone);
+                                inventory.setStackInSlot(i, stone.copy());
                             }
                         }
                     }
@@ -251,6 +250,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
     public void load(@NotNull CompoundTag nbt) {
         super.load(nbt);
         this.cooldown = nbt.getInt("cooldown");
+        this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
         this.setDispatchable();
@@ -260,6 +260,7 @@ public class BlockEntityOrechidPattern extends BotanicalTile
     public void saveAdditional(@NotNull CompoundTag nbt) {
         super.saveAdditional(nbt);
         nbt.putInt("cooldown", this.cooldown);
+        this.getMainNode().saveToNBT(nbt);
     }
 
     @Override
@@ -347,17 +348,6 @@ public class BlockEntityOrechidPattern extends BotanicalTile
 
         return WeightedRandom.getRandomItem(this.level.random, values).map(WeightedEntry.Wrapper::getData).orElse(null);
     }
-
-    public void drops(){
-        IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
-        for (int i = 0; i < inventory.getSlots(); i++){
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack.isEmpty()) continue;
-            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
-            this.level.addFreshEntity(ie);
-        }
-    }
-
     //endregion
 
 

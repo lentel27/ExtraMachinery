@@ -3,22 +3,22 @@
   "category": "misc",
   "key": {
     "a": {
-      "item": "botanicalextramachinery:saffron_dragonstone_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     },
     "b": {
-      "item": "botanicalextramachinery:shadow_dragonstone_block"
+      "item": "minecraft:redstone_block"
     },
     "c": {
-      "item": "botanicalextramachinery:crimson_dragonstone_block"
+      "item": "botanicalextramachinery:saffron_spark"
     },
     "d": {
-      "item": "botanicalextramachinery:upgraded_industrial_agglomeration_factory"
+      "item": "minecraft:iron_ingot"
     }
   },
   "pattern": [
-    "abc",
-    "bdb",
-    "cba"
+    " c ",
+    "dad",
+    "bbb"
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_speed"

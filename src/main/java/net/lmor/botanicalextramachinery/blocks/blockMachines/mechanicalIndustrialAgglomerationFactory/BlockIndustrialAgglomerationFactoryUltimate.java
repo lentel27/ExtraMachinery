@@ -1,7 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalIndustrialAgglomerationFactory;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalBlock;
 import net.lmor.botanicalextramachinery.ModBlocks;
+import net.lmor.botanicalextramachinery.blocks.base.ExtraBotanicalBlock;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory.ContainerIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAgglomerationFactory.ScreenIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.tesr.mechanicalIndustrialAgglomerationFactory.RenderIndustrialAgglomerationFactoryUltimate;
@@ -28,7 +28,7 @@ import org.moddingx.libx.registration.SetupContext;
 
 import javax.annotation.Nonnull;
 
-public class BlockIndustrialAgglomerationFactoryUltimate extends BotanicalBlock<BlockEntityIndustrialAgglomerationFactoryUltimate, ContainerIndustrialAgglomerationFactoryUltimate> {
+public class BlockIndustrialAgglomerationFactoryUltimate extends ExtraBotanicalBlock<BlockEntityIndustrialAgglomerationFactoryUltimate, ContainerIndustrialAgglomerationFactoryUltimate> {
     public static final RotationShape SHAPE;
 
     public BlockIndustrialAgglomerationFactoryUltimate(ModX mod, Class<BlockEntityIndustrialAgglomerationFactoryUltimate> teClass, MenuType<ContainerIndustrialAgglomerationFactoryUltimate> menu) {
@@ -49,18 +49,7 @@ public class BlockIndustrialAgglomerationFactoryUltimate extends BotanicalBlock<
         return SHAPE.getShape((Direction)state.getValue(BlockStateProperties.HORIZONTAL_FACING));
     }
 
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BlockEntityIndustrialAgglomerationFactoryUltimate){
-                ((BlockEntityIndustrialAgglomerationFactoryUltimate) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
     static {
-        SHAPE = new RotationShape(Shapes.or(BotanicalBlock.FRAME_SHAPE, box(2.6, 0.0, 2.6, 13.4, 4.6, 13.4), box(6.2, 0.0, 6.2, 9.8, 5.3, 9.8)));
+        SHAPE = new RotationShape(Shapes.or(ExtraBotanicalBlock.FRAME_SHAPE, box(2.6, 0.0, 2.6, 13.4, 4.6, 13.4), box(6.2, 0.0, 6.2, 9.8, 5.3, 9.8)));
     }
 }

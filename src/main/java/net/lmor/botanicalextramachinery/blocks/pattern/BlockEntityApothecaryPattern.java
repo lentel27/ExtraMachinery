@@ -228,11 +228,11 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         List<ItemStack> res = new ArrayList<>();
 
         if (UPGRADE_SLOT_1 != -1){
-            res.add(new ItemStack(ModItems.catalystWaterInfinity));
+            res.add(new ItemStack(ModItems.catalystSeedInfinity));
         }
 
         if (UPGRADE_SLOT_2 != -1){
-            res.add(new ItemStack(ModItems.catalystSeedInfinity));
+            res.add(new ItemStack(ModItems.catalystWaterInfinity));
         }
 
         return res;
@@ -336,6 +336,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         super.load(nbt);
         this.fluidInventory.setFluid(FluidStack.loadFluidStackFromNBT(nbt.getCompound("fluid")));
         this.currentOutput = ItemStack.of(nbt.getCompound("currentOutput"));
+        this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
         this.setDispatchable();
@@ -347,6 +348,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         this.getFluidInventory().getFluid().writeToNBT(tankTag);
         nbt.put("fluid", tankTag);
         nbt.put("currentOutput", this.currentOutput.serializeNBT());
+        this.getMainNode().saveToNBT(nbt);
     }
 
     public void handleUpdateTag(CompoundTag nbt) {
@@ -404,17 +406,6 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
             this.getMainNode().destroy();
         }
     }
-
-    public void drops(){
-        IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
-        for (int i = 0; i < inventory.getSlots(); i++){
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack.isEmpty()) continue;
-            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
-            this.level.addFreshEntity(ie);
-        }
-    }
-
     //endregion
 
     //region AE INTEGRATION

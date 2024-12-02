@@ -98,11 +98,15 @@ dependencies {
     implementation fg.deobf("curse.maven:patchouli-306770:4966125")
     implementation fg.deobf("curse.maven:jei-238222:5846810")
     implementation fg.deobf("curse.maven:curios-309927:5843594")
+    implementation fg.deobf("curse.maven:mythicbotany-400058:5101899")
+    implementation fg.deobf("curse.maven:applied-botanics-addon-610632:4904185")
 
-    // For testing
+    //region For testing
     implementation fg.deobf("curse.maven:observable-509575:5643037")
     implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
     implementation fg.deobf("curse.maven:kotlin-for-forge-351264:5402061")
+    implementation fg.deobf("curse.maven:mekanism-268560:5919382")
+    //endregion
 
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:5641282")
     runtimeOnly fg.deobf("appeng:appliedenergistics2-forge:15.2.13:api")

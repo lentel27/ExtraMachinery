@@ -5,20 +5,15 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegisterEvent;
 import org.moddingx.libx.datagen.DatagenSystem;
 import org.moddingx.libx.mod.ModXRegistration;
 import org.moddingx.libx.registration.RegistrationBuilder;
-import vazkii.botania.common.entity.BotaniaEntities;
-
 
 import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
@@ -34,9 +29,12 @@ public final class ExtraMachinery extends ModXRegistration {
         instance = this;
         tab = new ExtraMachineryTab(this);
 
-        DataGen();
-        bind(Registries.ENTITY_TYPE, ModEntities::registerEntities);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        bind(Registries.ENTITY_TYPE, ModEntities::registerEntities);
+        ModItemsAvailableReg.initialize(bus);
+
+        DataGen();
     }
 
     private static <T> void bind(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<T, ResourceLocation>> source) {
@@ -46,7 +44,6 @@ public final class ExtraMachinery extends ModXRegistration {
             }
         });
     }
-
 
     private void DataGen(){
         DatagenSystem.create(this, system -> {
@@ -68,6 +65,6 @@ public final class ExtraMachinery extends ModXRegistration {
     protected void setup(FMLCommonSetupEvent fmlCommonSetupEvent) {}
 
     @Override
-    protected void clientSetup(FMLClientSetupEvent fmlClientSetupEvent) {}
+    protected void clientSetup(FMLClientSetupEvent event) {}
 
 }
