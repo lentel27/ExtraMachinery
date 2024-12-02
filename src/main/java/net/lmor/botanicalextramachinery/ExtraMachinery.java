@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -32,7 +33,7 @@ public final class ExtraMachinery extends ModXRegistration {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
         bind(Registries.ENTITY_TYPE, ModEntities::registerEntities);
-        ModItemsAvailableReg.initialize(bus);
+        if (ModList.get().isLoaded("appbot")) RegItemsAppbotItems.initialize(bus);
 
         DataGen();
     }
