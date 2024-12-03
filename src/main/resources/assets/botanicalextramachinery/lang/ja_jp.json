@@ -1,0 +1,106 @@
+{
+  "itemGroup.botanicalextramachinery": "Extra Botanical Machinery",
+
+  "block.botanicalextramachinery.base_mana_pool": "基本マナプール",
+  "block.botanicalextramachinery.upgraded_mana_pool": "発展マナプール",
+  "block.botanicalextramachinery.advanced_mana_pool": "精密マナプール",
+  "block.botanicalextramachinery.ultimate_mana_pool": "究極マナプール",
+
+  "block.botanicalextramachinery.base_runic_altar": "基本の祭壇",
+  "block.botanicalextramachinery.upgraded_runic_altar": "発展の祭壇",
+  "block.botanicalextramachinery.advanced_runic_altar": "精密の祭壇",
+  "block.botanicalextramachinery.ultimate_runic_altar": "究極の祭壇",
+
+  "block.botanicalextramachinery.base_daisy": "基本メカニカルデイジー",
+  "block.botanicalextramachinery.upgraded_daisy": "発展メカニカルデイジー",
+  "block.botanicalextramachinery.advanced_daisy": "精密メカニカルデイジー",
+  "block.botanicalextramachinery.ultimate_daisy": "究極メカニカルデイジー",
+
+  "block.botanicalextramachinery.base_apothecary": "基本調合所",
+  "block.botanicalextramachinery.upgraded_apothecary": "発展調合所",
+  "block.botanicalextramachinery.advanced_apothecary": "精密調合所",
+  "block.botanicalextramachinery.ultimate_apothecary": "究極調合所",
+
+  "block.botanicalextramachinery.base_industrial_agglomeration_factory": "基本集結ファクトリー",
+  "text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_1": "基本工業性",
+  "text.botanicalextramachinery.base_industrial_agglomeration_factory_label_text_2": "集結ファクトリー",
+
+  "block.botanicalextramachinery.upgraded_industrial_agglomeration_factory": "発展集結ファクトリー",
+  "text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_1": "発展工業性",
+  "text.botanicalextramachinery.upgraded_industrial_agglomeration_factory_label_text_2": "集結ファクトリー",
+
+  "block.botanicalextramachinery.advanced_industrial_agglomeration_factory": "精密集結ファクトリー",
+  "text.botanicalextramachinery.advanced_industrial_agglomeration_factory_label_text_1": "精密工業性",
+  "text.botanicalextramachinery.advanced_industrial_agglomeration_factory_label_text_2": "集結ファクトリー",
+
+  "block.botanicalextramachinery.ultimate_industrial_agglomeration_factory": "究極集結ファクトリー",
+  "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "究極工業性",
+  "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "集結ファクトリー",
+
+  "block.botanicalextramachinery.base_alfheim_market": "基本アルフヘイムマーケット",
+  "block.botanicalextramachinery.upgraded_alfheim_market": "発展アルフヘイムマーケット",
+  "block.botanicalextramachinery.advanced_alfheim_market": "精密アルフヘイムマーケット",
+  "block.botanicalextramachinery.ultimate_alfheim_market": "究極アルフヘイムマーケット",
+
+  "block.botanicalextramachinery.base_orechid": "メカキド・基本",
+  "block.botanicalextramachinery.upgraded_orechid": "メカキド・発展",
+  "block.botanicalextramachinery.advanced_orechid": "メカキド・精密",
+  "block.botanicalextramachinery.ultimate_orechid": "メカキド・究極",
+
+  "block.botanicalextramachinery.jaded_amaranthus": "メカニカル・アマランサス",
+
+  "block.botanicalextramachinery.malachite_dragonstone_block": "マラカイトドラゴンストーンブロック",
+  "block.botanicalextramachinery.saffron_dragonstone_block": "サフランドラゴンストーンブロック",
+  "block.botanicalextramachinery.shadow_dragonstone_block": "シャドウドラゴンストーンブロック",
+  "block.botanicalextramachinery.crimson_dragonstone_block": "クリムゾンドラゴンストーンブロック",
+  "block.botanicalextramachinery.crystal_dragonstone_block": "クリスタルドラゴンストーンブロック",
+
+  "block.botanicalextramachinery.malachite_ingot_block": "マラカイトブロック",
+  "block.botanicalextramachinery.saffron_ingot_block": "サフランブロック",
+  "block.botanicalextramachinery.shadow_ingot_block": "シャドウブロック",
+  "block.botanicalextramachinery.crimson_ingot_block": "クリムゾンブロック",
+  "block.botanicalextramachinery.crystal_ingot_block": "クリスタルブロック",
+
+  "item.botanicalextramachinery.malachite_spark": "マラカイトスパーク",
+  "item.botanicalextramachinery.saffron_spark": "サフランスパーク",
+  "item.botanicalextramachinery.shadow_spark": "シャドウスパーク",
+  "item.botanicalextramachinery.crimson_spark": "クリムゾンスパーク",
+
+  "item.botanicalextramachinery.malachite_dragonstone": "マラカイトドラゴンストーン",
+  "item.botanicalextramachinery.saffron_dragonstone": "サフランドラゴンストーン",
+  "item.botanicalextramachinery.shadow_dragonstone": "シャドウドラゴンストーン",
+  "item.botanicalextramachinery.crimson_dragonstone": "クリムゾンドラゴンストーン",
+  "item.botanicalextramachinery.crystal_dragonstone": "クリスタルドラゴンストーン",
+
+  "item.botanicalextramachinery.malachite_ingot": "マラカイトインゴット",
+  "item.botanicalextramachinery.saffron_ingot": "サフランインゴット",
+  "item.botanicalextramachinery.shadow_ingot": "シャドウインゴット",
+  "item.botanicalextramachinery.crimson_ingot": "クリムゾンインゴット",
+  "item.botanicalextramachinery.crystal_ingot": "クリスタルインゴット",
+
+  "item.botanicalextramachinery.catalyst_mana_infinity": "マナの無限供給カタリスト",
+  "item.botanicalextramachinery.catalyst_living_rock_infinity": "リビングロックの無限供給カタリスト",
+  "item.botanicalextramachinery.catalyst_water_infinity": "水の無限供給カタリスト",
+  "item.botanicalextramachinery.catalyst_seed_infinity": "種の無限供給カタリスト",
+  "item.botanicalextramachinery.catalyst_speed": "速度のカタリスト",
+  "item.botanicalextramachinery.catalyst_stone_infinity": "石の無限供給カタリスト",
+  "item.botanicalextramachinery.catalyst_wood_infinity": "木の無限供給カタリスト",
+  "item.botanicalextramachinery.catalyst_petal": "花びらのカタリスト",
+  "item.botanicalextramachinery.catalyst_petal_block": "花びらブロックのカタリスト",
+
+  "botanicalextramachinery.tooltip.screen": "%1$s / %2$s マナ",
+  "botanicalextramachinery.tooltip.screen.catalyst_slot": "カタリスト",
+  "botanicalextramachinery.tooltip.screen.upgrade_slot": "アップグレード",
+  "botanicalextramachinery.tooltip.screen.livingrock_slot": "リビングロック",
+  "botanicalextramachinery.tooltip.screen.seed_slot": "種",
+  "botanicalextramachinery.tooltip.screen.ore_slot": "鉱石(フィルタ)",
+
+  "botanicalextramachinery.tooltip.item.mana": "§bマナ貯蔵量：§r §6 %1$s",
+  "botanicalextramachinery.tooltip.item.water": "§6水を無限に生成する",
+  "botanicalextramachinery.tooltip.item.upgrade_speed_1": "§6クラフト速度を§d4倍にする§c(最大1)",
+  "botanicalextramachinery.tooltip.item.upgrade_speed_2": "§c工業性集結ファクトリー§6で使用する",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_1": "§d神秘の花§rを§a花びら§rに変換する",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_2": "§d神秘の花§rを§a花びらブロック§rに変換する",
+  "botanicalextramachinery.tooltip.item.catalyst_petal_3": "§6メカニカル・アマランサス§rで使用する",
+  "botanicalextramachinery.tooltip.item.sparkTransfer": "§a輸送量：%1$sマナ",
+}
