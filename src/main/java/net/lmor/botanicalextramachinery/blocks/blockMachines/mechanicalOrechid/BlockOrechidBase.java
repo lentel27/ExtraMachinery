@@ -11,8 +11,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -22,7 +20,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.base.tile.MenuBlockBE;
 import org.moddingx.libx.mod.ModX;
 import org.moddingx.libx.registration.SetupContext;
@@ -75,21 +72,6 @@ public class BlockOrechidBase extends MenuBlockBE<BlockEntityOrechidBase, Contai
     @Nonnull
     public VoxelShape getOcclusionShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos) {
         return SHAPE;
-    }
-
-    @Override
-    public void onRemove(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BlockEntityOrechidBase){
-                ((BlockEntityOrechidBase) blockEntity).drops();
-            }
-        }
-        super.onRemove(state, level, pos, newState, isMoving);
-    }
-
-    protected boolean shouldDropInventory(Level level, BlockPos pos, BlockState state) {
-        return false;
     }
 
     static {

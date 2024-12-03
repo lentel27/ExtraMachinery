@@ -16,10 +16,9 @@ public class EntitySaffronManaSpark extends EntityManaSparkPattern {
         this.TRANSFER_RATE = RATE;
     }
 
-    public static int geRate(){
+    public static int getRate(){
         return RATE;
     }
-
 
     public EntitySaffronManaSpark(Level level){
         this(ModEntities.SAFFRON_SPARK, level);

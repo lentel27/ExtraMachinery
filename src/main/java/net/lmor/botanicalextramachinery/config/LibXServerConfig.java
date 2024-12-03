@@ -444,10 +444,67 @@ public class LibXServerConfig {
         public JadedAmaranthusSettings() {}
     }
 
+    @Group({"Greenhouse settings"})
+    public static class GreenhouseSettings {
+        @Config({"Base mana Storage"})
+        @IntRange( min = 1 )
+        public static int manaStorage = 1000000;
+
+        @Config({"Energy Storage"})
+        @IntRange( min = 1 )
+        public static int energyCapacity = 1000000;
+
+        @Config({"Max add energy"})
+        @IntRange( min = 1, max = 2147483647 )
+        public static int energyTransfer = 2147483647;
+
+        @Config({"Cost energy for one interaction"})
+        @IntRange( min = 1 )
+        public static int energyCost = 2000;
+
+        @Config({"Sleep greenhouse"})
+        @IntRange( min = 1 )
+        public static int sleep = 20;
+
+        @Group({"Mana for some flowers"})
+        public static class Flowers {
+            @Config({"Entropinnyum (For one tnt)"})
+            @IntRange( min = 1 )
+            public static int entropinnyum = 6500;
+
+            @Config({"Kekimurus (For one full cake)"})
+            @IntRange( min = 1 )
+            public static int kekimurus = 7200;
+
+            @Config({"Munchdew (For one foliage)"})
+            @IntRange( min = 1 )
+            public static int munchdew = 160;
+
+            @Config({"Narslimmus (For one slime ball)"})
+            @IntRange( min = 1 )
+            public static int narslimmus = 100;
+
+            @Config({"Narslimmus (For one flower)"})
+            @IntRange( min = 1 )
+            public static int rafflowsia = 100;
+
+            @Config({"Narslimmus (For one experience point)"})
+            @IntRange( min = 1 )
+            public static int rosaArcana = 50;
+            public static int witherAconite = 1200000;
+
+            public Flowers() {}
+        }
+
+        public GreenhouseSettings() {}
+    }
+
     @Config({"How long will it take for a request to send resources from output slots to ME? (In ticks)"})
     @IntRange( min = 1 )
     public static int tickOutputSlots = 20;
 
+    @Config({"Show/hide mechanism name in GUI. Priority over client."})
+    public static boolean nameMechanism = true;
 
 }
 

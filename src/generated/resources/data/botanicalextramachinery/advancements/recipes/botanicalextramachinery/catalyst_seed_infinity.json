@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "botanicalextramachinery:saffron_dragonstone_block"
+              "botanicalextramachinery:catalyst_pattern"
             ]
           }
         ]
@@ -17,9 +17,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "botanicalextramachinery:shadow_dragonstone_block"
-            ]
+            "tag": "forge:seeds"
           }
         ]
       },
@@ -30,19 +28,7 @@
         "items": [
           {
             "items": [
-              "botanicalextramachinery:crimson_dragonstone_block"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "criterion3": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "botanicalextramachinery:ultimate_apothecary"
+              "minecraft:diamond"
             ]
           }
         ]
@@ -61,7 +47,6 @@
       "criterion0",
       "criterion1",
       "criterion2",
-      "criterion3",
       "has_the_recipe"
     ]
   ],

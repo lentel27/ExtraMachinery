@@ -1,5 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalDaisy;
 
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyUltimate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,40 +19,43 @@ import javax.annotation.Nonnull;
 
 public class ContainerDaisyUltimate extends BlockEntityMenu<BlockEntityDaisyUltimate> {
     private static final int SIZE_INVENTORY = 19;
+    public final static int WIDTH_GUI = 208;
+    public final static int HEIGHT_GUI = 140;
 
     public ContainerDaisyUltimate(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
-        super(type, windowId, level, pos, playerContainer, player, SIZE_INVENTORY, SIZE_INVENTORY);
+        super(type, windowId, level, pos, playerContainer, player, SIZE_INVENTORY + 1, SIZE_INVENTORY + 1);
 
         IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 35));
-        this.addSlot(new SlotItemHandler(inventory, 1, 106, 41));
-        this.addSlot(new SlotItemHandler(inventory, 2, 112, 63));
-        this.addSlot(new SlotItemHandler(inventory, 3, 106, 85));
-        this.addSlot(new SlotItemHandler(inventory, 4, 84, 91));
-        this.addSlot(new SlotItemHandler(inventory, 5, 62, 85));
-        this.addSlot(new SlotItemHandler(inventory, 6, 56, 63));
-        this.addSlot(new SlotItemHandler(inventory, 7, 62, 41));
-        this.addSlot(new SlotItemHandler(inventory, 8, 130, 41));
-        this.addSlot(new SlotItemHandler(inventory, 9, 130, 85));
-        this.addSlot(new SlotItemHandler(inventory, 10, 38, 41));
-        this.addSlot(new SlotItemHandler(inventory, 11, 38, 85));
-        this.addSlot(new SlotItemHandler(inventory, 12, 140, 63));
-        this.addSlot(new SlotItemHandler(inventory, 13, 28, 63));
-        this.addSlot(new SlotItemHandler(inventory, 14, 106, 20));
-        this.addSlot(new SlotItemHandler(inventory, 15, 106, 106));
-        this.addSlot(new SlotItemHandler(inventory, 16, 62, 20));
-        this.addSlot(new SlotItemHandler(inventory, 17, 62, 106));
+        this.addSlot(new SlotItemHandler(inventory, 0, 96, 34));
+        this.addSlot(new SlotItemHandler(inventory, 1, 118, 40));
+        this.addSlot(new SlotItemHandler(inventory, 2, 124, 62));
+        this.addSlot(new SlotItemHandler(inventory, 3, 118, 84));
+        this.addSlot(new SlotItemHandler(inventory, 4, 96, 90));
+        this.addSlot(new SlotItemHandler(inventory, 5, 74, 84));
+        this.addSlot(new SlotItemHandler(inventory, 6, 68, 62));
+        this.addSlot(new SlotItemHandler(inventory, 7, 74, 40));
+        this.addSlot(new SlotItemHandler(inventory, 8, 74, 19));
+        this.addSlot(new SlotItemHandler(inventory, 9, 50, 40));
+        this.addSlot(new SlotItemHandler(inventory, 10, 40, 62));
+        this.addSlot(new SlotItemHandler(inventory, 11, 50, 84));
+        this.addSlot(new SlotItemHandler(inventory, 12, 74, 105));
+        this.addSlot(new SlotItemHandler(inventory, 13, 118, 19));
+        this.addSlot(new SlotItemHandler(inventory, 14, 142, 40));
+        this.addSlot(new SlotItemHandler(inventory, 15, 152, 62));
+        this.addSlot(new SlotItemHandler(inventory, 16, 142, 84));
+        this.addSlot(new SlotItemHandler(inventory, 17, 118, 105));
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.getInventoryUpgrade(), 0, 154, 106));
+        this.addSlot(new SlotItemHandler(this.blockEntity.getInventoryUpgrade(), 0, 166, 105));
 
-        this.layoutPlayerInventorySlots(12, 135);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.ULTIMATE, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Nonnull
     public ItemStack quickMoveStack(@Nonnull Player player, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.slots.get(index);
+        Slot slot = this.slots.get(index);
         if (slot.hasItem()) {
             ItemStack stack = slot.getItem();
             itemstack = stack.copy();

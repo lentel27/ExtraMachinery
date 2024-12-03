@@ -1,7 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers;
 
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.BlockEntityJadedAmaranthus;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -13,17 +14,21 @@ import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
-public class ContainerJadedAmaranthus extends BlockEntityMenu<BlockEntityJadedAmaranthus> {
+public class ContainerJadedAmaranthus  extends BlockEntityMenu<BlockEntityJadedAmaranthus> {
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 124;
+
     public ContainerJadedAmaranthus(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 2, 18);
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        IItemHandlerModifiable inventory = ((BotanicalTile)this.blockEntity).getInventory();
-        this.addSlot(new SlotItemHandler(inventory, 0, 66, 20));
-        this.addSlot(new SlotItemHandler(inventory, 1, 102, 20));
+        this.addSlot(new SlotItemHandler(inventory, 0, 72, 23));
+        this.addSlot(new SlotItemHandler(inventory, 1, 108, 23));
 
-        this.addSlotBox(inventory, 2, 21, 41, 8, 18, 2, 18, UnrestrictedOutputSlot::new);
+        this.addSlotBox(inventory, 2, 27, 49, 8, 18, 2, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 101);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.OTHER, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

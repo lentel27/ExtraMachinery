@@ -2,22 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "a": {
-      "item": "botanicalextramachinery:saffron_dragonstone_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     },
     "b": {
-      "item": "botanicalextramachinery:shadow_dragonstone_block"
+      "item": "minecraft:stone"
     },
     "c": {
-      "item": "botanicalextramachinery:crimson_dragonstone_block"
-    },
-    "d": {
-      "item": "botanicalextramachinery:catalyst_living_rock_infinity"
+      "item": "botania:rune_pride"
     }
   },
   "pattern": [
-    "abc",
-    "bdb",
-    "cba"
+    "bcb",
+    "bab",
+    "bcb"
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_stone_infinity"

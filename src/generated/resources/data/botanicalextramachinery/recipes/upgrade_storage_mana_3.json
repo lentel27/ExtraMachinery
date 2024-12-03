@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:saffron_ingot"
+    },
+    "b": {
+      "item": "botanicalextramachinery:upgrade_storage_mana_2"
+    },
+    "c": {
+      "item": "botanicalextramachinery:malachite_ingot"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_storage_mana_3"
+  }
+}

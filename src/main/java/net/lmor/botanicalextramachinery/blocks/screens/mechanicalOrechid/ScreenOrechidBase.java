@@ -2,11 +2,20 @@ package net.lmor.botanicalextramachinery.blocks.screens.mechanicalOrechid;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
+import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalOrechid.ContainerOrechidBase;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenDrawLabelText;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalOrechid.BlockEntityOrechidBase;
 import net.lmor.botanicalextramachinery.core.LibResources;
+import net.lmor.botanicalextramachinery.gui.AllBars;
+import net.lmor.botanicalextramachinery.gui.Bars;
+import net.lmor.botanicalextramachinery.gui.SlotInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,52 +23,46 @@ import java.util.Map;
 public class ScreenOrechidBase extends ExtraScreenBase<ContainerOrechidBase> {
 
     BlockEntityOrechidBase blockEntity;
+    ScreenAddInventory screenAddInventory = new ScreenAddInventory(ScreenInventory.BASE);
+    Bars bars;
+    SlotInfo slotInfo;
 
     public ScreenOrechidBase(ContainerOrechidBase menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 27, 110);
+        super(menu, inventory, title);
 
-        this.imageWidth = 184;
-        this.imageHeight = 206;
+        bars = new Bars(this);
+        slotInfo = new SlotInfo(this);
 
-        this.inventoryLabelY = -9999;
-        this.titleLabelY = -9999;
+        this.imageWidth = ContainerAlfheimMarketBase.WIDTH_GUI;
+        this.imageHeight = ContainerAlfheimMarketBase.HEIGHT_GUI;
 
-        Map<Integer, int[]> ores = new HashMap<>();
+        bars.setBar(AllBars.MANA);
+        bars.setDrawCoord(33, 104);
 
-        ores.put(0, new int[] {66, 19});
-        ores.put(1, new int[] {84, 19});
-        ores.put(2, new int[] {102, 19});
+        blockEntity = this.menu.getBlockEntity();
 
-        this.orechidSlotInfo.setCoord(ores, null);
+        Map<Integer, int[]> slots = new HashMap<>();
+        String[] infoTranslate = new String[9];
 
-        blockEntity = (BlockEntityOrechidBase)((ContainerOrechidBase)this.menu).getBlockEntity();
-    }
-
-    @Override
-    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
-        this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.BASE_ORECHID_GUI);
-        this.drawLabelText(poseStack);
-
-        this.orechidSlotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory(), new boolean[]{true, false});
-
-    }
-
-    private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.base_orechid");
-        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
-        poseStack.pushPose();
-        poseStack.scale(scale, scale, scale);
-        this.font.draw(poseStack, titleText,
-                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
-                (topPos + 6) /scale, 0x00);
-        poseStack.popPose();
-    }
-
-    private float calculateOptimalScale(Component text, int maxWidth) {
-        int textWidth = this.font.width(text);
-        if (textWidth <= maxWidth) {
-            return 1.0f;
+        for (int i = 0; i < 3; i++){
+            slots.put(i, new int[] {72 + 18 * i, 22});
+            infoTranslate[i] = ("botanicalextramachinery.tooltip.screen.ore_slot");
         }
-        return (float) maxWidth / textWidth;
+
+        slotInfo.setCoord(slots);
+        slotInfo.setTranslatableText(infoTranslate);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
+        this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.BASE_ORECHID_GUI, screenAddInventory,
+                new int[] {blockEntity.getCurrentMana()}, new int[] {blockEntity.getMaxMana()}, bars, slotInfo);
+
+        ScreenDrawLabelText.drawLabelText(poseStack, this.font, "block.botanicalextramachinery.base_orechid",
+                new int[] {this.leftPos, this.topPos}, new int[] {this.imageWidth, this.imageHeight}, 6);
+
+        slotInfo.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getInventory());
+        bars.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getCurrentMana(), blockEntity.getMaxMana(), 0);
+
     }
 }

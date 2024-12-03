@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:upgrade_pattern"
+    },
+    "b": {
+      "item": "botanicalextramachinery:upgrade_cost_energy"
+    },
+    "c": {
+      "item": "botanicalextramachinery:upgrade_heat_greenhouse"
+    },
+    "d": {
+      "item": "botanicalextramachinery:upgrade_storage_energy_1"
+    },
+    "e": {
+      "item": "minecraft:glass"
+    },
+    "f": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "pattern": [
+    "beb",
+    "faf",
+    "dcd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_gen_mana"
+  }
+}

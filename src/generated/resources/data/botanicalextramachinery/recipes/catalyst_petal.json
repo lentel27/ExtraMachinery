@@ -8,7 +8,7 @@
       "tag": "botania:petals"
     },
     "c": {
-      "item": "minecraft:iron_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     }
   },
   "pattern": [

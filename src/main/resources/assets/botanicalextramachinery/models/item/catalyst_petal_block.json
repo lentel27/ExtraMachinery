@@ -3,6 +3,6 @@
   "textures": {
     "layer0": "botanicalextramachinery:item/catalyst_pattern",
     "layer1": "botanicalextramachinery:item/catalyst_petal_block_pattern",
-    "layer2": "botanicalextramachinery:item/template/transformation"
+    "layer2": "botanicalextramachinery:item/overlay_block"
   }
 }

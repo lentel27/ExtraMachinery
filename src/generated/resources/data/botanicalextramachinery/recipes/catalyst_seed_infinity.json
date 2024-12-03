@@ -2,22 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "a": {
-      "item": "botanicalextramachinery:saffron_dragonstone_block"
+      "item": "botanicalextramachinery:catalyst_pattern"
     },
     "b": {
-      "item": "botanicalextramachinery:shadow_dragonstone_block"
+      "tag": "forge:seeds"
     },
     "c": {
-      "item": "botanicalextramachinery:crimson_dragonstone_block"
-    },
-    "d": {
-      "item": "botanicalextramachinery:ultimate_apothecary"
+      "item": "minecraft:diamond"
     }
   },
   "pattern": [
-    "abc",
-    "bdb",
-    "cba"
+    " c ",
+    "bab",
+    " c "
   ],
   "result": {
     "item": "botanicalextramachinery:catalyst_seed_infinity"

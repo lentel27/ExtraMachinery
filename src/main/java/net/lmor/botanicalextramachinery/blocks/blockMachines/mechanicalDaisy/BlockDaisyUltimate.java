@@ -87,10 +87,6 @@ public class BlockDaisyUltimate extends MenuBlockBE<BlockEntityDaisyUltimate, Co
         super.onRemove(state, level, pos, newState, isMoving);
     }
 
-    protected boolean shouldDropInventory(Level level, BlockPos pos, BlockState state) {
-        return false;
-    }
-
     static {
         COLLISION_SHAPE = Shapes.joinUnoptimized(box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0), box(5.0, 2.0, 5.0, 11.0, 3.0, 11.0), BooleanOp.OR);
         SHAPE = box(0.0, 0.0, 0.0, 16.0, 11.4, 16.0);

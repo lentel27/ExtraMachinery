@@ -4,10 +4,17 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.lmor.botanicalextramachinery.blocks.base.ExtraScreenBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalAlfheimMarket.ContainerAlfheimMarketUpgraded;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenDrawLabelText;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalAlfheimMarket.BlockEntityAlfheimMarketUpgraded;
 import net.lmor.botanicalextramachinery.core.LibResources;
+import net.lmor.botanicalextramachinery.gui.AllBars;
+import net.lmor.botanicalextramachinery.gui.Bars;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import vazkii.botania.client.core.helper.RenderHelper;
 
 import javax.annotation.Nonnull;
@@ -15,47 +22,37 @@ import javax.annotation.Nonnull;
 public class ScreenAlfheimMarketUpgraded extends ExtraScreenBase<ContainerAlfheimMarketUpgraded> {
 
     BlockEntityAlfheimMarketUpgraded blockEntity;
+    ScreenAddInventory screenAddInventory = new ScreenAddInventory(ScreenInventory.UPGRADE);
+    Bars bars;
 
     public ScreenAlfheimMarketUpgraded(ContainerAlfheimMarketUpgraded menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, 27, 81);
+        super(menu, inventory, title);
 
-        this.imageWidth = 184;
-        this.imageHeight = 177;
+        bars = new Bars(this);
 
-        this.inventoryLabelY = -999;
-        this.titleLabelY = -999;
+        this.imageWidth = ContainerAlfheimMarketUpgraded.WIDTH_GUI;
+        this.imageHeight = ContainerAlfheimMarketUpgraded.HEIGHT_GUI;
 
-        blockEntity = (BlockEntityAlfheimMarketUpgraded)((ContainerAlfheimMarketUpgraded)this.menu).getBlockEntity();
+        this.bars.setBar(AllBars.MANA);
+        this.bars.setDrawCoord(33, 102);
+
+        blockEntity = this.menu.getBlockEntity();
     }
 
+    @OnlyIn(Dist.CLIENT)
     protected void renderBg(@Nonnull PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
-        this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.UPGRADED_ALFHEIM_MARKET_GUI);
-        this.drawLabelText(poseStack);
+        this.drawDefaultGuiBackgroundLayer(poseStack, LibResources.UPGRADED_ALFHEIM_MARKET_GUI, screenAddInventory,
+                new int[] {blockEntity.getCurrentMana()}, new int[] {blockEntity.getMaxMana()}, bars, null);
+
+        ScreenDrawLabelText.drawLabelText(poseStack, this.font, "block.botanicalextramachinery.upgraded_alfheim_market",
+                new int[] {this.leftPos, this.topPos}, new int[] {this.imageWidth, this.imageHeight}, 6);
 
         if (blockEntity.getProgress() > 0) {
             float pct = Math.min((float)blockEntity.getProgress() / (float)blockEntity.getMaxProgress(), 1.0F);
             RenderSystem.setShaderTexture(0, LibResources.UPGRADED_ALFHEIM_MARKET_GUI);
-            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 84, this.topPos + 36, this.imageWidth, 0, Math.round(16.0F * pct), 16);
+            RenderHelper.drawTexturedModalRect(poseStack, this.leftPos + 90, this.topPos + 53, this.imageWidth, 0, Math.round(16.0F * pct), 16);
         }
-    }
 
-    private void drawLabelText(PoseStack poseStack){
-        Component titleText = Component.translatable("block.botanicalextramachinery.upgraded_alfheim_market");
-        float scale = calculateOptimalScale(titleText, this.imageWidth - 20);
-        poseStack.pushPose();
-        poseStack.scale(scale, scale, scale);
-        this.font.draw(poseStack, titleText,
-                (leftPos + imageWidth / 2 - this.font.width(titleText) * scale / 2) / scale,
-                (topPos + 7) /scale, 0x00);
-        poseStack.popPose();
+        bars.renderHoveredToolTip(poseStack, mouseX, mouseY, blockEntity.getCurrentMana(), blockEntity.getMaxMana(), 0);
     }
-
-    private float calculateOptimalScale(Component text, int maxWidth) {
-        int textWidth = this.font.width(text);
-        if (textWidth <= maxWidth) {
-            return 1.0f;
-        }
-        return (float) maxWidth / textWidth;
-    }
-
 }

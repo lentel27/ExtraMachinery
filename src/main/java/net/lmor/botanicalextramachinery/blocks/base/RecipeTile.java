@@ -1,7 +1,6 @@
 package net.lmor.botanicalextramachinery.blocks.base;
 
 import com.google.common.collect.Streams;
-import de.melanx.botanicalmachinery.blocks.base.BotanicalTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
@@ -24,7 +23,7 @@ import java.util.function.BiConsumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public abstract class RecipeTile<T extends Recipe<Container>> extends BotanicalTile {
+public abstract class RecipeTile<T extends Recipe<Container>> extends ExtraBotanicalTile {
     private final RecipeType<T> recipeType;
     private final int firstInputSlot;
     private final int firstOutputSlot;

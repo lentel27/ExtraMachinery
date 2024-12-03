@@ -3,9 +3,12 @@ package net.lmor.botanicalextramachinery;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.moddingx.libx.mod.ModXRegistration;
@@ -29,6 +32,9 @@ public final class ExtraMachinery extends ModXRegistration {
         });
 
         instance = this;
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        if (ModList.get().isLoaded("appbot")) RegItemsAppbotItems.initialize(bus);
         ModEntities.registerEntities(bind(ForgeRegistries.ENTITY_TYPES));
 
     }

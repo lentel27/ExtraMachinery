@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:malachite_ingot"
+    },
+    "b": {
+      "item": "botanicalextramachinery:upgrade_storage_mana_1"
+    },
+    "c": {
+      "item": "botania:manasteel_ingot"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_storage_mana_2"
+  }
+}

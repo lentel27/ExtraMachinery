@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:upgrade_pattern"
+    },
+    "b": {
+      "item": "botania:crafting_halo"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    }
+  },
+  "pattern": [
+    "cbc",
+    "bab",
+    "cbc"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_slot_add"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:saffron_dragonstone"
+    },
+    "b": {
+      "item": "botanicalextramachinery:saffron_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:cell_component_4m"
+    },
+    "d": {
+      "item": "botanicalextramachinery:malachite_ingot"
+    }
+  },
+  "pattern": [
+    "aba", "cdc", "aca"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:cell_component_16m"
+  },
+  "show_notification": true
+}

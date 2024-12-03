@@ -1,6 +1,8 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory;
 
 import de.melanx.botanicalmachinery.helper.UnrestrictedOutputSlot;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -12,15 +14,19 @@ import org.jetbrains.annotations.NotNull;
 import org.moddingx.libx.menu.BlockEntityMenu;
 
 public class ContainerIndustrialAgglomerationFactoryBase extends BlockEntityMenu<BlockEntityIndustrialAgglomerationFactoryBase> {
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 131;
+
     public ContainerIndustrialAgglomerationFactoryBase(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, 3, 7);
-        IItemHandlerModifiable inventory = ((BlockEntityIndustrialAgglomerationFactoryBase)this.blockEntity).getInventory();
+        IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
+        int index = this.addSlotBox(inventory, 0, 72, 39, 3, 18, 1, 18);
 
-        int index = this.addSlotBox(inventory, 0, 66, 22, 3, 18, 1, 18);
-        this.addSlotBox(inventory, index, 57, 58, 4, 18, 1, 18, UnrestrictedOutputSlot::new);
+        this.addSlotBox(inventory, index, 63, 75, 4, 18, 1, 18, UnrestrictedOutputSlot::new);
 
-        this.layoutPlayerInventorySlots(12, 101);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.BASE, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Override

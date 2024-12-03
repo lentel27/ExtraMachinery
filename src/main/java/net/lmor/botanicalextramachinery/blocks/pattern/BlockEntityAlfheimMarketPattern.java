@@ -24,7 +24,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -39,7 +38,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.Nullable;
 import org.moddingx.libx.crafting.recipe.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.ElvenTradeRecipe;
 import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
@@ -207,6 +205,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
         super.load(nbt);
         this.currentInput = ItemStack.of(nbt.getCompound("currentInput"));
         this.currentOutput = ItemStack.of(nbt.getCompound("currentOutput"));
+        this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
         this.setDispatchable();
@@ -216,6 +215,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
         super.saveAdditional(nbt);
         nbt.put("currentInput", this.currentInput.serializeNBT());
         nbt.put("currentOutput", this.currentOutput.serializeNBT());
+        this.getMainNode().saveToNBT(nbt);
     }
 
     public void handleUpdateTag(CompoundTag nbt) {
@@ -241,18 +241,6 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
     public BlockEntity getBlockEntity(){
         return this;
     }
-
-    public void drops(){
-        IAdvancedItemHandlerModifiable inventory = this.getInventory().getUnrestricted();
-        for (int i = 0; i < inventory.getSlots(); i++){
-            ItemStack itemStack = inventory.getStackInSlot(i);
-            if (itemStack.isEmpty()) continue;
-            ItemEntity ie = new ItemEntity(this.level, (double)this.worldPosition.getX() + 0.5, (double)this.worldPosition.getY() + 0.7, (double)this.worldPosition.getZ() + 0.5, itemStack.copy());
-            this.level.addFreshEntity(ie);
-        }
-    }
-
-
     //endregion
 
     //region AE INTEGRATION

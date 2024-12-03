@@ -16,7 +16,7 @@ public class EntityShadowManaSpark extends EntityManaSparkPattern {
         this.TRANSFER_RATE = RATE;
     }
 
-    public static int geRate(){
+    public static int getRate(){
         return RATE;
     }
 

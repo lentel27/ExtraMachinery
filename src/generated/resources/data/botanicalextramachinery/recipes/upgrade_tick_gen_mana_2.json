@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:upgrade_tick_gen_mana_1"
+    },
+    "b": {
+      "item": "botanicalextramachinery:crimson_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:upgrade_pattern"
+    },
+    "d": {
+      "item": "botanicalextramachinery:crystal_ingot"
+    }
+  },
+  "pattern": [
+    "dbd",
+    "aca",
+    "dbd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_tick_gen_mana_2"
+  }
+}

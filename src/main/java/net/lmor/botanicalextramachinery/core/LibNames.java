@@ -21,6 +21,7 @@ public class LibNames {
     public static final String CRIMSON_INGOT = "crimson_ingot";
     public static final String CRIMSON_INGOT_BLOCK = "crimson_ingot_block";
 
+    public static final String BASE_SPARK = "base_spark";
     public static final String MALACHITE_SPARK = "malachite_spark";
     public static final String SAFFRON_SPARK = "saffrom_spark";
     public static final String SHADOW_SPARK = "shadow_spark";
@@ -62,6 +63,7 @@ public class LibNames {
     public static final String ULTIMATE_ORECHID = "ultimate_orechid";
 
     public static final String JADED_AMARANTHUS = "jaded_amaranthus";
+    public static final String GREENHOUSE = "greenhouse";
 
     public LibNames() {
     }

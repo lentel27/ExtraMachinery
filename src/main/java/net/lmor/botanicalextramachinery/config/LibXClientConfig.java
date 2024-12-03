@@ -6,13 +6,16 @@ import org.moddingx.libx.config.Group;
 
 @RegisterConfig(value = "client", client = true)
 public class LibXClientConfig {
-    @Config({"Whether to show mana/water as a number when hovering over its capacity?"})
-    public static boolean numericalFluid = true;
+    @Config({"Whether to show mana/water/energy/heat as a number when hovering over its capacity?"})
+    public static boolean numericalTooltip = true;
     @Config({"Format number using suffixes (K, M, etc.)? If false, then the full number will be shown."})
     public static boolean formattedNumberSuffix = false;
 
     @Config({"Show information about additional slots? For example, the slot where the catalyst is placed in the mana pool."})
     public static boolean slotInfo = true;
+
+    @Config({"Show/hide mechanism name in GUI"})
+    public static boolean nameMechanism = true;
 
     @Group({"Mechanism rendering settings."})
     public static class RenderingVisualContent {
@@ -88,6 +91,10 @@ public class LibXClientConfig {
 
             public AlfheimMarketSettings(){}
         }
+
+
+        @Config({"Greenhouse rendering settings"})
+        public static boolean greenhouse = true;
 
         public RenderingVisualContent() {
         }

@@ -1,5 +1,7 @@
 package net.lmor.botanicalextramachinery.blocks.containers.mechanicalDaisy;
 
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenAddInventory;
+import net.lmor.botanicalextramachinery.blocks.screens.uitlScreen.ScreenInventory;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalDaisy.BlockEntityDaisyAdvanced;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,29 +19,31 @@ import javax.annotation.Nonnull;
 
 public class ContainerDaisyAdvanced extends BlockEntityMenu<BlockEntityDaisyAdvanced> {
     private static final int SIZE_INVENTORY = 14;
+    public final static int WIDTH_GUI = 196;
+    public final static int HEIGHT_GUI = 124;
 
     public ContainerDaisyAdvanced(MenuType<? extends BlockEntityMenu<?>> type, int windowId, Level level, BlockPos pos, Inventory playerContainer, Player player) {
         super(type, windowId, level, pos, playerContainer, player, SIZE_INVENTORY, SIZE_INVENTORY);
 
         IItemHandlerModifiable inventory = this.blockEntity.getInventory();
 
-        this.addSlot(new SlotItemHandler(inventory, 0, 84, 35));
-        this.addSlot(new SlotItemHandler(inventory, 1, 106, 41));
-        this.addSlot(new SlotItemHandler(inventory, 2, 112, 63));
-        this.addSlot(new SlotItemHandler(inventory, 3, 106, 85));
-        this.addSlot(new SlotItemHandler(inventory, 4, 84, 91));
-        this.addSlot(new SlotItemHandler(inventory, 5, 62, 85));
-        this.addSlot(new SlotItemHandler(inventory, 6, 56, 63));
-        this.addSlot(new SlotItemHandler(inventory, 7, 62, 41));
-        this.addSlot(new SlotItemHandler(inventory, 8, 130, 41));
-        this.addSlot(new SlotItemHandler(inventory, 9, 130, 85));
-        this.addSlot(new SlotItemHandler(inventory, 10, 38, 41));
-        this.addSlot(new SlotItemHandler(inventory, 11, 38, 85));
-        this.addSlot(new SlotItemHandler(inventory, 12, 140, 63));
-        this.addSlot(new SlotItemHandler(inventory, 13, 28, 63));
+        this.addSlot(new SlotItemHandler(inventory, 0, 90, 26));
+        this.addSlot(new SlotItemHandler(inventory, 1, 112, 32));
+        this.addSlot(new SlotItemHandler(inventory, 2, 118, 54));
+        this.addSlot(new SlotItemHandler(inventory, 3, 112, 76));
+        this.addSlot(new SlotItemHandler(inventory, 4, 90, 82));
+        this.addSlot(new SlotItemHandler(inventory, 5, 68, 76));
+        this.addSlot(new SlotItemHandler(inventory, 6, 62, 54));
+        this.addSlot(new SlotItemHandler(inventory, 7, 68, 32));
+        this.addSlot(new SlotItemHandler(inventory, 8, 44, 32));
+        this.addSlot(new SlotItemHandler(inventory, 9, 34, 54));
+        this.addSlot(new SlotItemHandler(inventory, 10, 43, 76));
+        this.addSlot(new SlotItemHandler(inventory, 11, 136, 32));
+        this.addSlot(new SlotItemHandler(inventory, 12, 146, 54));
+        this.addSlot(new SlotItemHandler(inventory, 13, 136, 76));
 
-
-        this.layoutPlayerInventorySlots(12, 135);
+        int[] x_y = ScreenAddInventory.getCoordInventorySlot(ScreenInventory.ADVANCED, WIDTH_GUI, HEIGHT_GUI);
+        this.layoutPlayerInventorySlots(x_y[0], x_y[1]);
     }
 
     @Nonnull

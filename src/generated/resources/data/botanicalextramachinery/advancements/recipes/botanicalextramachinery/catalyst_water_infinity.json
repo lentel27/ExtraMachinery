@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "botanicalextramachinery:saffron_dragonstone_block"
+              "botanicalextramachinery:catalyst_pattern"
             ]
           }
         ]
@@ -18,7 +18,7 @@
         "items": [
           {
             "items": [
-              "botanicalextramachinery:shadow_dragonstone_block"
+              "minecraft:water_bucket"
             ]
           }
         ]
@@ -29,21 +29,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "botanicalextramachinery:crimson_dragonstone_block"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "criterion3": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "botanicalextramachinery:advanced_apothecary"
-            ]
+            "tag": "botania:petals"
           }
         ]
       },
@@ -61,7 +47,6 @@
       "criterion0",
       "criterion1",
       "criterion2",
-      "criterion3",
       "has_the_recipe"
     ]
   ],

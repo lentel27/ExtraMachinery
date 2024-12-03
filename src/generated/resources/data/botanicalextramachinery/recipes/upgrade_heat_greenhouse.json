@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:upgrade_pattern"
+    },
+    "b": {
+      "item": "botanicalextramachinery:upgrade_storage_energy_2"
+    },
+    "c": {
+      "item": "botanicalextramachinery:saffron_ingot"
+    },
+    "d": {
+      "item": "minecraft:redstone_block"
+    },
+    "e": {
+      "item": "minecraft:glass"
+    }
+  },
+  "pattern": [
+    "cec",
+    "bab",
+    "ddd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:upgrade_heat_greenhouse"
+  }
+}
