@@ -121,7 +121,10 @@
   "item.botanicalextramachinery.mana_storage_cell_64m": "64M MEマナストレージセル",
   "item.botanicalextramachinery.mana_storage_cell_256m": "256M MEマナストレージセル",
 
-  "botanicalextramachinery.tooltip.screen": "%1$s / %2$s マナ",
+  "botanicalextramachinery.tooltip.screen.mana": "%1$s / %2$s マナ",
+  "botanicalextramachinery.tooltip.screen.energy": "%1$s / %2$s RF",
+  "botanicalextramachinery.tooltip.screen.water": "%1$s / %2$s",
+  "botanicalextramachinery.tooltip.screen.heat": "%1$s / %2$s 熱量",
   "botanicalextramachinery.tooltip.screen.catalyst_slot": "カタリスト",
   "botanicalextramachinery.tooltip.screen.upgrade_slot": "アップグレード",
   "botanicalextramachinery.tooltip.screen.livingrock_slot": "リビングロック",
