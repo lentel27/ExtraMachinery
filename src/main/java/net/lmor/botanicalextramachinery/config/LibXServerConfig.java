@@ -10,6 +10,17 @@ public class LibXServerConfig {
     public LibXServerConfig() {
     }
 
+    @Group({"Spark rate"})
+    public static class SparkTier {
+
+        public static int baseSpark = 1000;
+        public static int malachiteSpark = 25000;
+        public static int saffronSpark = 100000;
+        public static int shadowSpark = 500000;
+        public static int crimsonSpark = 1000000;
+
+        public SparkTier() {}
+    }
 
     @Group({"Mana pool settings for all types"})
     public static class ManaPoolSettings {

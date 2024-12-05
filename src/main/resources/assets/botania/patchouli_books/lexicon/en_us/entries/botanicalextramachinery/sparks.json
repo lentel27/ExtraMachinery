@@ -1,0 +1,38 @@
+{
+  "name": "lexicon.botanicalextramachinery.sparks",
+  "category": "botania:botanicalextramachinery",
+  "icon": "botanicalextramachinery:base_spark",
+  "entry_color": "cc425e",
+  "pages": [
+    {
+      "type": "text",
+      "title": "lexicon.botanicalextramachinery.sparks",
+      "text": "lexicon.botanicalextramachinery.sparks.page_1"
+    },
+    {
+      "type": "crafting",
+      "title": "item.botanicalextramachinery.base_spark",
+      "recipe": "botanicalextramachinery:base_spark"
+    },
+    {
+      "type": "botania:runic_altar",
+      "title": "item.botanicalextramachinery.malachite_spark",
+      "recipe": "botanicalextramachinery:runic_altar/malachite_spark"
+    },
+    {
+      "type": "botania:runic_altar",
+      "title": "item.botanicalextramachinery.saffron_spark",
+      "recipe": "botanicalextramachinery:runic_altar/saffron_spark"
+    },
+    {
+      "type": "botania:runic_altar",
+      "title": "item.botanicalextramachinery.shadow_spark",
+      "recipe": "botanicalextramachinery:runic_altar/shadow_spark"
+    },
+    {
+      "type": "botania:runic_altar",
+      "title": "item.botanicalextramachinery.crimson_spark",
+      "recipe": "botanicalextramachinery:runic_altar/crimson_spark"
+    }
+  ]
+}

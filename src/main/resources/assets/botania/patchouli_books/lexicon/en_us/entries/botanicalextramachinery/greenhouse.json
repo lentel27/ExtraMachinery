@@ -1,0 +1,22 @@
+{
+  "name": "lexicon.botanicalextramachinery.greenhouse",
+  "category": "botania:botanicalextramachinery",
+  "icon": "botanicalextramachinery:greenhouse",
+  "entry_color": "cc425e",
+  "pages": [
+    {
+      "type": "text",
+      "title": "lexicon.botanicalextramachinery.greenhouse",
+      "text": "lexicon.botanicalextramachinery.greenhouse.page_1"
+    },
+    {
+      "type": "text",
+      "text": "lexicon.botanicalextramachinery.greenhouse.page_2"
+    },
+    {
+      "type": "crafting",
+      "title": "lexicon.botanicalextramachinery.greenhouse",
+      "recipe": "botanicalextramachinery:greenhouse"
+    }
+  ]
+}
