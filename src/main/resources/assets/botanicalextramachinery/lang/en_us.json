@@ -176,7 +176,7 @@
 
   "lexicon.botanicalextramachinery.greenhouse": "Greenhouse",
   "lexicon.botanicalextramachinery.greenhouse.page_1": "High technology that allows you to generate a colossal amount of $(thing)mana$(0) (with maximum improvements). This mechanism works from the $(thing)energy$(0) and fuel that the flowers eat. $(p)Initially, the fuel slots will not be accessible until a $(item)flower$(0) is placed in the top slot. This keeps the fuel slots clean. Only items for the $(item)flower$(0) to \"eat\" can be placed there.",
-  "lexicon.botanicalextramachinery.greenhouse.page_2": "The $(item)greenhouse$(0) can also be improved with the help of $(l:botanicalextramachinery/greenhouse_upgrades)$(item)upgrades$(0)$(/l), which can be read in the corresponding catalog.$(p)It is also worth noting that if there is a mod Applied Botanics Addon, then the greenhouse can connect to the me and give mana there itself",
+  "lexicon.botanicalextramachinery.greenhouse.page_2": "The $(item)greenhouse$(0) can also be improved with the help of $(l:botanicalextramachinery/greenhouse_upgrades)$(item)upgrades$(0)$(/l), which can be read in the corresponding catalog.$(p)It is also worth noting that if there is a mod Applied Botanics Addon, then the greenhouse can connect to ME and give mana there itself",
 
   "lexicon.botanicalextramachinery.upgrades": "Upgrades",
   "lexicon.botanicalextramachinery.upgrades.slots_flower": "Stack flower",
