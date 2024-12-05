@@ -204,8 +204,6 @@
   "lexicon.botanicalextramachinery.upgrades.page_8": "Reduces greenhouse energy consumption by $(#32c962)50 percent$(0).",
 
   "lexicon.botanicalextramachinery.suitable_flowers": "Suitable Flowers",
-  "lexicon.botanicalextramachinery.suitable_flowers.page_1": "The greenhouse does not support all types of generating flowers. At the moment, it supports the following flowers: $(li)Endoflame$(0)$(li)Entropinnyum$(0)$(li)Gourmaryllis$(0)$(li)Kekimurus$(0)$(li)Munchdew$(0)$(li)Rafflowsia$(0)$(li)Rosa Arcana$(0)$(li)Wither Aconite$(0)",
+  "lexicon.botanicalextramachinery.suitable_flowers.page_1": "The greenhouse does not support all types of generating flowers. At the moment, it supports the following flowers: $(li)Endoflame$(0)$(li)Entropinnyum$(0)$(li)Gourmaryllis$(0)$(li)Kekimurus$(0)$(li)Munchdew$(0)$(li)Narslimmus(0)$(li)Rafflowsia$(0)$(li)Rosa Arcana$(0)$(li)Wither Aconite$(0)",
   "lexicon.botanicalextramachinery.suitable_flowers.page_2": "Rosa Arcana - consumes experience bubbles. But mana is given randomly from how much experience was received from 1 bubble (Normal values of experience drop when breaking a bubble)$(p)Narslimmus - Instead of slimes (mobs), it consumes slime ball or slime block$(p)Wither Aconite - available if the MythicBotany mod is installed$(p)"
-
-
 }

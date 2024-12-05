@@ -162,5 +162,48 @@
   "botanicalextramachinery.tooltip.item.upgradeStorageEnergy_2": "§6蓄電量を§a100§6倍にする",
   "botanicalextramachinery.tooltip.item.upgradeStorageEnergy_3": "§6蓄電量を§a1000§6倍にする",
   "botanicalextramachinery.tooltip.item.upgradeTickGenMana_1": "§6グリーンハウスの速度が§a25%§6上昇する",
-  "botanicalextramachinery.tooltip.item.upgradeTickGenMana_2": "§6グリーンハウスの速度が§a50%§6上昇する"
+  "botanicalextramachinery.tooltip.item.upgradeTickGenMana_2": "§6グリーンハウスの速度が§a50%§6上昇する",
+
+  "lexicon.botanicalextramachinery.title": "Extra Botanical Machinery",
+  "lexicon.botanicalextramachinery.description": "An expanded edition of the well-known Botanical Machinery mod. Improved mechanisms up to 4 tiers, as well as new mechanisms that will help you.",
+
+  "lexicon.botanicalextramachinery.tiers": "Tiers",
+  "lexicon.botanicalextramachinery.tiers.page_1": "This mod adds new tiers of mechanisms for Botanical Machinery. There are 4 tiers in total and each one differs from each other in the available upgrades, the number of slots, and the number of crafts at a time.$(p)",
+  "lexicon.botanicalextramachinery.tiers.page_2": "Tiers are divided into the following types: $(li)$(#32c962)Malachite$(0) $(li)$(#fbb954)Saffron$(0) $(li)$(#fbb954)Shadow$(0) $(li)$(#d4002e)Crimson$(0) $(p)And one more type, which does not belong as a division - Crystal tier",
+
+  "lexicon.botanicalextramachinery.sparks": "Sparks",
+  "lexicon.botanicalextramachinery.sparks.page_1": "To move mana faster, new types of $(item)sparks$(0) have been added. With each new tier, the spark transfers more $(thing)mana$(0) than the previous tier.$(p)There is also a $(item)basic sparks$(0), which is analogous to a regular $(item)spark$(0).",
+
+  "lexicon.botanicalextramachinery.greenhouse": "Greenhouse",
+  "lexicon.botanicalextramachinery.greenhouse.page_1": "High technology that allows you to generate a colossal amount of $(thing)mana$(0) (with maximum improvements). This mechanism works from the $(thing)energy$(0) and fuel that the flowers eat. $(p)Initially, the fuel slots will not be accessible until a $(item)flower$(0) is placed in the top slot. This keeps the fuel slots clean. Only items for the $(item)flower$(0) to \"eat\" can be placed there.",
+  "lexicon.botanicalextramachinery.greenhouse.page_2": "The $(item)greenhouse$(0) can also be improved with the help of $(l:botanicalextramachinery/greenhouse_upgrades)$(item)upgrades$(0)$(/l), which can be read in the corresponding catalog.$(p)It is also worth noting that if there is a mod Applied Botanics Addon, then the greenhouse can connect to ME and give mana there itself",
+
+  "lexicon.botanicalextramachinery.upgrades": "Upgrades",
+  "lexicon.botanicalextramachinery.upgrades.slots_flower": "Stack flower",
+  "lexicon.botanicalextramachinery.upgrades.page_1": "There are about 16 upgrades for the greenhouse. Let's go through them all in order.$(p)Stack Improvements for slots flower$(p)This upgrade increases the amount of flowers received per slot, from 4 to 64 for 1 slot.",
+
+  "lexicon.botanicalextramachinery.upgrades.gen_mana": "Upgraded generation mana",
+  "lexicon.botanicalextramachinery.upgrades.page_2": "Increases $(thing)mana$(0) generation by $(#32c962)25 percent$(0), but also increases energy consumption by $(#d4002e)100 percent$(0)",
+
+  "lexicon.botanicalextramachinery.upgrades.heat": "Upgraded heat",
+  "lexicon.botanicalextramachinery.upgrades.page_3": "This upgrade adds heat to the greenhouse, which increases the amount of $(thing)mana$(0) gained by $(#32c962)5 percent$(0) for every $(#fbb954)10 heat$(0). A total of $(#fbb954)40 heat$(0) can be stored and a maximum of $(#32c962)20 percent$(0) $(thing)mana$(0) can be gained.",
+
+  "lexicon.botanicalextramachinery.upgrades.slot_add": "Upgraded slot add",
+  "lexicon.botanicalextramachinery.upgrades.page_4": "Adds $(#32c962)2$(0) rows of fuel slots. That is, instead of the original 7 slots, $(#fbb954)21 slots$(0) will become available",
+
+  "lexicon.botanicalextramachinery.upgrades.storage_mana": "Upgraded storage mana",
+  "lexicon.botanicalextramachinery.upgrades.page_5": "Increases the internal $(thing)mana$(0) buffer by $(#32c962)10$(0), $(#32c962)100$(0), and $(#32c962)1000$(0) times the base value. It is worth remembering that if you remove the upgrades, the excess $(thing)mana$(0) will be removed.",
+
+  "lexicon.botanicalextramachinery.upgrades.storage_energy": "Upgraded storage energy",
+  "lexicon.botanicalextramachinery.upgrades.page_6": "Increases the internal energy buffer by $(#32c962)10$(0), $(#32c962)100$(0), and $(#32c962)1000$(0) times the base value. It is worth remembering that if you remove the improvements, the excess energy will be removed.",
+
+  "lexicon.botanicalextramachinery.upgrades.tick_gen_mana": "Upgraded tick generator mana",
+  "lexicon.botanicalextramachinery.upgrades.page_7": "These improvements speed up the greenhouse operation by $(#32c962)25 percent$(0) and $(#32c962)50 percent$(0) respectively.",
+
+  "lexicon.botanicalextramachinery.upgrades.cost_energy": "Upgraded cost energy",
+  "lexicon.botanicalextramachinery.upgrades.page_8": "Reduces greenhouse energy consumption by $(#32c962)50 percent$(0).",
+
+  "lexicon.botanicalextramachinery.suitable_flowers": "Suitable Flowers",
+  "lexicon.botanicalextramachinery.suitable_flowers.page_1": "The greenhouse does not support all types of generating flowers. At the moment, it supports the following flowers: $(li)Endoflame$(0)$(li)Entropinnyum$(0)$(li)Gourmaryllis$(0)$(li)Kekimurus$(0)$(li)Munchdew$(0)$(li)Narslimmus(0)$(li)Rafflowsia$(0)$(li)Rosa Arcana$(0)$(li)Wither Aconite$(0)",
+  "lexicon.botanicalextramachinery.suitable_flowers.page_2": "Rosa Arcana - consumes experience bubbles. But mana is given randomly from how much experience was received from 1 bubble (Normal values of experience drop when breaking a bubble)$(p)Narslimmus - Instead of slimes (mobs), it consumes slime ball or slime block$(p)Wither Aconite - available if the MythicBotany mod is installed$(p)"
 }
