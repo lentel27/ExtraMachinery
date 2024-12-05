@@ -60,7 +60,7 @@ public abstract class ExtraScreenBase<X extends BlockEntityMenu<?>> extends Abst
                 addInventory.getYBlitScreen(this.topPos, addInventory.getHeightGuiMax(this.imageHeight)),
                 0, 0, addInventory.getInventoryScreen().getWidth(), addInventory.getInventoryScreen().getHeight());
 
-        if (storageAll.length != 0 && maxStorageAll.length != 0){
+        if (bars != null && storageAll.length != 0 && maxStorageAll.length != 0){
             bars.draw(guiGraphics, storageAll, maxStorageAll, checkUpgradeInfinityMana(slotInfo));
         }
     }

@@ -1,0 +1,17 @@
+{
+  "name": "lexicon.botanicalextramachinery.suitable_flowers",
+  "category": "botania:botanicalextramachinery",
+  "icon": "botania:endoflame",
+  "entry_color": "cc425e",
+  "pages": [
+    {
+      "type": "text",
+      "title": "lexicon.botanicalextramachinery.suitable_flowers",
+      "text": "lexicon.botanicalextramachinery.suitable_flowers.page_1"
+    },
+    {
+      "type": "text",
+      "text": "lexicon.botanicalextramachinery.suitable_flowers.page_2"
+    }
+  ]
+}

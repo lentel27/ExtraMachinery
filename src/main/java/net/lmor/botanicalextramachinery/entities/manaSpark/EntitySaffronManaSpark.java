@@ -2,6 +2,7 @@ package net.lmor.botanicalextramachinery.entities.manaSpark;
 
 import net.lmor.botanicalextramachinery.ModEntities;
 import net.lmor.botanicalextramachinery.ModItems;
+import net.lmor.botanicalextramachinery.config.LibXServerConfig;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -9,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 public class EntitySaffronManaSpark extends EntityManaSparkPattern {
 
-    private static int RATE = 100000;
+    private static int RATE = LibXServerConfig.SparkTier.saffronSpark;
 
     public EntitySaffronManaSpark(EntityType<?> entityEntityType, Level level) {
         super(entityEntityType, level);

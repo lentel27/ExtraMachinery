@@ -1,0 +1,42 @@
+{
+  "name": "lexicon.botanicalextramachinery.tiers",
+  "category": "botania:botanicalextramachinery",
+  "icon": "botanicalextramachinery:crystal_ingot_block",
+  "entry_color": "cc425e",
+  "pages": [
+    {
+      "type": "text",
+      "title": "lexicon.botanicalextramachinery.tiers",
+      "text": "lexicon.botanicalextramachinery.tiers.page_1"
+    },
+    {
+      "type": "text",
+      "text": "lexicon.botanicalextramachinery.tiers.page_2"
+    },
+    {
+      "type": "botania:terrasteel",
+      "title": "item.botanicalextramachinery.crystal_ingot",
+      "recipe": "botanicalextramachinery:terra_plate/crystal_ingot"
+    },
+    {
+      "type": "botania:terrasteel",
+      "title": "item.botanicalextramachinery.malachite_ingot",
+      "recipe": "botanicalextramachinery:terra_plate/malachite_ingot"
+    },
+    {
+      "type": "botania:terrasteel",
+      "title": "item.botanicalextramachinery.saffron_ingot",
+      "recipe": "botanicalextramachinery:terra_plate/saffron_ingot"
+    },
+    {
+      "type": "botania:terrasteel",
+      "title": "item.botanicalextramachinery.shadow_ingot",
+      "recipe": "botanicalextramachinery:terra_plate/shadow_ingot"
+    },
+    {
+      "type": "botania:terrasteel",
+      "title": "item.botanicalextramachinery.crimson_ingot",
+      "recipe": "botanicalextramachinery:terra_plate/crimson_ingot"
+    }
+  ]
+}
