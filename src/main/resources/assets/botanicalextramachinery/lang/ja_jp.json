@@ -131,9 +131,9 @@
   "botanicalextramachinery.tooltip.screen.seed_slot": "種",
   "botanicalextramachinery.tooltip.screen.ore_slot": "鉱石(フィルタ)",
 
-  "botanicalextramachinery.tooltip.item.mana_infinity": "§6マナを無限に生成する",
+  "botanicalextramachinery.tooltip.item.mana_infinity": "§6マナなしでクラフトを開始できるようになります",
   "botanicalextramachinery.tooltip.item.livingrock": "§6リビングロックを無限に生成する",
-  "botanicalextramachinery.tooltip.item.water": "§6水を無限に生成する",
+  "botanicalextramachinery.tooltip.item.water": "§6水なしでクラフトを始めることができます",
   "botanicalextramachinery.tooltip.item.seed": "§6種を無限に生成する",
   "botanicalextramachinery.tooltip.item.stone": "§6石を無限に生成する",
   "botanicalextramachinery.tooltip.item.wood": "§6原木を無限に生成する",

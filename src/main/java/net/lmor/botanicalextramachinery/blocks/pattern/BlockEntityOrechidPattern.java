@@ -29,7 +29,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -63,7 +62,7 @@ public class BlockEntityOrechidPattern extends ExtraBotanicalTile
 
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
 
-    private boolean catalystMana = false;
+    private boolean isInfinityMana = false;
 
     public BlockEntityOrechidPattern(BlockEntityType<?> blockEntityType, BlockPos pos, BlockState state,
                                      int manaCap, int[] slots, int[] upgrade_slot, SettingPattern settingPattern) {
@@ -150,16 +149,13 @@ public class BlockEntityOrechidPattern extends ExtraBotanicalTile
                 }
             }
 
-            if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1) {
-                if ((this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystManaInfinity
-                        || this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)) {
-                    if (this.getMaxMana() != this.getCurrentMana()) this.receiveMana(this.getMaxMana());
-                    catalystMana = true;
-                } else this.catalystMana = false;
-            }
+            isInfinityMana = (
+                (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystManaInfinity) ||
+                (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)
+            );
 
 
-                if (this.cooldown > 0) {
+            if (this.cooldown > 0) {
                 --this.cooldown;
                 this.setChanged();
                 this.setDispatchable();
@@ -179,7 +175,7 @@ public class BlockEntityOrechidPattern extends ExtraBotanicalTile
                     int count_recipe = Math.min(inventory.getStackInSlot(input_slot).getCount(), settingPattern.getConfigInt("countCraft"));
                     count_recipe = Math.min(count_recipe, inventory.getStackInSlot(output_slot).getMaxStackSize() - inventory.getStackInSlot(output_slot).getCount());
 
-                    if (!this.catalystMana) {
+                    if (!isInfinityMana) {
                         if (this.getCurrentMana() < LibXServerConfig.OrechidSettings.recipeCost * count_recipe){
                             while (this.getCurrentMana() < LibXServerConfig.OrechidSettings.recipeCost * count_recipe){
                                 count_recipe--;
@@ -402,7 +398,7 @@ public class BlockEntityOrechidPattern extends ExtraBotanicalTile
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }
@@ -428,8 +424,5 @@ public class BlockEntityOrechidPattern extends ExtraBotanicalTile
             }
         }
     }
-
-
     //endregion
-
 }

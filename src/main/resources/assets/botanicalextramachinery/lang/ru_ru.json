@@ -131,9 +131,9 @@
   "botanicalextramachinery.tooltip.screen.seed_slot": "Cлот для семян",
   "botanicalextramachinery.tooltip.screen.ore_slot": "Слот для руды (Фильтр)",
 
-  "botanicalextramachinery.tooltip.item.mana_infinity": "§6Генерирует бесконечное количество маны",
+  "botanicalextramachinery.tooltip.item.mana_infinity": "§6Позволяет начать крафты без маны",
   "botanicalextramachinery.tooltip.item.livingrock": "§6Генерирует бесконечное количество жизнекамня",
-  "botanicalextramachinery.tooltip.item.water": "§6Генерирует бесконечное количество воды",
+  "botanicalextramachinery.tooltip.item.water": "§6Позволяет начать крафты без воды",
   "botanicalextramachinery.tooltip.item.seed": "§6Генерирует бесконечное количество семян",
   "botanicalextramachinery.tooltip.item.stone": "§6Генерирует бесконечное количество камня",
   "botanicalextramachinery.tooltip.item.wood": "§6Генерирует бесконечное количество дерева",

@@ -65,14 +65,23 @@ public abstract class WorkingTile<T extends Recipe<Container>> extends RecipeTil
     }
 
     protected int getAndApplyProgressThisTick() {
-        int manaToTransfer = Math.min(Math.min(this.getCurrentMana(), this.getMaxManaPerTick()), this.getMaxProgress(this.recipe) - this.progress);
-        this.receiveMana(-manaToTransfer * this.getCountCraft());
+        int manaToTransfer;
+        if (!this.getUpgradeInfinityMana()) {
+            manaToTransfer = Math.min(Math.min(this.getCurrentMana(), this.getMaxManaPerTick()), this.getMaxProgress(this.recipe) - this.progress);
+            this.receiveMana(-manaToTransfer * this.getCountCraft());
+        } else  {
+            manaToTransfer = Math.min(this.getMaxManaPerTick(), this.getMaxProgress(this.recipe) - this.progress);
+        }
         return manaToTransfer;
     }
 
     protected abstract int getMaxProgress(T var1);
 
     public abstract int getMaxManaPerTick();
+
+    protected boolean getUpgradeInfinityMana() {
+        return false;
+    };
 
     public int getComparatorOutput() {
         return this.getProgress() > 0 ? 15 : 0;

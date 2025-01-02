@@ -131,9 +131,9 @@
   "botanicalextramachinery.tooltip.screen.seed_slot": "Slot for seeds",
   "botanicalextramachinery.tooltip.screen.ore_slot": "Slot for ores (Filter)",
 
-  "botanicalextramachinery.tooltip.item.mana_infinity": "§6Generates infinite mana",
+  "botanicalextramachinery.tooltip.item.mana_infinity": "§6Allows you to start crafting without mana",
   "botanicalextramachinery.tooltip.item.livingrock": "§6Generates infinite livingrock",
-  "botanicalextramachinery.tooltip.item.water": "§6Generates infinite water",
+  "botanicalextramachinery.tooltip.item.water": "§6Allows you to start crafting without water",
   "botanicalextramachinery.tooltip.item.seed": "§6Generates infinite seed",
   "botanicalextramachinery.tooltip.item.stone": "§6Generates infinite stone",
   "botanicalextramachinery.tooltip.item.wood": "§6Generates infinite wood",

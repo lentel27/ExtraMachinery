@@ -23,11 +23,9 @@ import net.lmor.botanicalextramachinery.util.SettingPattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -36,7 +34,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.TerrestrialAgglomerationRecipe;
 import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
@@ -61,6 +58,8 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
 
     protected int speedMulti = 1;
+
+    private boolean isInfinityMana = false;
 
     public BlockEntityIndustrialAgglomerationFactoryPattern(BlockEntityType<?> type, BlockPos pos, BlockState state, int manaCapacity, int countCraft, int[] slots, SettingPattern settingPattern) {
         super(type, BotaniaRecipeTypes.TERRA_PLATE_TYPE, pos, state, manaCapacity, slots[0], slots[2], countCraft);
@@ -104,7 +103,6 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
                 this.getMainNode().create(this.level, this.getBlockPos());
             }
 
-            this.runRecipeTick();
 
             if (getMainNode() != null && getMainNode().getNode() != null && getMainNode().isOnline()){
                 if (timeCheckOutputSlot <= 0){
@@ -118,11 +116,10 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
                 }
             }
 
-            if (this.getMaxMana() != this.getCurrentMana() && (
-                    (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystManaInfinity)||
-                    (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystManaInfinity))){
-                this.receiveMana(this.getMaxMana());
-            }
+            isInfinityMana = (
+                (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystManaInfinity) ||
+                (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)
+            );
 
             if (this.speedMulti == 1 && (
                     (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystSpeed)||
@@ -131,6 +128,9 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
             } else{
                 this.speedMulti = 1;
             }
+
+            this.runRecipeTick();
+
         }
 
     }
@@ -167,6 +167,11 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
 
     public int getMaxManaPerTick() {
         return MAX_MANA_PER_TICK * this.settingPattern.getConfigInt("craftTime") * this.speedMulti;
+    }
+
+    @Override
+    public boolean getUpgradeInfinityMana() {
+        return this.isInfinityMana;
     }
 
     public BlockEntity getBlockEntity(){
@@ -243,7 +248,7 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }
@@ -269,8 +274,6 @@ public class BlockEntityIndustrialAgglomerationFactoryPattern extends WorkingTil
             }
         }
     }
-
-
     //endregion
 
 }

@@ -22,11 +22,9 @@ import net.lmor.botanicalextramachinery.util.SettingPattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,7 +33,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.RunicAltarRecipe;
 import vazkii.botania.client.fx.SparkleParticleData;
 import vazkii.botania.common.block.BotaniaBlocks;
@@ -66,12 +63,14 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
 
     private final BaseItemStackHandler inventory;
     private final SettingPattern settingPattern;
-    private final boolean[] isUpgrade;
 
     private final List<Integer> slotsUsed = new ArrayList();
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
 
     private List<Integer> slotsLivingRock = new ArrayList<>();
+
+    private boolean isInfinityMana = false;
+    private int livingRockBuffer = 0;
 
     public BlockEntityRunicAltarPattern(BlockEntityType<?> type, BlockPos pos, BlockState state,
                                         int manaCap, int[] slots, boolean[] isUpgrade, int countCraft,
@@ -117,13 +116,23 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         }
 
         this.settingPattern = config;
-        this.isUpgrade = isUpgrade;
-
 
         //region AE INTEGRATION
         this.setChangedQueued = false;
 
         //endregion
+    }
+
+    public void bufferCheck(){
+        for (int i = 0; i < 3; i++){
+            if (livingRockBuffer == 0) break;
+
+            if (this.inventory.getStackInSlot(i).isEmpty()) continue;
+
+            int old = livingRockBuffer;
+            livingRockBuffer = livingRockBuffer > this.inventory.getStackInSlot(i).getCount() ? livingRockBuffer - this.inventory.getStackInSlot(i).getCount(): 0;
+            this.inventory.extractItem(0, livingRockBuffer == 0 ? old : this.inventory.getStackInSlot(i).getCount(), false);
+        }
     }
 
 
@@ -162,19 +171,20 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                 }
             }
 
-            if (isUpgrade[0] && this.getMaxMana() != this.getCurrentMana()
-                    && ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystManaInfinity)
-                    || (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystManaInfinity))){
-                this.receiveMana(this.getMaxMana());
-            }
+            if (!this.inventory.getStackInSlot(0).isEmpty() && livingRockBuffer != 0) bufferCheck();
 
-            if (isUpgrade[0] &&
+
+            isInfinityMana = (
+                (UPGRADE_SLOT_1 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_1).getItem() == ModItems.catalystManaInfinity) ||
+                (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)
+            );
+
+            if (UPGRADE_SLOT_1 != -1 &&
                     ( inventory.getStackInSlot(LIVINGROCK_SLOT_1).isEmpty() ||
                             inventory.getStackInSlot(LIVINGROCK_SLOT_2).isEmpty() ||
                             inventory.getStackInSlot(LIVINGROCK_SLOT_3).isEmpty())){
 
-                if ((!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystLivingRockInfinity.asItem()) ||
-                        (isUpgrade[1] && !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystLivingRockInfinity.asItem())){
+                if (!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystLivingRockInfinity.asItem() || !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystLivingRockInfinity.asItem()){
                     addLivingRockSlots();
                 }
             }
@@ -239,16 +249,11 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     }
 
     protected void onCrafted(RunicAltarRecipe recipe, int countCraft) {
-        int renaming = countCraft;
         for (int slot: slotsLivingRock){
             if (!inventory.getStackInSlot(slot).isEmpty()){
-                int extractCount = Math.min(renaming, countCraft);
-
-                ItemStack extract = inventory.extractItem(slot, extractCount, false);
-                if (!extract.isEmpty()) {
-                    renaming -= extractCount;
-                }
-                else break;
+                livingRockBuffer = countCraft > this.inventory.getStackInSlot(slot).getCount() ? countCraft - this.inventory.getStackInSlot(slot).getCount(): 0;
+                this.inventory.extractItem(slot, livingRockBuffer == 0 ? countCraft : this.inventory.getStackInSlot(slot).getCount(), false);
+                if (livingRockBuffer == 0) return;
             }
         }
     }
@@ -287,6 +292,11 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         return MAX_MANA_PER_TICK * settingPattern.getConfigInt("craftTime");
     }
 
+    @Override
+    public boolean getUpgradeInfinityMana() {
+        return this.isInfinityMana;
+    }
+
     public boolean isSlotUsedCurrently(int slot) {
         return this.slotsUsed.contains(slot);
     }
@@ -295,6 +305,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         super.load(nbt);
         this.slotsUsed.clear();
         this.slotsUsed.addAll(Arrays.stream(nbt.getIntArray("slotsUsed")).boxed().toList());
+        this.livingRockBuffer = nbt.getInt("livingRockBuffer");
         this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
@@ -304,6 +315,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public void saveAdditional(@Nonnull CompoundTag nbt) {
         super.saveAdditional(nbt);
         nbt.putIntArray("slotsUsed", this.slotsUsed);
+        nbt.putInt("livingRockBuffer", this.livingRockBuffer);
         this.getMainNode().saveToNBT(nbt);
     }
 
@@ -312,6 +324,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
         if (this.level == null || this.level.isClientSide) {
             this.slotsUsed.clear();
             this.slotsUsed.addAll(Arrays.stream(nbt.getIntArray("slotsUsed")).boxed().toList());
+            this.livingRockBuffer = nbt.getInt("livingRockBuffer");
         }
     }
 
@@ -323,6 +336,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
             CompoundTag nbt = super.getUpdateTag();
 
             nbt.putIntArray("slotsUsed", this.slotsUsed);
+            nbt.putInt("livingRockBuffer", this.livingRockBuffer);
 
             return nbt;
         }
@@ -394,7 +408,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }
@@ -420,7 +434,5 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
     public AECableType getCableConnectionType(Direction dir) {
         return AECableType.SMART;
     }
-
     //endregion
-
 }

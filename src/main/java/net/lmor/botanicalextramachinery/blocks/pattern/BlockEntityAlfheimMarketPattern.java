@@ -23,14 +23,10 @@ import net.lmor.botanicalextramachinery.util.SettingPattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -39,7 +35,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.Nullable;
 import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.ElvenTradeRecipe;
 import vazkii.botania.common.crafting.BotaniaRecipeTypes;
 
@@ -64,6 +59,8 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
 
     private final SettingPattern settingPattern;
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
+
+    private boolean isInfinityMana = false;
 
 
     public BlockEntityAlfheimMarketPattern(BlockEntityType<?> type, BlockPos pos, BlockState state, int manaCapacity, int countCraft, int[] slots, SettingPattern settingPattern) {
@@ -99,7 +96,6 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
                     .build();
         }
 
-
         this.setChangedQueued = false;
 
     }
@@ -112,10 +108,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
                 this.getMainNode().create(this.level, this.getBlockPos());
             }
 
-            if (this.getMaxMana() != this.getCurrentMana() &&
-                    UPGRADE_SLOT != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT).getItem().asItem() == ModItems.catalystManaInfinity){
-                this.receiveMana(this.getMaxMana());
-            }
+            isInfinityMana = UPGRADE_SLOT != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT).getItem().asItem() == ModItems.catalystManaInfinity;
 
             this.runRecipeTick(
                     () -> {this.currentInput = ItemStack.EMPTY;},
@@ -192,6 +185,11 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
 
     public int getMaxManaPerTick() {
         return MAX_MANA_PER_TICK * settingPattern.getConfigInt("craftTime");
+    }
+
+    @Override
+    public boolean getUpgradeInfinityMana() {
+        return this.isInfinityMana;
     }
 
     public ItemStack getCurrentInput() {
@@ -330,6 +328,5 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
     public AECableType getCableConnectionType(Direction dir) {
         return AECableType.SMART;
     }
-
     //endregion
 }

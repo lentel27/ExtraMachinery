@@ -22,12 +22,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -36,7 +33,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import org.jetbrains.annotations.Nullable;
 import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.ManaInfusionRecipe;
 import vazkii.botania.client.fx.WispParticleData;
 import vazkii.botania.common.block.BotaniaBlocks;
@@ -68,6 +64,8 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
     private int cooldown = 0;
     private boolean checkWithCatalyst = false;
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
+
+    private boolean isInfinityMana = false;
 
 
     public BlockEntityManaPoolPattern(BlockEntityType<?> blockEntityType, BlockPos pos, BlockState state,
@@ -114,6 +112,8 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
                 this.getMainNode().create(this.level, this.getBlockPos());
             }
 
+            isInfinityMana = UPGRADE_SLOT != -1 && !inventory.getStackInSlot(UPGRADE_SLOT).isEmpty();
+
             this.updateRecipeIfNeeded();
 
             if (getMainNode() != null && getMainNode().getNode() != null && getMainNode().isOnline()){
@@ -126,10 +126,6 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
                 } else {
                     timeCheckOutputSlot--;
                 }
-            }
-
-            if (isUpgrade && this.getMaxMana() != this.getCurrentMana() && !inventory.getStackInSlot(UPGRADE_SLOT).isEmpty()){
-                this.receiveMana(this.getMaxMana());
             }
 
             if (this.cooldown > 0) {
@@ -176,7 +172,7 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
     }
 
     protected boolean matchRecipe(ManaInfusionRecipe recipe, List<ItemStack> stacks) {
-        if (recipe.getManaToConsume() > this.getCurrentMana()) {
+        if (recipe.getManaToConsume() > this.getCurrentMana() && !isInfinityMana) {
             return false;
         } else {
             Item catalystItem = this.checkWithCatalyst && !this.inventory.getStackInSlot(CATALYSTS_SLOT).isEmpty() ? this.inventory.getStackInSlot(CATALYSTS_SLOT).getItem() : null;
@@ -194,6 +190,7 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
 
         if (isUpgrade && !inventory.getStackInSlot(UPGRADE_SLOT).isEmpty()) return;
 
+        if (isInfinityMana) return;
         for (int i = 0; i < countItemCraft; i++){
             this.receiveMana(-recipe.getManaToConsume());
         }
@@ -376,7 +373,7 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }
@@ -402,7 +399,5 @@ public class BlockEntityManaPoolPattern extends RecipeTile<ManaInfusionRecipe>
             }
         }
     }
-
-
     //endregion
 }

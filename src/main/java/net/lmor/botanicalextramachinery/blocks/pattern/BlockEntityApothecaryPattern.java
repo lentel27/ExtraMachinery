@@ -27,13 +27,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -48,7 +46,6 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import org.moddingx.libx.base.tile.TickingBlock;
 import org.moddingx.libx.crafting.RecipeHelper;
 import org.moddingx.libx.inventory.BaseItemStackHandler;
-import org.moddingx.libx.inventory.IAdvancedItemHandlerModifiable;
 import vazkii.botania.api.recipe.CustomApothecaryColor;
 import vazkii.botania.api.recipe.PetalApothecaryRecipe;
 import vazkii.botania.client.fx.SparkleParticleData;
@@ -85,6 +82,9 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
     private int timeCheckOutputSlot = LibXServerConfig.tickOutputSlots;
 
     private final SettingPattern settingPattern;
+
+    private boolean isInfinityWater = false;
+    private int seedBuffer = 0;
 
     public BlockEntityApothecaryPattern(BlockEntityType<?> type, BlockPos pos, BlockState state, int[] slots, int countCraft, SettingPattern settingPattern) {
         super(type, BotaniaRecipeTypes.PETAL_TYPE, pos, state, 0, slots[1], slots[3], countCraft);
@@ -140,6 +140,12 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         this.setChangedQueued = false;
     }
 
+    public void bufferCheck(){
+        int old = seedBuffer;
+        seedBuffer = seedBuffer > this.inventory.getStackInSlot(0).getCount() ? seedBuffer - this.inventory.getStackInSlot(0).getCount(): 0;
+        this.inventory.extractItem(0, seedBuffer == 0 ? old : this.inventory.getStackInSlot(0).getCount(), false);
+    }
+
 
     //region Base
     public void tick() {
@@ -161,9 +167,9 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
 
             }
 
-        }
+            if (!this.inventory.getStackInSlot(0).isEmpty() && seedBuffer != 0) bufferCheck();
+            upgradedCheck();
 
-        if (this.level != null && !this.level.isClientSide) {
             this.runRecipeTick();
             if (this.recipe != null) {
                 this.currentOutput = this.recipe.getResultItem(this.level.registryAccess()).copy();
@@ -175,7 +181,6 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
                 this.setDispatchable();
             }
 
-            upgradedCheck();
         }
         else if (this.level != null && LibXClientConfig.RenderingVisualContent.all && settingPattern.getConfigBoolean("mechanicalApothecaryRender") && this.fluidInventory.getFluidAmount() > 0) {
             int slot;
@@ -246,7 +251,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
 
                 inventory.setStackInSlot(SEEDS_SLOT, seed);
             }
-        } else if (UPGRADE_SLOT_1 != -1 && UPGRADE_SLOT_2 != -1){
+        } else if (UPGRADE_SLOT_1 != -1){
 
             if (((!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystSeedInfinity.asItem()) ||
                     (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystSeedInfinity.asItem())) &&
@@ -257,17 +262,9 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
                 inventory.setStackInSlot(SEEDS_SLOT, seed);
             }
 
-            if (((!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystWaterInfinity.asItem()) ||
-                    (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystWaterInfinity.asItem()))
-                    && fluidInventory.getFluidAmount() != fluidInventory.getCapacity()){
-
-                FluidStack fluid = this.getFluidInventory().getFluid().copy();
-                if (fluid.isEmpty()) {
-                    fluid = new FluidStack(Fluids.WATER, FLUID_CAPACITY);
-                }
-                fluid.setAmount(FLUID_CAPACITY);
-                this.getFluidInventory().setFluid(fluid);
-            }
+            isInfinityWater =
+                    (!inventory.getStackInSlot(UPGRADE_SLOT_1).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_1).getItem().asItem() == ModItems.catalystWaterInfinity.asItem()) ||
+                    (!inventory.getStackInSlot(UPGRADE_SLOT_2).isEmpty() && inventory.getStackInSlot(UPGRADE_SLOT_2).getItem().asItem() == ModItems.catalystWaterInfinity.asItem());
         }
     }
 
@@ -299,6 +296,9 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         if (this.inventory.getStackInSlot(0).isEmpty()) {
             return false;
         } else {
+            if (isInfinityWater) {
+                return true;
+            }
             FluidStack fluid = this.getFluidInventory().getFluid();
             return !fluid.isEmpty() && fluid.getFluid() == Fluids.WATER && fluid.getAmount() >= 1000;
         }
@@ -306,9 +306,11 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
 
     @Override
     protected void onCrafted(PetalApothecaryRecipe recipe, int countItemCraft) {
-        this.inventory.extractItem(0, 1, false);
+        seedBuffer = countItemCraft > this.inventory.getStackInSlot(0).getCount() ? countItemCraft - this.inventory.getStackInSlot(0).getCount(): 0;
+
+        this.inventory.extractItem(0, seedBuffer == 0 ? countItemCraft : this.inventory.getStackInSlot(0).getCount(), false);
         FluidStack fluid = this.getFluidInventory().getFluid().copy();
-        if (fluid.getFluid() == Fluids.WATER) {
+        if (!isInfinityWater && fluid.getFluid() == Fluids.WATER) {
             int newAmount = Math.max(0, fluid.getAmount() - 1000);
             fluid.setAmount(newAmount);
             this.fluidInventory.setFluid(fluid);
@@ -336,6 +338,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         super.load(nbt);
         this.fluidInventory.setFluid(FluidStack.loadFluidStackFromNBT(nbt.getCompound("fluid")));
         this.currentOutput = ItemStack.of(nbt.getCompound("currentOutput"));
+        this.seedBuffer = nbt.getInt("seedBuffer");
         this.getMainNode().loadFromNBT(nbt);
 
         this.setChanged();
@@ -348,6 +351,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         this.getFluidInventory().getFluid().writeToNBT(tankTag);
         nbt.put("fluid", tankTag);
         nbt.put("currentOutput", this.currentOutput.serializeNBT());
+        nbt.putInt("seedBuffer", this.seedBuffer);
         this.getMainNode().saveToNBT(nbt);
     }
 
@@ -356,6 +360,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
         if (this.level == null || this.level.isClientSide) {
             this.fluidInventory.setFluid(FluidStack.loadFluidStackFromNBT(nbt.getCompound("fluid")));
             this.currentOutput = ItemStack.of(nbt.getCompound("currentOutput"));
+            this.seedBuffer = nbt.getInt("seedBuffer");
         }
     }
 
@@ -369,6 +374,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
             this.getFluidInventory().getFluid().writeToNBT(tankTag);
             nbt.put("fluid", tankTag);
             nbt.put("currentOutput", this.currentOutput.serializeNBT());
+            nbt.putInt("seedBuffer", this.seedBuffer);
             return nbt;
         }
     }
@@ -460,7 +466,7 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }
@@ -486,7 +492,5 @@ public class BlockEntityApothecaryPattern extends WorkingTile<PetalApothecaryRec
             }
         }
     }
-
-
     //endregion
 }
