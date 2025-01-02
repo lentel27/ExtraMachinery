@@ -36,7 +36,7 @@ public class BlockDaisyUpgraded extends MenuBlockBE<BlockEntityDaisyUpgraded, Co
     private static final VoxelShape SHAPE;
 
     public BlockDaisyUpgraded(ModX mod, Class<BlockEntityDaisyUpgraded> teClass, MenuType<ContainerDaisyUpgraded> menu) {
-        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn().noOcclusion(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)

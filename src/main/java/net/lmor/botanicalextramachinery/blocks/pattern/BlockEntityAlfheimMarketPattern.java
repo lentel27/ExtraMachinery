@@ -117,7 +117,6 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
                 this.receiveMana(this.getMaxMana());
             }
 
-
             this.runRecipeTick(
                     () -> {this.currentInput = ItemStack.EMPTY;},
                     (stack, slotx) -> {this.currentInput = stack.copy();},
@@ -125,7 +124,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
             );
 
             if (this.recipe != null) {
-                this.currentOutput = ((ElvenTradeRecipe)this.recipe).getOutputs().size() == 0 ? ItemStack.EMPTY : ((ItemStack)((ElvenTradeRecipe)this.recipe).getOutputs().get(0)).copy();
+                this.currentOutput = this.recipe.getOutputs().size() == 0 ? ItemStack.EMPTY : this.recipe.getOutputs().get(0).copy();
                 this.setChanged();
                 this.setDispatchable();
             } else if (!this.currentInput.isEmpty() || !this.currentOutput.isEmpty()) {
@@ -152,7 +151,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
                 for(int slot = 0; slot < 4; ++slot) {
                     if (this.inventory.getStackInSlot(slot).getItem() == Items.BREAD) {
                         this.level.setBlock(this.worldPosition, Blocks.AIR.defaultBlockState(), 3);
-                        this.level.explode((Entity)null, (double)this.worldPosition.getX(), (double)this.worldPosition.getY(), (double)this.worldPosition.getZ(), 3.0F, Level.ExplosionInteraction.BLOCK);
+                        this.level.explode(null, this.worldPosition.getX(), this.worldPosition.getY(), this.worldPosition.getZ(), 3.0F, Level.ExplosionInteraction.BLOCK);
                         break;
                     }
                 }
@@ -305,7 +304,7 @@ public class BlockEntityAlfheimMarketPattern extends WorkingTile<ElvenTradeRecip
             } else {
                 this.level.blockEntityChanged(this.worldPosition);
                 if (!this.setChangedQueued) {
-                    TickHandler.instance().addCallable((LevelAccessor)null, this::setChangedAtEndOfTick);
+                    TickHandler.instance().addCallable(null, this::setChangedAtEndOfTick);
                     this.setChangedQueued = true;
                 }
             }

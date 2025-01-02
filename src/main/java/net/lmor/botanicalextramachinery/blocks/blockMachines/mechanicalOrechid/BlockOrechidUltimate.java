@@ -37,7 +37,7 @@ public class BlockOrechidUltimate extends MenuBlockBE<BlockEntityOrechidUltimate
     public static final VoxelShape SHAPE;
 
     public BlockOrechidUltimate(ModX mod, Class<BlockEntityOrechidUltimate> teClass, MenuType<ContainerOrechidUltimate> menu) {
-        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn().noOcclusion(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)

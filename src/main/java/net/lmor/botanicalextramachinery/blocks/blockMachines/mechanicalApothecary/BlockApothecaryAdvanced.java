@@ -49,7 +49,7 @@ public class BlockApothecaryAdvanced extends MenuBlockBE<BlockEntityApothecaryAd
     public static final RotationShape SHAPE;
 
     public BlockApothecaryAdvanced(ModX mod, Class<BlockEntityApothecaryAdvanced> teClass, MenuType<ContainerApothecaryAdvanced> menu) {
-        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn().noOcclusion(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)

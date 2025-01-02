@@ -36,7 +36,7 @@ public class BlockDaisyBase extends MenuBlockBE<BlockEntityDaisyBase, ContainerD
     private static final VoxelShape SHAPE;
 
     public BlockDaisyBase(ModX mod, Class<BlockEntityDaisyBase> teClass, MenuType<ContainerDaisyBase> menu) {
-        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 10.0F).dynamicShape().forceSolidOn().noOcclusion(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)

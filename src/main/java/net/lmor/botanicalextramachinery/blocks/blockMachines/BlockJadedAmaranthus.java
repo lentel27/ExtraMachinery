@@ -37,7 +37,7 @@ public class BlockJadedAmaranthus extends MenuBlockBE<BlockEntityJadedAmaranthus
     public static final VoxelShape SHAPE;
 
     public BlockJadedAmaranthus(ModX mod, Class<BlockEntityJadedAmaranthus> teClass, MenuType<ContainerJadedAmaranthus> menu) {
-        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 5.0F).dynamicShape().forceSolidOn(), new Item.Properties());
+        super(mod, teClass, menu, Properties.copy(Blocks.STONE).strength(2.0F, 5.0F).dynamicShape().forceSolidOn().noOcclusion(), new Item.Properties());
     }
 
     @OnlyIn(Dist.CLIENT)
