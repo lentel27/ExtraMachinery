@@ -37,6 +37,11 @@
   "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "究極工業性",
   "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "集結ファクトリー",
 
+  "block.botanicalextramachinery.base_mana_infuser": "基本マナ注入器",
+  "block.botanicalextramachinery.upgraded_mana_infuser": "発展マナ注入器",
+  "block.botanicalextramachinery.advanced_mana_infuser": "精密マナ注入器",
+  "block.botanicalextramachinery.ultimate_mana_infuser": "究極マナ注入器",
+
   "block.botanicalextramachinery.base_alfheim_market": "基本アルフヘイムマーケット",
   "block.botanicalextramachinery.upgraded_alfheim_market": "発展アルフヘイムマーケット",
   "block.botanicalextramachinery.advanced_alfheim_market": "精密アルフヘイムマーケット",

@@ -308,6 +308,67 @@ public class LibXServerConfig {
         public IndustrialAgglomerationFactorySettings() {}
     }
 
+    @Group({"ManaInfuser for all types (For request mod Mythical Botany)"})
+    public static class ManaInfuserSettings {
+
+        @Config({"Maximum mana output per recipe per tick. Total speed is calculated as workingDuration * craftTime"})
+        @IntRange( min = 1 )
+        public static int workingDuration = 5000;
+
+        public static class baseManaInfuser {
+            @Config({"Crafting speed increase factor"})
+            @IntRange( min = 1 )
+            public static int craftTime = 1;
+            @Config({"Mana Storage"})
+            @IntRange( min = 1 )
+            public static int manaStorage = 2500000;
+            @Config({"Max amount of crafting at a time"})
+            @IntRange( min = 1, max = 64)
+            public static int countCraft = 4;
+            public baseManaInfuser(){}
+        }
+
+        public static class upgradedManaInfuser {
+            @Config({"Crafting speed increase factor"})
+            @IntRange( min = 1 )
+            public static int craftTime = 1;
+            @Config({"Mana Storage"})
+            @IntRange( min = 1 )
+            public static int manaStorage = 10000000;
+            @Config({"Max amount of crafting at a time"})
+            @IntRange( min = 1, max = 64)
+            public static int countCraft = 8;
+            public upgradedManaInfuser(){}
+        }
+
+        public static class advancedManaInfuser {
+            @Config({"Crafting speed increase factor"})
+            @IntRange( min = 1 )
+            public static int craftTime = 1;
+            @Config({"Mana Storage"})
+            @IntRange( min = 1000 )
+            public static int manaStorage = 50000000;
+            @Config({"Max amount of crafting at a time"})
+            @IntRange( min = 1, max = 64)
+            public static int countCraft = 16;
+            public advancedManaInfuser(){}
+        }
+
+        public static class ultimateManaInfuser {
+            @Config({"Crafting speed increase factor"})
+            @IntRange( min = 1 )
+            public static int craftTime = 1;
+            @Config({"Mana Storage"})
+            @IntRange( min = 1000 )
+            public static int manaStorage = 100000000;
+            @Config({"Max amount of crafting at a time"})
+            @IntRange( min = 1, max = 64)
+            public static int countCraft = 32;
+            public ultimateManaInfuser(){}
+        }
+        public ManaInfuserSettings() {}
+    }
+
     @Group({"Alfheim Market for all types"})
     public static class AlfheimMarketSettings {
 

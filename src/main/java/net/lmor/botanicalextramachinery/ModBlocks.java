@@ -18,6 +18,10 @@ import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalIndustria
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalIndustrialAgglomerationFactory.BlockIndustrialAgglomerationFactoryBase;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalIndustrialAgglomerationFactory.BlockIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalIndustrialAgglomerationFactory.BlockIndustrialAgglomerationFactoryUpgraded;
+import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaInfuser.BlockManaInfuserAdvanced;
+import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaInfuser.BlockManaInfuserBase;
+import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaInfuser.BlockManaInfuserUltimate;
+import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaInfuser.BlockManaInfuserUpgraded;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool.BlockManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool.BlockManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.blockMachines.mechanicalManaPool.BlockManaPoolUltimate;
@@ -48,6 +52,10 @@ import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAg
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory.ContainerIndustrialAgglomerationFactoryBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory.ContainerIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalIndustrialAgglomerationFactory.ContainerIndustrialAgglomerationFactoryUpgraded;
+import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaInfuser.ContainerManaInfuserAdvanced;
+import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaInfuser.ContainerManaInfuserBase;
+import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaInfuser.ContainerManaInfuserUltimate;
+import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaInfuser.ContainerManaInfuserUpgraded;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.containers.mechanicalManaPool.ContainerManaPoolUltimate;
@@ -78,6 +86,10 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglome
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalIndustrialAgglomerationFactory.BlockEntityIndustrialAgglomerationFactoryUpgraded;
+import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaInfuser.BlockEntityManaInfuserAdvanced;
+import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaInfuser.BlockEntityManaInfuserBase;
+import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaInfuser.BlockEntityManaInfuserUltimate;
+import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaInfuser.BlockEntityManaInfuserUpgraded;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalManaPool.BlockEntityManaPoolUltimate;
@@ -93,6 +105,7 @@ import net.lmor.botanicalextramachinery.blocks.tiles.mechanicalRunicAltar.BlockE
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.fml.ModList;
 import org.moddingx.libx.annotation.registration.RegisterClass;
 import org.moddingx.libx.base.BlockBase;
 import org.moddingx.libx.base.tile.MenuBlockBE;
@@ -149,11 +162,28 @@ public class ModBlocks {
     public static final MenuBlockBE<BlockEntityJadedAmaranthus, ContainerJadedAmaranthus> jadedAmaranthus;
     public static final MenuBlockBE<BlockEntityGreenhouse, ContainerGreenhouse> greenhouse;
 
+    public static final MenuBlockBE<BlockEntityManaInfuserBase, ContainerManaInfuserBase> baseManaInfuser;
+    public static final MenuBlockBE<BlockEntityManaInfuserUpgraded, ContainerManaInfuserUpgraded> upgradedManaInfuser;
+    public static final MenuBlockBE<BlockEntityManaInfuserAdvanced, ContainerManaInfuserAdvanced> advancedManaInfuser;
+    public static final MenuBlockBE<BlockEntityManaInfuserUltimate, ContainerManaInfuserUltimate> ultimateManaInfuser;
 
     public ModBlocks() {
+
     }
 
     static {
+        if (ModList.get().isLoaded("mythicbotany")) {
+            baseManaInfuser = new BlockManaInfuserBase(ExtraMachinery.getInstance(), BlockEntityManaInfuserBase.class, BlockEntityMenu.createMenuType(ContainerManaInfuserBase::new));
+            upgradedManaInfuser = new BlockManaInfuserUpgraded(ExtraMachinery.getInstance(), BlockEntityManaInfuserUpgraded.class, BlockEntityMenu.createMenuType(ContainerManaInfuserUpgraded::new));
+            advancedManaInfuser = new BlockManaInfuserAdvanced(ExtraMachinery.getInstance(), BlockEntityManaInfuserAdvanced.class, BlockEntityMenu.createMenuType(ContainerManaInfuserAdvanced::new));
+            ultimateManaInfuser = new BlockManaInfuserUltimate(ExtraMachinery.getInstance(), BlockEntityManaInfuserUltimate.class, BlockEntityMenu.createMenuType(ContainerManaInfuserUltimate::new));
+        } else {
+            baseManaInfuser = null;
+            upgradedManaInfuser = null;
+            advancedManaInfuser = null;
+            ultimateManaInfuser = null;
+        }
+
         malachiteDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
         saffronDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
         shadowDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));

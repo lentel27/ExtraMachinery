@@ -1,8 +1,9 @@
-package net.lmor.botanicalextramachinery;
+package net.lmor.botanicalextramachinery.init;
 
 import appbot.item.ManaCellItem;
 import appeng.api.client.StorageCellModels;
 import appeng.items.materials.StorageComponentItem;
+import net.lmor.botanicalextramachinery.ExtraMachinery;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,7 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class RegItemsAppbotItems {
+public class InitAppbot {
     private static final DeferredRegister<Item> ITEMS;
 
     public static final RegistryObject<Item> cellComponent_1m;
@@ -28,7 +29,6 @@ public class RegItemsAppbotItems {
 
     public static void initialize(IEventBus bus) {
         ITEMS.register(bus);
-
 
         bus.addListener((FMLCommonSetupEvent event) -> event.enqueueWork(() ->{
             StorageCellModels.registerModel(manaStorageCell_1m.get(), new ResourceLocation(ExtraMachinery.MOD_ID + ":block/drive/cells/mana_storage_cell_1m"));

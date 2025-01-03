@@ -37,6 +37,11 @@
   "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "Совершенный завод",
   "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "промышленной агломерации",
 
+  "block.botanicalextramachinery.base_mana_infuser": "Базовый мана-инфузер",
+  "block.botanicalextramachinery.upgraded_mana_infuser": "Улучшенный мана-инфузер",
+  "block.botanicalextramachinery.advanced_mana_infuser": "Продвинутый мана-инфузер",
+  "block.botanicalextramachinery.ultimate_mana_infuser": "Совершенный мана-инфузер",
+
   "block.botanicalextramachinery.base_alfheim_market": "Базовый обменник альфхейма",
   "block.botanicalextramachinery.upgraded_alfheim_market": "Улучшенный обменник альфхейма",
   "block.botanicalextramachinery.advanced_alfheim_market": "Продвинутый обменник альфхейма",

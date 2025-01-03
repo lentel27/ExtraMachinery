@@ -52,6 +52,11 @@ public class LibNames {
     public static final String ADVANCED_INDUSTRIAL_AGGLOMERATION_FACTORY = "advanced_industrial_agglomeration_factory";
     public static final String ULTIMATE_INDUSTRIAL_AGGLOMERATION_FACTORY = "ultimate_industrial_agglomeration_factory";
 
+    public static final String BASE_MANA_INFUSER = "base_mana_infuser";
+    public static final String UPGRADED_MANA_INFUSER = "upgraded_mana_infuser";
+    public static final String ADVANCED_MANA_INFUSER = "advanced_mana_infuser";
+    public static final String ULTIMATE_MANA_INFUSER = "ultimate_mana_infuser";
+
     public static final String BASE_ALFHEIM_MARKET = "base_alfheim_market";
     public static final String UPGRADED_ALFHEIM_MARKET = "upgraded_alfheim_market";
     public static final String ADVANCED_ALFHEIM_MARKET = "advanced_alfheim_market";

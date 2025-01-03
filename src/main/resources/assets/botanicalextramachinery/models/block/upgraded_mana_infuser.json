@@ -2,11 +2,11 @@
   "parent": "block/block",
   "ambientocclusion": false,
   "textures": {
-    "frame": "botanicalextramachinery:block/malachite_dragonstone_block",
-    "livingrock": "botania:block/metamorphic_plains_stone",
+    "frame": "botanicalextramachinery:block/saffron_dragonstone_block",
+    "livingrock": "botania:block/livingrock",
     "lapis": "minecraft:block/lapis_block",
-    "terra_plate_top": "botania:block/terra_plate_top",
-    "terra_plate_side": "botania:block/terra_plate_side",
+    "terra_plate_top": "mythicbotany:block/mana_infuser_top",
+    "terra_plate_side": "mythicbotany:block/mana_infuser_bottom",
     "particle": "#frame"
   },
   "elements": [

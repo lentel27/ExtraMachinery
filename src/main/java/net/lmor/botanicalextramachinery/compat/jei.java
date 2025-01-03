@@ -4,6 +4,9 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mythicbotany.infuser.InfuserRecipe;
+import mythicbotany.jei.InfusionCategory;
+import mythicbotany.register.ModRecipes;
 import net.lmor.botanicalextramachinery.ModBlocks;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalAlfheimMarket.ScreenAlfheimMarketBase;
@@ -21,6 +24,10 @@ import net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAgglo
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAgglomerationFactory.ScreenIndustrialAgglomerationFactoryBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAgglomerationFactory.ScreenIndustrialAgglomerationFactoryUltimate;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalIndustrialAgglomerationFactory.ScreenIndustrialAgglomerationFactoryUpgraded;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaInfuser.ScreenManaInfuserAdvanced;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaInfuser.ScreenManaInfuserBase;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaInfuser.ScreenManaInfuserUltimate;
+import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaInfuser.ScreenManaInfuserUpgraded;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolAdvanced;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolBase;
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalManaPool.ScreenManaPoolUltimate;
@@ -35,6 +42,7 @@ import net.lmor.botanicalextramachinery.blocks.screens.mechanicalRunicAltar.Scre
 import net.lmor.botanicalextramachinery.blocks.screens.mechanicalRunicAltar.ScreenRunicAltarUpgraded;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fml.ModList;
 import vazkii.botania.client.integration.jei.*;
 import vazkii.botania.client.integration.jei.orechid.OrechidRecipeCategory;
 
@@ -77,6 +85,13 @@ public class jei implements IModPlugin {
         registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryAdvanced.class, 78, 57, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
         registration.addRecipeClickArea(ScreenIndustrialAgglomerationFactoryUltimate.class, 88, 69, 40, 16, TerrestrialAgglomerationRecipeCategory.TYPE);
 
+        if (ModList.get().isLoaded("mythicbotany")) {
+            registration.addRecipeClickArea(ScreenManaInfuserBase.class, 78, 57, 40, 16, InfusionCategory.TYPE);
+            registration.addRecipeClickArea(ScreenManaInfuserUpgraded.class, 78, 57, 40, 16, InfusionCategory.TYPE);
+            registration.addRecipeClickArea(ScreenManaInfuserAdvanced.class, 78, 57, 40, 16, InfusionCategory.TYPE);
+            registration.addRecipeClickArea(ScreenManaInfuserUltimate.class, 88, 69, 40, 16, InfusionCategory.TYPE);
+        }
+
         registration.addRecipeClickArea(ScreenAlfheimMarketBase.class, 90, 53, 16, 16, ElvenTradeRecipeCategory.TYPE);
         registration.addRecipeClickArea(ScreenAlfheimMarketUpgraded.class, 90, 53, 16, 16, ElvenTradeRecipeCategory.TYPE);
         registration.addRecipeClickArea(ScreenAlfheimMarketAdvanced.class, 90, 53, 16, 16, ElvenTradeRecipeCategory.TYPE);
@@ -114,6 +129,13 @@ public class jei implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateIndustrialAgglomerationFactory), TerrestrialAgglomerationRecipeCategory.TYPE);
+
+        if (ModList.get().isLoaded("mythicbotany")) {
+            registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseManaInfuser), InfusionCategory.TYPE);
+            registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedManaInfuser), InfusionCategory.TYPE);
+            registration.addRecipeCatalyst(new ItemStack(ModBlocks.advancedManaInfuser), InfusionCategory.TYPE);
+            registration.addRecipeCatalyst(new ItemStack(ModBlocks.ultimateManaInfuser), InfusionCategory.TYPE);
+        }
 
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.baseAlfheimMarket), ElvenTradeRecipeCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.upgradedAlfheimMarket), ElvenTradeRecipeCategory.TYPE);

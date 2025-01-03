@@ -52,6 +52,11 @@ public class LibResources {
     public static final ResourceLocation ADVANCED_INDUSTRIAL_AGGLOMERATION_FACTORY_GUI = gui(LibNames.ADVANCED_INDUSTRIAL_AGGLOMERATION_FACTORY);
     public static final ResourceLocation ULTIMATE_INDUSTRIAL_AGGLOMERATION_FACTORY_GUI = gui(LibNames.ULTIMATE_INDUSTRIAL_AGGLOMERATION_FACTORY);
 
+    public static final ResourceLocation BASE_MANA_INFUSER_GUI = gui(LibNames.BASE_MANA_INFUSER);
+    public static final ResourceLocation UPGRADED_MANA_INFUSER_GUI = gui(LibNames.UPGRADED_MANA_INFUSER);
+    public static final ResourceLocation ADVANCED_MANA_INFUSER_GUI = gui(LibNames.ADVANCED_MANA_INFUSER);
+    public static final ResourceLocation ULTIMATE_MANA_INFUSER_GUI = gui(LibNames.ULTIMATE_MANA_INFUSER);
+
     public static final ResourceLocation BASE_ALFHEIM_MARKET_GUI = gui(LibNames.BASE_ALFHEIM_MARKET);
     public static final ResourceLocation UPGRADED_ALFHEIM_MARKET_GUI = gui(LibNames.UPGRADED_ALFHEIM_MARKET);
     public static final ResourceLocation ADVANCED_ALFHEIM_MARKET_GUI = gui(LibNames.ADVANCED_ALFHEIM_MARKET);

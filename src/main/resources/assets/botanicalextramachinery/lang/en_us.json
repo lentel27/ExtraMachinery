@@ -37,6 +37,11 @@
   "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_1": "Ultimate Industrial",
   "text.botanicalextramachinery.ultimate_industrial_agglomeration_factory_label_text_2": "Agglomeration Factory",
 
+  "block.botanicalextramachinery.base_mana_infuser": "Basic mana infuser",
+  "block.botanicalextramachinery.upgraded_mana_infuser": "Upgraded mana infuser",
+  "block.botanicalextramachinery.advanced_mana_infuser": "Advanced mana infuser",
+  "block.botanicalextramachinery.ultimate_mana_infuser": "Ultimate mana infuser",
+
   "block.botanicalextramachinery.base_alfheim_market": "Basic Alfheim Market",
   "block.botanicalextramachinery.upgraded_alfheim_market": "Upgraded Alfheim Market",
   "block.botanicalextramachinery.advanced_alfheim_market": "Advanced Alfheim Market",

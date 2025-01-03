@@ -1,6 +1,7 @@
 package net.lmor.botanicalextramachinery;
 
 import net.lmor.botanicalextramachinery.data.*;
+import net.lmor.botanicalextramachinery.init.InitAppbot;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -33,7 +34,7 @@ public final class ExtraMachinery extends ModXRegistration {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
         bind(Registries.ENTITY_TYPE, ModEntities::registerEntities);
-        if (ModList.get().isLoaded("appbot")) RegItemsAppbotItems.initialize(bus);
+        if (ModList.get().isLoaded("appbot")) InitAppbot.initialize(bus);
 
         DataGen();
     }

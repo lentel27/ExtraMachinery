@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "botanicalextramachinery:malachite_ingot_block"
+    },
+    "b": {
+      "item": "botanicalextramachinery:shadow_ingot"
+    },
+    "c": {
+      "item": "botanicalextramachinery:upgraded_mana_infuser"
+    },
+    "d": {
+      "item": "botanicalextramachinery:shadow_dragonstone_block"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "ddd"
+  ],
+  "result": {
+    "item": "botanicalextramachinery:advanced_mana_infuser"
+  },
+  "show_notification": true
+}
