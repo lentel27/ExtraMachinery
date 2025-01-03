@@ -106,10 +106,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.fml.ModList;
+import org.moddingx.libx.annotation.registration.Reg;
 import org.moddingx.libx.annotation.registration.RegisterClass;
 import org.moddingx.libx.base.BlockBase;
 import org.moddingx.libx.base.tile.MenuBlockBE;
 import org.moddingx.libx.menu.BlockEntityMenu;
+
+import java.awt.*;
 
 @RegisterClass(registry = "BLOCKS", priority = 1)
 public class ModBlocks {
@@ -162,27 +165,20 @@ public class ModBlocks {
     public static final MenuBlockBE<BlockEntityJadedAmaranthus, ContainerJadedAmaranthus> jadedAmaranthus;
     public static final MenuBlockBE<BlockEntityGreenhouse, ContainerGreenhouse> greenhouse;
 
-    public static final MenuBlockBE<BlockEntityManaInfuserBase, ContainerManaInfuserBase> baseManaInfuser;
-    public static final MenuBlockBE<BlockEntityManaInfuserUpgraded, ContainerManaInfuserUpgraded> upgradedManaInfuser;
-    public static final MenuBlockBE<BlockEntityManaInfuserAdvanced, ContainerManaInfuserAdvanced> advancedManaInfuser;
-    public static final MenuBlockBE<BlockEntityManaInfuserUltimate, ContainerManaInfuserUltimate> ultimateManaInfuser;
+    @Reg.Exclude
+    public static final MenuBlockBE<BlockEntityManaInfuserBase, ContainerManaInfuserBase> baseManaInfuser = ModList.get().isLoaded("mythicbotany") ? new BlockManaInfuserBase(ExtraMachinery.getInstance(), BlockEntityManaInfuserBase.class, BlockEntityMenu.createMenuType(ContainerManaInfuserBase::new)) : null;
+    @Reg.Exclude
+    public static final MenuBlockBE<BlockEntityManaInfuserUpgraded, ContainerManaInfuserUpgraded> upgradedManaInfuser = ModList.get().isLoaded("mythicbotany") ? new BlockManaInfuserUpgraded(ExtraMachinery.getInstance(), BlockEntityManaInfuserUpgraded.class, BlockEntityMenu.createMenuType(ContainerManaInfuserUpgraded::new)) : null;
+    @Reg.Exclude
+    public static final MenuBlockBE<BlockEntityManaInfuserAdvanced, ContainerManaInfuserAdvanced> advancedManaInfuser = ModList.get().isLoaded("mythicbotany") ? new BlockManaInfuserAdvanced(ExtraMachinery.getInstance(), BlockEntityManaInfuserAdvanced.class, BlockEntityMenu.createMenuType(ContainerManaInfuserAdvanced::new)) : null;
+    @Reg.Exclude
+    public static final MenuBlockBE<BlockEntityManaInfuserUltimate, ContainerManaInfuserUltimate> ultimateManaInfuser = ModList.get().isLoaded("mythicbotany") ? new BlockManaInfuserUltimate(ExtraMachinery.getInstance(), BlockEntityManaInfuserUltimate.class, BlockEntityMenu.createMenuType(ContainerManaInfuserUltimate::new)) : null;
 
     public ModBlocks() {
 
     }
 
     static {
-        if (ModList.get().isLoaded("mythicbotany")) {
-            baseManaInfuser = new BlockManaInfuserBase(ExtraMachinery.getInstance(), BlockEntityManaInfuserBase.class, BlockEntityMenu.createMenuType(ContainerManaInfuserBase::new));
-            upgradedManaInfuser = new BlockManaInfuserUpgraded(ExtraMachinery.getInstance(), BlockEntityManaInfuserUpgraded.class, BlockEntityMenu.createMenuType(ContainerManaInfuserUpgraded::new));
-            advancedManaInfuser = new BlockManaInfuserAdvanced(ExtraMachinery.getInstance(), BlockEntityManaInfuserAdvanced.class, BlockEntityMenu.createMenuType(ContainerManaInfuserAdvanced::new));
-            ultimateManaInfuser = new BlockManaInfuserUltimate(ExtraMachinery.getInstance(), BlockEntityManaInfuserUltimate.class, BlockEntityMenu.createMenuType(ContainerManaInfuserUltimate::new));
-        } else {
-            baseManaInfuser = null;
-            upgradedManaInfuser = null;
-            advancedManaInfuser = null;
-            ultimateManaInfuser = null;
-        }
 
         malachiteDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
         saffronDragonstoneBlock = new BlockBase(ExtraMachinery.getInstance(), BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(5.0F, 6.0F).sound(SoundType.METAL));
