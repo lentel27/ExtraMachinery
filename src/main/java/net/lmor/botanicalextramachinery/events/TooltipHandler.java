@@ -79,7 +79,7 @@ public class TooltipHandler {
         catalystList.put(catalystSeedInfinity, new String[] { "botanicalextramachinery.tooltip.item.seed" });
         catalystList.put(catalystStoneInfinity, new String[] { "botanicalextramachinery.tooltip.item.stone" });
         catalystList.put(catalystWoodInfinity, new String[] { "botanicalextramachinery.tooltip.item.wood" });
-        catalystList.put(catalystSpeed, new String[] { "botanicalextramachinery.tooltip.item.upgrade_speed_1", "botanicalextramachinery.tooltip.item.upgrade_speed_2" });
+        catalystList.put(catalystSpeed, new String[] { "botanicalextramachinery.tooltip.item.upgrade_speed" });
         catalystList.put(catalystPetal, new String[] { "botanicalextramachinery.tooltip.item.catalyst_petal_1", "botanicalextramachinery.tooltip.item.catalyst_petal_3" });
         catalystList.put(catalystPetalBlock, new String[] { "botanicalextramachinery.tooltip.item.catalyst_petal_2", "botanicalextramachinery.tooltip.item.catalyst_petal_3" });
 
