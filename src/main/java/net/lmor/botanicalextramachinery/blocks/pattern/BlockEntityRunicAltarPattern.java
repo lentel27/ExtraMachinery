@@ -179,12 +179,12 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                 (UPGRADE_SLOT_2 != -1 && this.inventory.getStackInSlot(UPGRADE_SLOT_2).getItem() == ModItems.catalystManaInfinity)
             );
 
-            if (UPGRADE_SLOT_1 != -1 &&
-                    ( inventory.getStackInSlot(LIVINGROCK_SLOT_1).isEmpty() ||
-                            inventory.getStackInSlot(LIVINGROCK_SLOT_2).isEmpty() ||
-                            inventory.getStackInSlot(LIVINGROCK_SLOT_3).isEmpty())){
+            if (inventory.getStackInSlot(LIVINGROCK_SLOT_1).isEmpty() ||
+                inventory.getStackInSlot(LIVINGROCK_SLOT_2).isEmpty() ||
+                inventory.getStackInSlot(LIVINGROCK_SLOT_3).isEmpty()) {
 
-                if (!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystLivingRockInfinity.asItem() || !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystLivingRockInfinity.asItem()){
+                if (!getSlotUpgrade1().isEmpty() && getSlotUpgrade1().getItem() == ModItems.catalystLivingRockInfinity.asItem() ||
+                    !getSlotUpgrade2().isEmpty() && getSlotUpgrade2().getItem() == ModItems.catalystLivingRockInfinity.asItem()) {
                     addLivingRockSlots();
                 }
             }
@@ -205,14 +205,14 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
 
     public ItemStack getSlotUpgrade1(){
         if (UPGRADE_SLOT_1 == -1){
-            return null;
+            return ItemStack.EMPTY;
         }
         return inventory.getStackInSlot(UPGRADE_SLOT_1);
     }
 
     public ItemStack getSlotUpgrade2(){
         if (UPGRADE_SLOT_2 == -1){
-            return null;
+            return ItemStack.EMPTY;
         }
         return inventory.getStackInSlot(UPGRADE_SLOT_2);
     }
