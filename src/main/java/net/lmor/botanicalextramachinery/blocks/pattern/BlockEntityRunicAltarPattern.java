@@ -183,7 +183,7 @@ public class BlockEntityRunicAltarPattern extends WorkingTile<RunicAltarRecipe>
                 inventory.getStackInSlot(LIVINGROCK_SLOT_2).isEmpty() ||
                 inventory.getStackInSlot(LIVINGROCK_SLOT_3).isEmpty()) {
 
-                if (!getSlotUpgrade1().is(ModItems.catalystLivingRockInfinity) || getSlotUpgrade2().is(ModItems.catalystLivingRockInfinity)) {
+                if (getSlotUpgrade1().is(ModItems.catalystLivingRockInfinity) || getSlotUpgrade2().is(ModItems.catalystLivingRockInfinity)) {
                     addLivingRockSlots();
                 }
             }
